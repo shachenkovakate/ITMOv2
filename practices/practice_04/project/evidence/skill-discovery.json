@@ -1,0 +1,11 @@
+{
+  "exit_code": 0,
+  "skills": [
+    {
+      "name": "notify-mini-check",
+      "description": "Use when checking Notify Mini or verifying its edits; runs scripts/check.sh and returns structured test output and exit code.",
+      "location": "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_04/project/.opencode/skills/notify-mini-check/SKILL.md",
+      "content": "\n# Notify Mini check\n\nRun from the Notify Mini project directory:\n\n```sh\npython3 .opencode/skills/notify-mini-check/scripts/check.py\n```\n\nThe script runs the unchanged `sh scripts/check.sh` in the project directory.\nIt prints JSON with `command`, `exit_code`, `stdout`, `stderr`, and `ok`,\nand exits with the check's exit code. Report failures with their actual output.\nDo not implement features or change the contract or runner as part of a check.\n"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "notify-mini-name": {
+      "type": "local",
+      "command": ["python3", ".opencode/mcp/subscriber_name.py"],
+      "enabled": true
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "command": "opencode mcp list",
+  "exit_code": 0,
+  "stdout": "┌  MCP Servers\n│\n●  ✓ notify-mini-name \u001b[90mconnected\n│      \u001b[90mpython3 .opencode/mcp/subscriber_name.py\n│\n└  1 server(s)\n\n",
+  "stderr": "\u001b[0m\n"
+}

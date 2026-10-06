@@ -1,0 +1,41 @@
+{
+  "feature": "A: unsubscribe",
+  "source_hook_log": "hook-events.jsonl",
+  "source_hook_records": {"red_hook": 4, "green_hook": 5},
+  "note": "Краткое сопоставление; полный исходный вывод хранится в hook-events.jsonl.",
+  "mcp_calls": [
+    {"tool": "notify-mini-name_check_subscriber_name", "input": {"name": " Ann "}, "output": "Ann"},
+    {"tool": "notify-mini-name_check_subscriber_name", "input": {"name": "   "}, "output": "empty name"}
+  ],
+  "red_hook": {
+    "trigger": "apply_patch: test_service.py, before implementation",
+    "returned_to_agent": true,
+    "marker": "[notify-mini-check hook]",
+    "event": "tool.execute.after",
+    "command": "sh scripts/check.sh",
+    "exit_code": 1,
+    "tests_run": 9,
+    "errors": 7,
+    "cause": "AttributeError: module 'service' has no attribute 'unsubscribe'",
+    "summary": "FAILED (errors=7); original 3 SubscribeTest tests: ok"
+  },
+  "green_hook": {
+    "trigger": "apply_patch: service.py, unsubscribe implementation",
+    "returned_to_agent": true,
+    "marker": "[notify-mini-check hook]",
+    "event": "tool.execute.after",
+    "command": "sh scripts/check.sh",
+    "exit_code": 0,
+    "tests_run": 9,
+    "summary": "OK"
+  },
+  "skill": {
+    "loaded_with": "skill(name=notify-mini-check)",
+    "executed_with": "python3 .opencode/skills/notify-mini-check/scripts/check.py",
+    "command": "sh scripts/check.sh",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "test_duplicate (test_service.SubscribeTest.test_duplicate) ... ok\ntest_empty (test_service.SubscribeTest.test_empty) ... ok\ntest_subscribe (test_service.SubscribeTest.test_subscribe) ... ok\ntest_empty (test_service.UnsubscribeTest.test_empty) ... ok\ntest_preserves_other_subscribers (test_service.UnsubscribeTest.test_preserves_other_subscribers) ... ok\ntest_repeat (test_service.UnsubscribeTest.test_repeat) ... ok\ntest_surrounding_spaces (test_service.UnsubscribeTest.test_surrounding_spaces) ... ok\ntest_unknown (test_service.UnsubscribeTest.test_unknown) ... ok\ntest_unsubscribe (test_service.UnsubscribeTest.test_unsubscribe) ... ok\n\n----------------------------------------------------------------------\nRan 9 tests in 0.000s\n\nOK\n",
+    "ok": true
+  }
+}

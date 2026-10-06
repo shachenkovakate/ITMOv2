@@ -1,0 +1,5 @@
+[
+  {"operation": "Read installed executable", "error": "Cannot read binary file: /home/kate/.local/bin/opencode", "resolution": "Used strings to inspect installed runtime API."},
+  {"operation": "strings executable | rg ...", "exit_code": 127, "error": "/usr/bin/bash: line 1: rg: command not found", "resolution": "Filtered strings using Python instead."},
+  {"operation": "skill(name=notify-mini-check) in original session", "error": "Skill notify-mini-check not found. Available skills: customize-opencode", "resolution": "New OpenCode process discovers the skill; verify tool load in a fresh session."}
+]

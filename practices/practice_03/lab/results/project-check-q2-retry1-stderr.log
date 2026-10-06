@@ -1,0 +1,39 @@
+timestamp=2026-10-06T09:39:10.215Z level=INFO run=a7d0cb7a message="creating instance" directory=/tmp/opencode/project-check-q2-retry1-zn99nsx_/demo
+timestamp=2026-10-06T09:39:10.218Z level=INFO run=a7d0cb7a message=fromDirectory directory=/tmp/opencode/project-check-q2-retry1-zn99nsx_/demo
+timestamp=2026-10-06T09:39:10.238Z level=INFO run=a7d0cb7a message=bootstrapping directory=/tmp/opencode/project-check-q2-retry1-zn99nsx_/demo
+timestamp=2026-10-06T09:39:10.252Z level=INFO run=a7d0cb7a message=loading path=/tmp/opencode/read-check-2-_8tunzww/config/opencode/config.json
+timestamp=2026-10-06T09:39:10.253Z level=INFO run=a7d0cb7a message=loading path=/tmp/opencode/read-check-2-_8tunzww/config/opencode/opencode.json
+timestamp=2026-10-06T09:39:10.254Z level=INFO run=a7d0cb7a message=loading path=/tmp/opencode/read-check-2-_8tunzww/config/opencode/opencode.jsonc
+timestamp=2026-10-06T09:39:10.255Z level=INFO run=a7d0cb7a message=loading path=/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_03/lab/results/project-check-q2-retry1-opencode.json
+timestamp=2026-10-06T09:39:10.377Z level=INFO run=a7d0cb7a message="all LSPs are disabled"
+timestamp=2026-10-06T09:39:10.378Z level=INFO run=a7d0cb7a message="all formatters are disabled"
+timestamp=2026-10-06T09:39:10.379Z level=INFO run=a7d0cb7a message=init
+timestamp=2026-10-06T09:39:10.573Z level=INFO run=a7d0cb7a message=created id=ses_eef6b2f93ffea50BQcwNg1a5V9 slug=misty-river version=1.18.34 projectID=global directory=/tmp/opencode/project-check-q2-retry1-zn99nsx_/demo path=tmp/opencode/project-check-q2-retry1-zn99nsx_/demo workspaceID=undefined parentID=undefined title=project-check-q2-retry1 agent=undefined model=undefined metadata=undefined permission="[{\"permission\":\"question\",\"pattern\":\"*\",\"action\":\"deny\"},{\"permission\":\"plan_enter\",\"pattern\":\"*\",\"action\":\"deny\"},{\"permission\":\"plan_exit\",\"pattern\":\"*\",\"action\":\"deny\"}]" cost=0 tokens.input=0 tokens.output=0 tokens.reasoning=0 tokens.cache.read=0 tokens.cache.write=0 time.created=1791279550573 time.updated=1791279550573
+timestamp=2026-10-06T09:39:10.616Z level=INFO run=a7d0cb7a message="event connected"
+timestamp=2026-10-06T09:39:11.317Z level=INFO run=a7d0cb7a message=loop session.id=ses_eef6b2f93ffea50BQcwNg1a5V9 step=0
+timestamp=2026-10-06T09:39:11.338Z level=INFO run=a7d0cb7a message="shell tool using shell" shell=/usr/bin/bash
+timestamp=2026-10-06T09:39:11.478Z level=INFO run=a7d0cb7a message="watcher backend" directory=/tmp/opencode/project-check-q2-retry1-zn99nsx_/demo platform=linux backend=inotify
+timestamp=2026-10-06T09:39:11.490Z level=INFO run=a7d0cb7a message="project copy refresh started" projectID=global
+timestamp=2026-10-06T09:39:11.491Z level=INFO run=a7d0cb7a message="project copy refresh done" projectID=global updated=[] removed=[]
+timestamp=2026-10-06T09:39:11.540Z level=INFO run=a7d0cb7a message="booting location services" directory=/tmp/opencode/project-check-q2-retry1-zn99nsx_/demo workspaceID=undefined
+timestamp=2026-10-06T09:39:11.731Z level=INFO run=a7d0cb7a message=process session.id=ses_eef6b2f93ffea50BQcwNg1a5V9 messageID=msg_11094d35b001pR0m4GKN6qyTjm
+timestamp=2026-10-06T09:39:11.747Z level=INFO run=a7d0cb7a message=stream providerID=ollama modelID=itmo-agent session.id=ses_eef6b2f93ffea50BQcwNg1a5V9 small=false agent=local-guide mode=primary
+timestamp=2026-10-06T09:39:11.759Z level=INFO run=a7d0cb7a message="llm runtime selected" llm.runtime=ai-sdk llm.provider=ollama llm.model=itmo-agent
+timestamp=2026-10-06T09:40:10.205Z level=WARN run=a7d0cb7a message="background dependency install failed" dir=/tmp/opencode/read-check-2-_8tunzww/config/opencode error="Cause([Fail(NpmInstallFailedError (cause: Error: request to https://registry.npmjs.org/@opencode-ai%2fplugin failed: cache mode is 'only-if-cached' but no cached response is available.))])"
+timestamp=2026-10-06T09:40:45.683Z level=INFO run=a7d0cb7a message=evaluated permission=glob pattern=**/*.{js,ts,py,java,cpp} action.permission=glob action.action=allow action.pattern=*
+timestamp=2026-10-06T09:40:45.881Z level=INFO run=a7d0cb7a message=loop session.id=ses_eef6b2f93ffea50BQcwNg1a5V9 step=1
+timestamp=2026-10-06T09:40:45.944Z level=INFO run=a7d0cb7a message=process session.id=ses_eef6b2f93ffea50BQcwNg1a5V9 messageID=msg_1109644bf001jW17r4LgEXSSSp
+timestamp=2026-10-06T09:40:45.946Z level=INFO run=a7d0cb7a message=stream providerID=ollama modelID=itmo-agent session.id=ses_eef6b2f93ffea50BQcwNg1a5V9 small=false agent=local-guide mode=primary
+timestamp=2026-10-06T09:40:45.969Z level=INFO run=a7d0cb7a message="llm runtime selected" llm.runtime=ai-sdk llm.provider=ollama llm.model=itmo-agent
+timestamp=2026-10-06T09:41:00.716Z level=INFO run=a7d0cb7a message=evaluated permission=read pattern=tmp/opencode/project-check-q2-retry1-zn99nsx_/demo/test_service.py action.permission=read action.action=allow action.pattern=*
+timestamp=2026-10-06T09:41:00.734Z level=INFO run=a7d0cb7a message="touching file" file=/tmp/opencode/project-check-q2-retry1-zn99nsx_/demo/test_service.py
+timestamp=2026-10-06T09:41:08.448Z level=INFO run=a7d0cb7a message=evaluated permission=read pattern=tmp/opencode/project-check-q2-retry1-zn99nsx_/demo/service.py action.permission=read action.action=allow action.pattern=*
+timestamp=2026-10-06T09:41:08.460Z level=INFO run=a7d0cb7a message="touching file" file=/tmp/opencode/project-check-q2-retry1-zn99nsx_/demo/service.py
+timestamp=2026-10-06T09:41:08.644Z level=INFO run=a7d0cb7a message=loop session.id=ses_eef6b2f93ffea50BQcwNg1a5V9 step=2
+timestamp=2026-10-06T09:41:08.696Z level=INFO run=a7d0cb7a message=process session.id=ses_eef6b2f93ffea50BQcwNg1a5V9 messageID=msg_110969da8001dPIf42ihYWwX86
+timestamp=2026-10-06T09:41:08.698Z level=INFO run=a7d0cb7a message=stream providerID=ollama modelID=itmo-agent session.id=ses_eef6b2f93ffea50BQcwNg1a5V9 small=false agent=local-guide mode=primary
+timestamp=2026-10-06T09:41:08.725Z level=INFO run=a7d0cb7a message="llm runtime selected" llm.runtime=ai-sdk llm.provider=ollama llm.model=itmo-agent
+timestamp=2026-10-06T09:41:51.338Z level=INFO run=a7d0cb7a message=loop session.id=ses_eef6b2f93ffea50BQcwNg1a5V9 step=3
+timestamp=2026-10-06T09:41:51.340Z level=INFO run=a7d0cb7a message="exiting loop" session.id=ses_eef6b2f93ffea50BQcwNg1a5V9
+timestamp=2026-10-06T09:41:51.347Z level=INFO run=a7d0cb7a message="disposing instance" directory=/tmp/opencode/project-check-q2-retry1-zn99nsx_/demo
+timestamp=2026-10-06T09:41:51.390Z level=INFO run=a7d0cb7a message=loading path=/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_03/lab/results/project-check-q2-retry1-opencode.json

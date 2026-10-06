@@ -1,0 +1,159 @@
+{
+  "status": "completed",
+  "requests": [
+    {
+      "path": "/v1/chat/completions",
+      "model": "itmo-agent",
+      "reasoning_effort": "none",
+      "temperature": 0.2,
+      "stream": true,
+      "max_tokens": 4096,
+      "message_roles": [
+        "system",
+        "user"
+      ],
+      "message_characters": 879,
+      "tools": [
+        "glob",
+        "grep",
+        "read"
+      ],
+      "sessionID": "ses_ef00d524effealYQHATnK9VETq",
+      "user_agent": "opencode/1.18.34 ai-sdk/provider-utils/4.0.23 runtime/bun/1.3.14",
+      "wall_seconds": 6.35
+    },
+    {
+      "path": "/v1/chat/completions",
+      "model": "itmo-agent",
+      "reasoning_effort": "none",
+      "temperature": 0.2,
+      "stream": true,
+      "max_tokens": 4096,
+      "message_roles": [
+        "system",
+        "user",
+        "assistant",
+        "tool"
+      ],
+      "message_characters": 1644,
+      "tools": [
+        "glob",
+        "grep",
+        "read"
+      ],
+      "sessionID": "ses_ef00d524effealYQHATnK9VETq",
+      "user_agent": "opencode/1.18.34 ai-sdk/provider-utils/4.0.23 runtime/bun/1.3.14",
+      "wall_seconds": 71.914
+    }
+  ],
+  "events": 6,
+  "read_calls": 1,
+  "answer": "Команда тестирования: `make test` (README.md, строка 6).",
+  "demo_sha256_before": {
+    "Makefile": "7a2570dd2c7d0ce6f99a457f2b71b50f9dc1df042cba1e5f6bcf5cfa6c4ebef7",
+    "opencode.json": "8fbb717465e39ef3ab6c712d390103a91c8435aee78f51a3f38106d8d9553486",
+    "test_service.py": "dd81c5c9d327c5ac3c69e870c0f4fec61166c1eeb6b8ec7872d49499d832a7e1",
+    "README.md": "5ae7b40a1eb237b415c2d1dd8badf40a928f0ca2c93b575c633366706845c58a",
+    "repo-system.txt": "693a627fd0805d75bd08047e8a2a61d555e309a620df091c86f5e66f60bd4315",
+    "service.py": "ecac77b689331d189f22b89e018b0ca1d27733ef24a162283f89aff92afa319d",
+    "__pycache__/test_service.cpython-313.pyc": "1679ba422de5181911019e95df5c2390c61969a827e2801714562c04c410f06a",
+    "__pycache__/service.cpython-313.pyc": "ab41bf6d4919f6cc4c068ac892682568cb4a89baf651d21b5a167ec1fc00421e"
+  },
+  "isolation_directory": "/tmp/opencode/read-check-2-m69bdp14",
+  "opencode_version": "1.18.34",
+  "configuration_sources": [
+    "https://raw.githubusercontent.com/anomalyco/opencode/v1.18.34/packages/opencode/src/session/llm/request.ts",
+    "https://raw.githubusercontent.com/anomalyco/opencode/v1.18.34/packages/opencode/src/provider/transform.ts",
+    "https://opencode.ai/config.json"
+  ],
+  "environment": {
+    "PATH": "/home/kate/.dotnet:/home/kate/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin",
+    "LANG": "C.UTF-8",
+    "HOME": "/tmp/opencode/read-check-2-m69bdp14/home",
+    "XDG_CONFIG_HOME": "/tmp/opencode/read-check-2-m69bdp14/config",
+    "XDG_DATA_HOME": "/tmp/opencode/read-check-2-m69bdp14/data",
+    "XDG_CACHE_HOME": "/tmp/opencode/read-check-2-m69bdp14/cache",
+    "XDG_STATE_HOME": "/tmp/opencode/read-check-2-m69bdp14/state",
+    "OPENCODE_CONFIG": "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_03/lab/results/read-check-2-opencode.json",
+    "OPENCODE_DISABLE_PROJECT_CONFIG": "1",
+    "OPENCODE_PURE": "1",
+    "OPENCODE_DISABLE_DEFAULT_PLUGINS": "1",
+    "OPENCODE_DISABLE_AUTOUPDATE": "1",
+    "OPENCODE_DISABLE_MODELS_FETCH": "1",
+    "OPENCODE_DISABLE_LSP_DOWNLOAD": "1",
+    "OPENCODE_DISABLE_CLAUDE_CODE": "1",
+    "OPENCODE_DISABLE_EXTERNAL_SKILLS": "1",
+    "npm_config_offline": "true",
+    "HTTP_PROXY": "http://127.0.0.1:9",
+    "HTTPS_PROXY": "http://127.0.0.1:9",
+    "ALL_PROXY": "http://127.0.0.1:9",
+    "NO_PROXY": "localhost,127.0.0.1,::1",
+    "http_proxy": "http://127.0.0.1:9",
+    "https_proxy": "http://127.0.0.1:9",
+    "all_proxy": "http://127.0.0.1:9",
+    "no_proxy": "localhost,127.0.0.1,::1"
+  },
+  "wall_seconds": 85.25,
+  "command": [
+    "opencode",
+    "run",
+    "--dir",
+    "demo",
+    "--agent",
+    "local-guide",
+    "--model",
+    "ollama/itmo-agent",
+    "--format",
+    "json",
+    "--pure",
+    "--print-logs",
+    "--title",
+    "read-check-2",
+    "Прочитай README.md инструментом read. Назови команду тестирования со ссылкой на файл"
+  ],
+  "cwd": "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_03/lab",
+  "pid": 88689,
+  "sessionID": "ses_ef00d524effealYQHATnK9VETq",
+  "reads": [
+    {
+      "status": "completed",
+      "input": {
+        "filePath": "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_03/lab/demo/README.md"
+      },
+      "output": "<path>/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_03/lab/demo/README.md</path>\n<type>file</type>\n<content>\n1: # Notify Mini\n2: Учебный сервис подписки. Подписчики хранятся в памяти процесса.\n3: В service.py функция subscribe добавляет непустое имя в множество.\n4: Повторное добавление имени не создаёт дубликат.\n5: \n6: Проверка: make test.\n7: Зависимости: стандартная библиотека Python 3.10+.\n8: \n\n(End of file - total 8 lines)\n</content>",
+      "metadata": {
+        "preview": "# Notify Mini\nУчебный сервис подписки. Подписчики хранятся в памяти процесса.\nВ service.py функция subscribe добавляет непустое имя в множество.\nПовторное добавление имени не создаёт дубликат.\n\nПроверка: make test.\nЗависимости: стандартная библиотека Python 3.10+.\n",
+        "truncated": false,
+        "loaded": [],
+        "display": {
+          "type": "file",
+          "path": "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_03/lab/demo/README.md",
+          "text": "# Notify Mini\nУчебный сервис подписки. Подписчики хранятся в памяти процесса.\nВ service.py функция subscribe добавляет непустое имя в множество.\nПовторное добавление имени не создаёт дубликат.\n\nПроверка: make test.\nЗависимости: стандартная библиотека Python 3.10+.\n",
+          "lineStart": 1,
+          "lineEnd": 8,
+          "totalLines": 8,
+          "truncated": false
+        }
+      },
+      "title": "practices/practice_03/lab/demo/README.md",
+      "time": {
+        "start": 1791268991885,
+        "end": 1791268991910
+      }
+    }
+  ],
+  "exit_code": 0,
+  "run_seconds": 82.075,
+  "demo_sha256_after": {
+    "Makefile": "7a2570dd2c7d0ce6f99a457f2b71b50f9dc1df042cba1e5f6bcf5cfa6c4ebef7",
+    "opencode.json": "8fbb717465e39ef3ab6c712d390103a91c8435aee78f51a3f38106d8d9553486",
+    "test_service.py": "dd81c5c9d327c5ac3c69e870c0f4fec61166c1eeb6b8ec7872d49499d832a7e1",
+    "README.md": "5ae7b40a1eb237b415c2d1dd8badf40a928f0ca2c93b575c633366706845c58a",
+    "repo-system.txt": "693a627fd0805d75bd08047e8a2a61d555e309a620df091c86f5e66f60bd4315",
+    "service.py": "ecac77b689331d189f22b89e018b0ca1d27733ef24a162283f89aff92afa319d",
+    "__pycache__/test_service.cpython-313.pyc": "1679ba422de5181911019e95df5c2390c61969a827e2801714562c04c410f06a",
+    "__pycache__/service.cpython-313.pyc": "ab41bf6d4919f6cc4c068ac892682568cb4a89baf651d21b5a167ec1fc00421e"
+  },
+  "demo_unchanged": true,
+  "ollama_ps": "NAME                 ID              SIZE      PROCESSOR    CONTEXT    UNTIL              \nitmo-agent:latest    197a80d8f1b3    8.7 GB    100% CPU     65536      4 minutes from now    \n"
+}

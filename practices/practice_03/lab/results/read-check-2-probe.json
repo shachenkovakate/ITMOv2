@@ -1,0 +1,41 @@
+{
+  "endpoint": "http://127.0.0.1:11434/v1/chat/completions",
+  "request": {
+    "model": "itmo-agent",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Ответь одним словом: READY"
+      }
+    ],
+    "temperature": 0.2,
+    "reasoning_effort": "none",
+    "max_tokens": 32,
+    "stream": false
+  },
+  "status": 200,
+  "response": {
+    "id": "chatcmpl-327",
+    "model": "itmo-agent",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Готов"
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 18,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "completion_tokens": 3,
+      "total_tokens": 21
+    }
+  },
+  "success": true,
+  "wall_seconds": 10.807
+}

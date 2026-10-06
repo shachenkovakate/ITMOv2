@@ -1,0 +1,46 @@
+[
+  {
+    "command": [
+      "ollama",
+      "create",
+      "itmo-agent",
+      "-f",
+      "Modelfile.agent"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "gathering model components \nusing existing layer sha256:dec52a44569a2a25341c4e4d3fee25846eed4f6f0b936278e3a3c900bb99d37c \nusing existing layer sha256:7339fa418c9ad3e8e12e74ad0fd26a9cc4be8703f9c110728a992b193be85cb2 \ncreating new layer sha256:507eb1c1c053f840992a77fc4bbfef25af8a27a12711f6663385a757c36beb83 \nwriting manifest \nsuccess \n"
+  },
+  {
+    "command": [
+      "ollama",
+      "show",
+      "itmo-agent"
+    ],
+    "exit_code": 0,
+    "stdout": "  Model\n    architecture        qwen35    \n    parameters          9.7B      \n    context length      262144    \n    embedding length    4096      \n    quantization        Q4_K_M    \n    requires            0.17.1    \n\n  Capabilities\n    completion     \n    vision         \n    tools          \n    thinking       \n        levels     false, true    \n        default    true           \n\n  Parameters\n    num_ctx             65536    \n    presence_penalty    1.5      \n    temperature         0.2      \n    top_k               20       \n    top_p               0.95     \n\n  License\n    Apache License               \n    Version 2.0, January 2004    \n    ...                          \n\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "ollama",
+      "run",
+      "itmo-agent",
+      "--think=false",
+      "--hidethinking",
+      "Ответь: READY"
+    ],
+    "exit_code": 0,
+    "stdout": "Готов! Чем могу помочь?\n\n",
+    "stderr": "⠙ ⠹ ⠸ ⠼ ⠴ ⠦ ⠧ ⠇ ⠏ ⠋ ⠙ ⠹ ⠸ ⠼ ⠴ ⠦ ⠧ ⠇ ⠏ ⠋ ⠙ ⠹ ⠸ ⠼ ⠴ ⠦ ⠧ ⠇ ⠏ ⠋ ⠙ ⠹ ⠸ ⠼ ⠴ ⠦ ⠧ ⠇ ⠏ ⠋ ⠙ ⠹ ⠸ ⠼ ⠴ ⠦ ⠧ ⠇ ⠏ ⠋ ⠙ ⠹ ⠸ ⠼ ⠴ ⠦ ⠧ ⠇ ⠏ ⠋ ⠙ ⠹ ⠸ ⠼ ⠴ ⠦ ⠧ ⠇ ⠏ ⠋ ⠙ ⠹ ⠸ ⠼ ⠴ ⠦ ⠧ ⠇ ⠏ ⠋ ⠙ ⠹ ⠸ ⠼ ⠴ ⠦ ⠧ ⠇ ⠇ ⠋ ⠙ ⠹ ⠸ ⠼ ⠴ ⠦ ⠧ ⠇ ⠏ ⠋ ⠙ ⠹ ⠸ ⠼ ⠴ ⠦ ⠧ ⠇ ⠏ ⠋ ⠙ ⠹ ⠸ ⠼ ⠼ ⠦ ⠧ ⠇ ⠏ ⠋ ⠙ ⠹ ⠸ ⠼ ⠴ ⠦ ⠧ ⠇ ⠏ ⠋ ⠙ ⠹ ⠸ ⠼ ⠴ ⠦ ⠧ ⠇ ⠏ ⠋ ⠙ ⠹ ⠸ ⠼ ⠴ ⠦ ⠧ ⠇ ⠏ ⠋ ⠙ ⠹ ⠸ ⠼ ⠴ "
+  },
+  {
+    "command": [
+      "ollama",
+      "ps"
+    ],
+    "exit_code": 0,
+    "stdout": "NAME                 ID              SIZE      PROCESSOR    CONTEXT    UNTIL              \nitmo-agent:latest    197a80d8f1b3    8.7 GB    100% CPU     65536      4 minutes from now    \n",
+    "stderr": ""
+  }
+]

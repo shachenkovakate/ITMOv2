@@ -1,0 +1,41 @@
+{
+  "endpoint": "http://localhost:11434/api/chat",
+  "request": {
+    "model": "qwen3.5:9b",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Объясни разницу между моделью и сервером двумя предложениями"
+      }
+    ],
+    "stream": false,
+    "think": false,
+    "options": {
+      "num_ctx": 4096,
+      "num_predict": 256,
+      "temperature": 0.2,
+      "seed": 42
+    }
+  },
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-10-05T18:44:29.236439908Z",
+    "message": {
+      "role": "assistant",
+      "content": "Модель — это набор данных, алгоритмов и весов, который выполняет вычисления для генерации текста или выполнения задач. Сервер же представляет собой физическую инфраструктуру (компьютеры с процессорами и видеокартами), которая предоставляет ресурсы для запуска этих моделей."
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 20291709929,
+    "load_duration": 11150569392,
+    "prompt_eval_count": 27,
+    "prompt_eval_cached_count": 0,
+    "prompt_eval_duration": 1257217000,
+    "eval_count": 59,
+    "eval_duration": 7873042000
+  },
+  "load_seconds": 11.150569392,
+  "total_seconds": 20.291709929,
+  "decode_tokens_per_second": 7.493926743944717,
+  "wall_seconds": 20.305714976999298
+}

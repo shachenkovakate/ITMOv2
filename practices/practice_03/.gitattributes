@@ -1,0 +1,3 @@
+# Raw logs and archived input diffs preserve original bytes for SHA-256 checks.
+*.log -whitespace
+homework/inputs/** -whitespace

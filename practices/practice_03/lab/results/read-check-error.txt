@@ -1,0 +1,6 @@
+Источник: /tmp/opencode/local-guide-g708uqr0/data/opencode/log/opencode.log
+2026-10-05T19:24:30.783Z WARN background dependency install failed: request to https://registry.npmjs.org/@opencode-ai%2fplugin failed: cache mode is 'only-if-cached' but no cached response is available.
+2026-10-05T19:28:32.789Z ERROR stream error: ProviderHeaderTimeoutError: Provider response headers timed out after 300000ms; providerID=ollama, modelID=itmo-agent, agent=local-guide.
+2026-10-05T19:28:34.959Z INFO OpenCode автоматически начал следующую попытку stream для local-guide.
+Рабочая команда прервана пользователем; stdout находился в памяти subprocess и не был сохранён. read-check.jsonl содержит ошибку из журнала, а не исходный JSON-поток CLI. Повторный запуск не выполнялся.
+Проверка сохранённой SQLite-сессии ses_ef27a8fd9ffesoGOhcG0dQlVJr: имеется сообщение пользователя и незавершённое сообщение assistant; частей tool нет, частей ответа assistant нет. Фактический вызов read не подтверждён.

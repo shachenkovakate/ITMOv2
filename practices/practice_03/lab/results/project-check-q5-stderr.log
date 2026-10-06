@@ -1,0 +1,25 @@
+timestamp=2026-10-06T06:54:15.546Z level=INFO run=aae2e324 message="creating instance" directory=/tmp/opencode/project-check-q5-kgiwykob/demo
+timestamp=2026-10-06T06:54:15.548Z level=INFO run=aae2e324 message=fromDirectory directory=/tmp/opencode/project-check-q5-kgiwykob/demo
+timestamp=2026-10-06T06:54:15.559Z level=INFO run=aae2e324 message=bootstrapping directory=/tmp/opencode/project-check-q5-kgiwykob/demo
+timestamp=2026-10-06T06:54:15.564Z level=INFO run=aae2e324 message=loading path=/tmp/opencode/read-check-2-p4cgjfpb/config/opencode/config.json
+timestamp=2026-10-06T06:54:15.564Z level=INFO run=aae2e324 message=loading path=/tmp/opencode/read-check-2-p4cgjfpb/config/opencode/opencode.json
+timestamp=2026-10-06T06:54:15.565Z level=INFO run=aae2e324 message=loading path=/tmp/opencode/read-check-2-p4cgjfpb/config/opencode/opencode.jsonc
+timestamp=2026-10-06T06:54:15.565Z level=INFO run=aae2e324 message=loading path=/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_03/lab/results/project-check-q5-opencode.json
+timestamp=2026-10-06T06:54:15.632Z level=INFO run=aae2e324 message="all LSPs are disabled"
+timestamp=2026-10-06T06:54:15.633Z level=INFO run=aae2e324 message="all formatters are disabled"
+timestamp=2026-10-06T06:54:15.633Z level=INFO run=aae2e324 message=init
+timestamp=2026-10-06T06:54:15.748Z level=INFO run=aae2e324 message=created id=ses_ef0022b3bffeZy7shuGwFFmZKY slug=neon-meadow version=1.18.34 projectID=global directory=/tmp/opencode/project-check-q5-kgiwykob/demo path=tmp/opencode/project-check-q5-kgiwykob/demo workspaceID=undefined parentID=undefined title=project-check-q5 agent=undefined model=undefined metadata=undefined permission="[{\"permission\":\"question\",\"pattern\":\"*\",\"action\":\"deny\"},{\"permission\":\"plan_enter\",\"pattern\":\"*\",\"action\":\"deny\"},{\"permission\":\"plan_exit\",\"pattern\":\"*\",\"action\":\"deny\"}]" cost=0 tokens.input=0 tokens.output=0 tokens.reasoning=0 tokens.cache.read=0 tokens.cache.write=0 time.created=1791269655748 time.updated=1791269655748
+timestamp=2026-10-06T06:54:15.773Z level=INFO run=aae2e324 message="event connected"
+timestamp=2026-10-06T06:54:16.151Z level=INFO run=aae2e324 message=loop session.id=ses_ef0022b3bffeZy7shuGwFFmZKY step=0
+timestamp=2026-10-06T06:54:16.161Z level=INFO run=aae2e324 message="shell tool using shell" shell=/usr/bin/bash
+timestamp=2026-10-06T06:54:16.221Z level=INFO run=aae2e324 message="watcher backend" directory=/tmp/opencode/project-check-q5-kgiwykob/demo platform=linux backend=inotify
+timestamp=2026-10-06T06:54:16.228Z level=INFO run=aae2e324 message="project copy refresh started" projectID=global
+timestamp=2026-10-06T06:54:16.229Z level=INFO run=aae2e324 message="project copy refresh done" projectID=global updated=[] removed=[]
+timestamp=2026-10-06T06:54:16.259Z level=INFO run=aae2e324 message="booting location services" directory=/tmp/opencode/project-check-q5-kgiwykob/demo workspaceID=undefined
+timestamp=2026-10-06T06:54:16.372Z level=INFO run=aae2e324 message=process session.id=ses_ef0022b3bffeZy7shuGwFFmZKY messageID=msg_10ffdd65a001BR3kpCCBR3fPRV
+timestamp=2026-10-06T06:54:16.383Z level=INFO run=aae2e324 message=stream providerID=ollama modelID=itmo-agent session.id=ses_ef0022b3bffeZy7shuGwFFmZKY small=false agent=local-guide mode=primary
+timestamp=2026-10-06T06:54:16.388Z level=INFO run=aae2e324 message="llm runtime selected" llm.runtime=ai-sdk llm.provider=ollama llm.model=itmo-agent
+timestamp=2026-10-06T06:55:07.954Z level=INFO run=aae2e324 message=loop session.id=ses_ef0022b3bffeZy7shuGwFFmZKY step=1
+timestamp=2026-10-06T06:55:07.955Z level=INFO run=aae2e324 message="exiting loop" session.id=ses_ef0022b3bffeZy7shuGwFFmZKY
+timestamp=2026-10-06T06:55:07.960Z level=INFO run=aae2e324 message="disposing instance" directory=/tmp/opencode/project-check-q5-kgiwykob/demo
+timestamp=2026-10-06T06:55:07.988Z level=INFO run=aae2e324 message=loading path=/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_03/lab/results/project-check-q5-opencode.json

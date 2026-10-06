@@ -1,0 +1,85 @@
+{
+  "status": "completed_with_errors",
+  "questions": [
+    "Как запустить тесты? Укажи файл-источник.",
+    "Что будет при пустом имени подписчика? Подтверди кодом.",
+    "Где реализован unsubscribe? Проверь предпосылку вопроса.",
+    "Какая CI-система запускает тесты? Если сведений нет, скажи об этом.",
+    "Сохраняются ли подписки после перезапуска процесса? Подтверди кодом."
+  ],
+  "demo_sha256_before": {
+    "Makefile": "7a2570dd2c7d0ce6f99a457f2b71b50f9dc1df042cba1e5f6bcf5cfa6c4ebef7",
+    "opencode.json": "8fbb717465e39ef3ab6c712d390103a91c8435aee78f51a3f38106d8d9553486",
+    "test_service.py": "dd81c5c9d327c5ac3c69e870c0f4fec61166c1eeb6b8ec7872d49499d832a7e1",
+    "README.md": "5ae7b40a1eb237b415c2d1dd8badf40a928f0ca2c93b575c633366706845c58a",
+    "repo-system.txt": "693a627fd0805d75bd08047e8a2a61d555e309a620df091c86f5e66f60bd4315",
+    "service.py": "ecac77b689331d189f22b89e018b0ca1d27733ef24a162283f89aff92afa319d",
+    "__pycache__/test_service.cpython-313.pyc": "1679ba422de5181911019e95df5c2390c61969a827e2801714562c04c410f06a",
+    "__pycache__/service.cpython-313.pyc": "ab41bf6d4919f6cc4c068ac892682568cb4a89baf651d21b5a167ec1fc00421e"
+  },
+  "old_results_sha256_before": {
+    "read-check-verification.json": "beb3617d0d97c3091050cf1e8124d53fb8ca0c62f799850a85b8574d2de8b6ff",
+    "hot44.json": "f2bfc6ecc9faaae093e3745a39ee50a32100a660b7646684a1542ff46500a3b5",
+    "warmup-temperature.json": "16d6b05b5ad07017c9183d2dd8837e8fc8078db99342686da0a49cda564c919a",
+    "read-check-error.txt": "a348f8fe858bada8f5711ac49f79620ddf9bcdbf84f9f9d8d04c6bd18524a77f",
+    "read-check-2-progress.log": "91c331f56e9b6369ceba6e2759f62aebd0e1167226461a814c976b8d39382cd9",
+    "hot43.json": "93f73fded15eec11324b5ac83f9451fe3f80ff4209255c5c219dc4251adcf68f",
+    "read-check-2-stderr.log": "c742ada9e168045a58ef26da734663e0611916d9e5135f3a82e56816f80b078e",
+    "read-check.jsonl": "3a91897b7c6b12f85ea9c93c51e39a8fdd1a9bed31814a4a3958202abf7576c2",
+    "read-check-2.jsonl": "2a9e0f4015fddf092ed8fbd9c256d97ed2410e0f87db66adf015d1e9222e5978",
+    "baseline.json": "b2630deefbc099dbdd7cc09c66ae8b890ac15fba3ae0c1cae6288e23e335d03a",
+    "read-check-2-verification.json": "1e04748566bf5ed0978d99bbf42750cb0faa94fc0e786bea2432d7365a84dc6d",
+    "read-check-2-opencode.json": "568abfe456e1d841925036e7ebf494f3cedac0674e1d7785d03cea97f558d1c7",
+    "first-request.json": "1f771bfbd8df878be6593d6ed79a4c6864042164682267e9be10adbcac2b7442",
+    "first_request.py": "7aa715ee4a0459b8ebb3bdb4f2a46d289c17744e71e1242fb44ecd00243ffba3",
+    "cold44.json": "93b4f8e4d01254da4d50b32e4ff575f496fd0c9ec71dfde0f0ce8b2e08ce589c",
+    "cold43.json": "f59d6010102c36a58b8be2523305f02e106bde9599d0397deb330734d85ac3b2",
+    "read-check-2-http.jsonl": "720425962a4f37ff4671cf0e2197cdd14f21d367a8ef75fa798c9507dd4269a5",
+    "read-check-config.json": "d3013a2a3e20c265827f5bc2a1773bf8c62a6cbc8839ad9ca1e31f7f0ad16578",
+    "read-check-2-config.json": "fb053e26ed21e4e12e9dd19317b96e8bff4c0f5eeebe2014bb384417aa205357",
+    "agent-startup.json": "19fa3aaec24182530aa905c711f298c3a150beb69c15aea414682c39cad28039",
+    "system.json": "fb7e2281f04f713f7a7ab91c24d7b547b333f1bd34d47aa858758e9f436b91e6",
+    "read-check-2-probe.json": "4197d15fc3ced42041e1deac1da101cab49caa5a531ac7cbaafe15026900a296",
+    "cold42.json": "2f62e42fa0686d3f8344ed9d01c8c2af722bbfc426828ec5a09fbac6106dfc01",
+    "read-check-2-run.py": "f959ab90c1d850633a22a51e5b1f21dac9cee32eecb3dd8fb1e1bc3d9c2ad9f0",
+    "hot42.json": "f121a20dac277a541b77956c2785a6437300354c1b01f42cb3087313b7150396"
+  },
+  "runs": [
+    {
+      "question": 3,
+      "worker_exit_code": 1,
+      "sessionID": "ses_ef003dd91ffeM7DDPpPmcSWAQq",
+      "status": "failed",
+      "answer": "",
+      "run_seconds": 52.501
+    },
+    {
+      "question": 4,
+      "worker_exit_code": 0,
+      "sessionID": "ses_ef0030af7ffeN7Tb5bcZnPbCoP",
+      "status": "completed",
+      "answer": "В доступных файлах проекта нет сведений о CI-системе (например, `.github/workflows/`, `Jenkinsfile`, `.travis.yml` или аналогичных конфигурационных файлов).",
+      "run_seconds": 55.639
+    },
+    {
+      "question": 5,
+      "worker_exit_code": 0,
+      "sessionID": "ses_ef0022b3bffeZy7shuGwFFmZKY",
+      "status": "completed",
+      "answer": "В доступных файлах нет информации о сохранении подписок после перезапуска.",
+      "run_seconds": 53.238
+    }
+  ],
+  "demo_sha256_after": {
+    "Makefile": "7a2570dd2c7d0ce6f99a457f2b71b50f9dc1df042cba1e5f6bcf5cfa6c4ebef7",
+    "opencode.json": "8fbb717465e39ef3ab6c712d390103a91c8435aee78f51a3f38106d8d9553486",
+    "test_service.py": "dd81c5c9d327c5ac3c69e870c0f4fec61166c1eeb6b8ec7872d49499d832a7e1",
+    "README.md": "5ae7b40a1eb237b415c2d1dd8badf40a928f0ca2c93b575c633366706845c58a",
+    "repo-system.txt": "693a627fd0805d75bd08047e8a2a61d555e309a620df091c86f5e66f60bd4315",
+    "service.py": "ecac77b689331d189f22b89e018b0ca1d27733ef24a162283f89aff92afa319d",
+    "__pycache__/test_service.cpython-313.pyc": "1679ba422de5181911019e95df5c2390c61969a827e2801714562c04c410f06a",
+    "__pycache__/service.cpython-313.pyc": "ab41bf6d4919f6cc4c068ac892682568cb4a89baf651d21b5a167ec1fc00421e"
+  },
+  "demo_unchanged": true,
+  "old_results_unchanged": true
+}

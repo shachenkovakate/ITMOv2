@@ -1,0 +1,103 @@
+{
+  "inputs": [
+    {
+      "path": "practices/practice_01/TRAINING_PR.diff",
+      "lines": [
+        1,
+        42
+      ],
+      "sha256": "a2e7b12c6df3769a548681fe63031a4bcd30e94b787d4ad04d89b87964bf0872",
+      "source_sha256": "a2e7b12c6df3769a548681fe63031a4bcd30e94b787d4ad04d89b87964bf0872"
+    },
+    {
+      "path": "practices/practice_01/context.md",
+      "lines": [
+        1,
+        58
+      ],
+      "sha256": "63abb7c9e49de4e185f457eb9283c3a942acbb71ea1022ab7d940a3802dddcc6",
+      "source_sha256": "00c6ffbf9e755814682546990867b13611a212e1dd206fb1c151352d26b6fdde"
+    },
+    {
+      "path": "practices/practice_02/react/experiment.md",
+      "lines": [
+        1,
+        8
+      ],
+      "sha256": "1529692f57fe8ff665cb730bbbfd040ce663cdbe2be6958a8727ce637335dca9",
+      "source_sha256": "acbb33c9f562828fbc5b4c38133caf9f09384f2e17a1a3923f456792980c6c45"
+    }
+  ],
+  "reference_coverage": [
+    {
+      "path": "practices/practice_01/TRAINING_PR.diff",
+      "lines": "35–37",
+      "covered": true
+    },
+    {
+      "path": "practices/practice_01/TRAINING_PR.diff",
+      "lines": "19–22",
+      "covered": true
+    },
+    {
+      "path": "practices/practice_01/context.md",
+      "lines": "24",
+      "covered": true
+    },
+    {
+      "path": "practices/practice_01/context.md",
+      "lines": "22,29",
+      "covered": true
+    },
+    {
+      "path": "practices/practice_01/TRAINING_PR.diff",
+      "lines": "35–37,19–22",
+      "covered": true
+    },
+    {
+      "path": "practices/practice_02/react/experiment.md",
+      "lines": "3–8",
+      "covered": true
+    },
+    {
+      "path": "practices/practice_01/context.md",
+      "lines": "51–53",
+      "covered": true
+    },
+    {
+      "path": "practices/practice_01/TRAINING_PR.diff",
+      "lines": "9–17",
+      "covered": true
+    },
+    {
+      "path": "practices/practice_01/TRAINING_PR.diff",
+      "lines": "19–22",
+      "covered": true
+    },
+    {
+      "path": "practices/practice_01/TRAINING_PR.diff",
+      "lines": "19–22",
+      "covered": true
+    },
+    {
+      "path": "practices/practice_01/context.md",
+      "lines": "21",
+      "covered": true
+    },
+    {
+      "path": "practices/practice_01/context.md",
+      "lines": "29",
+      "covered": true
+    }
+  ],
+  "references_copied": false,
+  "report_copied": false,
+  "previous_answers_copied": false,
+  "root": "/tmp/opencode/homework-ab-yph9ajzv/inputs",
+  "identical_input_sha256": {
+    "practices/practice_01/context.md": "63abb7c9e49de4e185f457eb9283c3a942acbb71ea1022ab7d940a3802dddcc6",
+    "practices/practice_01/TRAINING_PR.diff": "a2e7b12c6df3769a548681fe63031a4bcd30e94b787d4ad04d89b87964bf0872",
+    "practices/practice_02/react/experiment.md": "1529692f57fe8ff665cb730bbbfd040ce663cdbe2be6958a8727ce637335dca9"
+  },
+  "coverage_complete": true
+}

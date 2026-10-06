@@ -1,0 +1,12 @@
+{
+  "source": "https://github.com/BurntSushi/ripgrep/releases/download/15.1.0/ripgrep-15.1.0-x86_64-unknown-linux-musl.tar.gz",
+  "binary": "/tmp/opencode/ripgrep-dependency/rg",
+  "network_phase": "preparation_before_isolation",
+  "http_status": 200,
+  "archive_sha256": "1c9297be4a084eea7ecaedf93eb03d058d6faae29bbc57ecdaf5063921491599",
+  "binary_sha256": "ebeaf56f8a25e102e9419933423738b3a2a613a444fd749d695e15eba53f71f2",
+  "exit_code": 0,
+  "version": "ripgrep 15.1.0 (rev af60c2de9d)\n\nfeatures:+pcre2\nsimd(compile):+SSE2,-SSSE3,-AVX2\nsimd(runtime):+SSE2,+SSSE3,+AVX2\n\nPCRE2 10.45 is available (JIT is available)\n",
+  "success": true,
+  "wall_seconds": 2.241
+}

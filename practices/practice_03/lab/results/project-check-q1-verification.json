@@ -1,0 +1,124 @@
+{
+  "status": "completed",
+  "requests": [
+    {
+      "path": "/v1/chat/completions",
+      "model": "itmo-agent",
+      "reasoning_effort": "none",
+      "temperature": 0.2,
+      "stream": true,
+      "max_tokens": 4096,
+      "message_roles": [
+        "system",
+        "user"
+      ],
+      "message_characters": 779,
+      "tools": [
+        "glob",
+        "grep",
+        "read"
+      ],
+      "sessionID": "ses_ef007beeaffeSKsy61JV6W5kkV",
+      "user_agent": "opencode/1.18.34 ai-sdk/provider-utils/4.0.23 runtime/bun/1.3.14",
+      "wall_seconds": 2.61
+    }
+  ],
+  "events": 3,
+  "read_calls": 0,
+  "answer": "В доступных файлах нет информации о том, как запустить тесты.",
+  "question": "Как запустить тесты? Укажи файл-источник.",
+  "sandbox_files": {
+    "service.py": "ecac77b689331d189f22b89e018b0ca1d27733ef24a162283f89aff92afa319d",
+    "repo-system.txt": "693a627fd0805d75bd08047e8a2a61d555e309a620df091c86f5e66f60bd4315",
+    "README.md": "5ae7b40a1eb237b415c2d1dd8badf40a928f0ca2c93b575c633366706845c58a",
+    "test_service.py": "dd81c5c9d327c5ac3c69e870c0f4fec61166c1eeb6b8ec7872d49499d832a7e1",
+    "opencode.json": "8fbb717465e39ef3ab6c712d390103a91c8435aee78f51a3f38106d8d9553486",
+    "Makefile": "7a2570dd2c7d0ce6f99a457f2b71b50f9dc1df042cba1e5f6bcf5cfa6c4ebef7"
+  },
+  "original_demo_sha256": {
+    "Makefile": "7a2570dd2c7d0ce6f99a457f2b71b50f9dc1df042cba1e5f6bcf5cfa6c4ebef7",
+    "opencode.json": "8fbb717465e39ef3ab6c712d390103a91c8435aee78f51a3f38106d8d9553486",
+    "test_service.py": "dd81c5c9d327c5ac3c69e870c0f4fec61166c1eeb6b8ec7872d49499d832a7e1",
+    "README.md": "5ae7b40a1eb237b415c2d1dd8badf40a928f0ca2c93b575c633366706845c58a",
+    "repo-system.txt": "693a627fd0805d75bd08047e8a2a61d555e309a620df091c86f5e66f60bd4315",
+    "service.py": "ecac77b689331d189f22b89e018b0ca1d27733ef24a162283f89aff92afa319d",
+    "__pycache__/test_service.cpython-313.pyc": "1679ba422de5181911019e95df5c2390c61969a827e2801714562c04c410f06a",
+    "__pycache__/service.cpython-313.pyc": "ab41bf6d4919f6cc4c068ac892682568cb4a89baf651d21b5a167ec1fc00421e"
+  },
+  "references_transmitted": false,
+  "demo_sha256_before": {
+    "service.py": "ecac77b689331d189f22b89e018b0ca1d27733ef24a162283f89aff92afa319d",
+    "repo-system.txt": "693a627fd0805d75bd08047e8a2a61d555e309a620df091c86f5e66f60bd4315",
+    "README.md": "5ae7b40a1eb237b415c2d1dd8badf40a928f0ca2c93b575c633366706845c58a",
+    "test_service.py": "dd81c5c9d327c5ac3c69e870c0f4fec61166c1eeb6b8ec7872d49499d832a7e1",
+    "opencode.json": "8fbb717465e39ef3ab6c712d390103a91c8435aee78f51a3f38106d8d9553486",
+    "Makefile": "7a2570dd2c7d0ce6f99a457f2b71b50f9dc1df042cba1e5f6bcf5cfa6c4ebef7"
+  },
+  "isolation_directory": "/tmp/opencode/read-check-2-lklu3c_2",
+  "opencode_version": "1.18.34",
+  "configuration_sources": [
+    "https://raw.githubusercontent.com/anomalyco/opencode/v1.18.34/packages/opencode/src/session/llm/request.ts",
+    "https://raw.githubusercontent.com/anomalyco/opencode/v1.18.34/packages/opencode/src/provider/transform.ts",
+    "https://opencode.ai/config.json"
+  ],
+  "environment": {
+    "PATH": "/home/kate/.dotnet:/home/kate/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin",
+    "LANG": "C.UTF-8",
+    "HOME": "/tmp/opencode/read-check-2-lklu3c_2/home",
+    "XDG_CONFIG_HOME": "/tmp/opencode/read-check-2-lklu3c_2/config",
+    "XDG_DATA_HOME": "/tmp/opencode/read-check-2-lklu3c_2/data",
+    "XDG_CACHE_HOME": "/tmp/opencode/read-check-2-lklu3c_2/cache",
+    "XDG_STATE_HOME": "/tmp/opencode/read-check-2-lklu3c_2/state",
+    "OPENCODE_CONFIG": "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_03/lab/results/project-check-q1-opencode.json",
+    "OPENCODE_DISABLE_PROJECT_CONFIG": "1",
+    "OPENCODE_PURE": "1",
+    "OPENCODE_DISABLE_DEFAULT_PLUGINS": "1",
+    "OPENCODE_DISABLE_AUTOUPDATE": "1",
+    "OPENCODE_DISABLE_MODELS_FETCH": "1",
+    "OPENCODE_DISABLE_LSP_DOWNLOAD": "1",
+    "OPENCODE_DISABLE_CLAUDE_CODE": "1",
+    "OPENCODE_DISABLE_EXTERNAL_SKILLS": "1",
+    "npm_config_offline": "true",
+    "HTTP_PROXY": "http://127.0.0.1:9",
+    "HTTPS_PROXY": "http://127.0.0.1:9",
+    "ALL_PROXY": "http://127.0.0.1:9",
+    "NO_PROXY": "localhost,127.0.0.1,::1",
+    "http_proxy": "http://127.0.0.1:9",
+    "https_proxy": "http://127.0.0.1:9",
+    "all_proxy": "http://127.0.0.1:9",
+    "no_proxy": "localhost,127.0.0.1,::1"
+  },
+  "wall_seconds": 51.848,
+  "command": [
+    "opencode",
+    "run",
+    "--dir",
+    "demo",
+    "--agent",
+    "local-guide",
+    "--model",
+    "ollama/itmo-agent",
+    "--format",
+    "json",
+    "--pure",
+    "--print-logs",
+    "--title",
+    "project-check-q1",
+    "Как запустить тесты? Укажи файл-источник."
+  ],
+  "cwd": "/tmp/opencode/project-check-q1-bw48w3_g",
+  "pid": 90938,
+  "sessionID": "ses_ef007beeaffeSKsy61JV6W5kkV",
+  "exit_code": 0,
+  "run_seconds": 50.637,
+  "demo_sha256_after": {
+    "service.py": "ecac77b689331d189f22b89e018b0ca1d27733ef24a162283f89aff92afa319d",
+    "repo-system.txt": "693a627fd0805d75bd08047e8a2a61d555e309a620df091c86f5e66f60bd4315",
+    "README.md": "5ae7b40a1eb237b415c2d1dd8badf40a928f0ca2c93b575c633366706845c58a",
+    "test_service.py": "dd81c5c9d327c5ac3c69e870c0f4fec61166c1eeb6b8ec7872d49499d832a7e1",
+    "opencode.json": "8fbb717465e39ef3ab6c712d390103a91c8435aee78f51a3f38106d8d9553486",
+    "Makefile": "7a2570dd2c7d0ce6f99a457f2b71b50f9dc1df042cba1e5f6bcf5cfa6c4ebef7"
+  },
+  "demo_unchanged": true,
+  "ollama_ps": "NAME                 ID              SIZE      PROCESSOR    CONTEXT    UNTIL              \nitmo-agent:latest    197a80d8f1b3    8.7 GB    100% CPU     65536      4 minutes from now    \n"
+}

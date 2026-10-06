@@ -1,0 +1,14 @@
+[
+  {
+    "path": "inputs/practices/practice_01/TRAINING_PR.diff",
+    "sha256": "a2e7b12c6df3769a548681fe63031a4bcd30e94b787d4ad04d89b87964bf0872"
+  },
+  {
+    "path": "inputs/practices/practice_01/context.md",
+    "sha256": "63abb7c9e49de4e185f457eb9283c3a942acbb71ea1022ab7d940a3802dddcc6"
+  },
+  {
+    "path": "inputs/practices/practice_02/react/experiment.md",
+    "sha256": "1529692f57fe8ff665cb730bbbfd040ce663cdbe2be6958a8727ce637335dca9"
+  }
+]

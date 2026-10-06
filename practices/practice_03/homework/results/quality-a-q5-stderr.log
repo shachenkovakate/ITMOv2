@@ -1,0 +1,36 @@
+timestamp=2026-10-06T10:37:13.364Z level=INFO run=811eacdd message="creating instance" directory=/tmp/opencode/homework-ab-yph9ajzv/inputs
+timestamp=2026-10-06T10:37:13.368Z level=INFO run=811eacdd message=fromDirectory directory=/tmp/opencode/homework-ab-yph9ajzv/inputs
+timestamp=2026-10-06T10:37:13.453Z level=INFO run=811eacdd message=bootstrapping directory=/tmp/opencode/homework-ab-yph9ajzv/inputs
+timestamp=2026-10-06T10:37:13.475Z level=INFO run=811eacdd message=loading path=/tmp/opencode/homework-ab-yph9ajzv/sessions/session-z0i1jtw5/config/opencode/config.json
+timestamp=2026-10-06T10:37:13.476Z level=INFO run=811eacdd message=loading path=/tmp/opencode/homework-ab-yph9ajzv/sessions/session-z0i1jtw5/config/opencode/opencode.json
+timestamp=2026-10-06T10:37:13.477Z level=INFO run=811eacdd message=loading path=/tmp/opencode/homework-ab-yph9ajzv/sessions/session-z0i1jtw5/config/opencode/opencode.jsonc
+timestamp=2026-10-06T10:37:13.478Z level=INFO run=811eacdd message=loading path=/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_03/homework/config-a.json
+timestamp=2026-10-06T10:37:13.685Z level=INFO run=811eacdd message="all LSPs are disabled"
+timestamp=2026-10-06T10:37:13.688Z level=INFO run=811eacdd message="all formatters are disabled"
+timestamp=2026-10-06T10:37:13.688Z level=INFO run=811eacdd message=init
+timestamp=2026-10-06T10:37:14.101Z level=INFO run=811eacdd message=created id=ses_eef36080affeRE3Dr1FMxFBn4L slug=stellar-rocket version=1.18.34 projectID=global directory=/tmp/opencode/homework-ab-yph9ajzv/inputs path="" workspaceID=undefined parentID=undefined title=homework-experiment agent=undefined model=undefined metadata=undefined permission="[{\"permission\":\"question\",\"pattern\":\"*\",\"action\":\"deny\"},{\"permission\":\"plan_enter\",\"pattern\":\"*\",\"action\":\"deny\"},{\"permission\":\"plan_exit\",\"pattern\":\"*\",\"action\":\"deny\"}]" cost=0 tokens.input=0 tokens.output=0 tokens.reasoning=0 tokens.cache.read=0 tokens.cache.write=0 time.created=1791283034101 time.updated=1791283034101
+timestamp=2026-10-06T10:37:14.165Z level=INFO run=811eacdd message="event connected"
+timestamp=2026-10-06T10:37:14.926Z level=INFO run=811eacdd message=loop session.id=ses_eef36080affeRE3Dr1FMxFBn4L step=0
+timestamp=2026-10-06T10:37:14.945Z level=INFO run=811eacdd message="shell tool using shell" shell=/usr/bin/bash
+timestamp=2026-10-06T10:37:15.123Z level=WARN run=811eacdd message="background dependency install failed" dir=/tmp/opencode/homework-ab-yph9ajzv/sessions/session-z0i1jtw5/config/opencode error="Cause([Fail(NpmInstallFailedError (cause: Error: request to https://registry.npmjs.org/@opencode-ai%2fplugin failed: cache mode is 'only-if-cached' but no cached response is available.))])"
+timestamp=2026-10-06T10:37:15.194Z level=INFO run=811eacdd message="watcher backend" directory=/tmp/opencode/homework-ab-yph9ajzv/inputs platform=linux backend=inotify
+timestamp=2026-10-06T10:37:15.203Z level=INFO run=811eacdd message="project copy refresh started" projectID=global
+timestamp=2026-10-06T10:37:15.205Z level=INFO run=811eacdd message="project copy refresh done" projectID=global updated=[] removed=[]
+timestamp=2026-10-06T10:37:15.726Z level=INFO run=811eacdd message="booting location services" directory=/tmp/opencode/homework-ab-yph9ajzv/inputs workspaceID=undefined
+timestamp=2026-10-06T10:37:15.747Z level=INFO run=811eacdd message=process session.id=ses_eef36080affeRE3Dr1FMxFBn4L messageID=msg_110c9fb33001sUFAuUVhW7hHZK
+timestamp=2026-10-06T10:37:15.750Z level=INFO run=811eacdd message=stream providerID=ollama modelID=itmo-agent session.id=ses_eef36080affeRE3Dr1FMxFBn4L small=false agent=local-guide mode=primary
+timestamp=2026-10-06T10:37:15.761Z level=INFO run=811eacdd message="llm runtime selected" llm.runtime=ai-sdk llm.provider=ollama llm.model=itmo-agent
+timestamp=2026-10-06T10:38:23.335Z level=INFO run=811eacdd message=evaluated permission=grep pattern=def.*remove.*secret|def.*sanitize.*secret|def.*filter.*secret action.permission=grep action.action=allow action.pattern=*
+timestamp=2026-10-06T10:38:23.494Z level=INFO run=811eacdd message=loop session.id=ses_eef36080affeRE3Dr1FMxFBn4L step=1
+timestamp=2026-10-06T10:38:23.556Z level=INFO run=811eacdd message=process session.id=ses_eef36080affeRE3Dr1FMxFBn4L messageID=msg_110cb070b001PKLRSgxgvUixX8
+timestamp=2026-10-06T10:38:23.559Z level=INFO run=811eacdd message=stream providerID=ollama modelID=itmo-agent session.id=ses_eef36080affeRE3Dr1FMxFBn4L small=false agent=local-guide mode=primary
+timestamp=2026-10-06T10:38:23.583Z level=INFO run=811eacdd message="llm runtime selected" llm.runtime=ai-sdk llm.provider=ollama llm.model=itmo-agent
+timestamp=2026-10-06T10:38:36.418Z level=INFO run=811eacdd message=evaluated permission=grep pattern=secret|sanitize|filter|remove.*llm action.permission=grep action.action=allow action.pattern=*
+timestamp=2026-10-06T10:38:36.590Z level=INFO run=811eacdd message=loop session.id=ses_eef36080affeRE3Dr1FMxFBn4L step=2
+timestamp=2026-10-06T10:38:36.640Z level=INFO run=811eacdd message=process session.id=ses_eef36080affeRE3Dr1FMxFBn4L messageID=msg_110cb3a32001l1Hgx7nPSFzPM5
+timestamp=2026-10-06T10:38:36.641Z level=INFO run=811eacdd message=stream providerID=ollama modelID=itmo-agent session.id=ses_eef36080affeRE3Dr1FMxFBn4L small=false agent=local-guide mode=primary
+timestamp=2026-10-06T10:38:36.673Z level=INFO run=811eacdd message="llm runtime selected" llm.runtime=ai-sdk llm.provider=ollama llm.model=itmo-agent
+timestamp=2026-10-06T10:38:45.900Z level=INFO run=811eacdd message=loop session.id=ses_eef36080affeRE3Dr1FMxFBn4L step=3
+timestamp=2026-10-06T10:38:45.903Z level=INFO run=811eacdd message="exiting loop" session.id=ses_eef36080affeRE3Dr1FMxFBn4L
+timestamp=2026-10-06T10:38:45.916Z level=INFO run=811eacdd message="disposing instance" directory=/tmp/opencode/homework-ab-yph9ajzv/inputs
+timestamp=2026-10-06T10:38:45.989Z level=INFO run=811eacdd message=loading path=/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_03/homework/config-a.json

@@ -1,0 +1,72 @@
+{
+  "environment": {
+    "PATH": "/tmp/opencode/ripgrep-dependency:/home/kate/.dotnet:/home/kate/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin",
+    "LANG": "C.UTF-8",
+    "HOME": "/tmp/opencode/ripgrep-offline-ehn6gpm8/home",
+    "XDG_CONFIG_HOME": "/tmp/opencode/ripgrep-offline-ehn6gpm8/config",
+    "XDG_DATA_HOME": "/tmp/opencode/ripgrep-offline-ehn6gpm8/data",
+    "XDG_CACHE_HOME": "/tmp/opencode/ripgrep-offline-ehn6gpm8/cache",
+    "XDG_STATE_HOME": "/tmp/opencode/ripgrep-offline-ehn6gpm8/state",
+    "OPENCODE_CONFIG": "/tmp/opencode/ripgrep-offline-ehn6gpm8/opencode.json",
+    "OPENCODE_DISABLE_PROJECT_CONFIG": "1",
+    "OPENCODE_PURE": "1",
+    "OPENCODE_DISABLE_DEFAULT_PLUGINS": "1",
+    "OPENCODE_DISABLE_AUTOUPDATE": "1",
+    "OPENCODE_DISABLE_MODELS_FETCH": "1",
+    "OPENCODE_DISABLE_LSP_DOWNLOAD": "1",
+    "OPENCODE_DISABLE_CLAUDE_CODE": "1",
+    "OPENCODE_DISABLE_EXTERNAL_SKILLS": "1",
+    "npm_config_offline": "true",
+    "HTTP_PROXY": "http://127.0.0.1:9",
+    "HTTPS_PROXY": "http://127.0.0.1:9",
+    "ALL_PROXY": "http://127.0.0.1:9",
+    "NO_PROXY": "localhost,127.0.0.1,::1",
+    "http_proxy": "http://127.0.0.1:9",
+    "https_proxy": "http://127.0.0.1:9",
+    "all_proxy": "http://127.0.0.1:9",
+    "no_proxy": "localhost,127.0.0.1,::1"
+  },
+  "cwd": "/tmp/opencode/ripgrep-offline-ehn6gpm8/demo",
+  "binary": "/tmp/opencode/ripgrep-dependency/rg",
+  "backend": "OpenCode 1.18.34 Ripgrep.glob and Ripgrep.grep (shared with glob/grep tools)",
+  "source": "https://raw.githubusercontent.com/anomalyco/opencode/v1.18.34/packages/opencode/src/cli/cmd/debug/ripgrep.ts",
+  "checks": [
+    {
+      "backend_method": "glob",
+      "command": [
+        "opencode",
+        "debug",
+        "rg",
+        "files",
+        "--glob",
+        "*.py",
+        "--pure",
+        "--print-logs"
+      ],
+      "exit_code": 0,
+      "stdout": "test_service.py\nservice.py\n",
+      "stderr": "timestamp=2026-10-06T09:38:04.012Z level=INFO run=3bc73dc1 message=\"creating instance\" directory=/tmp/opencode/ripgrep-offline-ehn6gpm8/demo\ntimestamp=2026-10-06T09:38:04.014Z level=INFO run=3bc73dc1 message=fromDirectory directory=/tmp/opencode/ripgrep-offline-ehn6gpm8/demo\ntimestamp=2026-10-06T09:38:04.037Z level=INFO run=3bc73dc1 message=bootstrapping directory=/tmp/opencode/ripgrep-offline-ehn6gpm8/demo\ntimestamp=2026-10-06T09:38:04.056Z level=INFO run=3bc73dc1 message=loading path=/tmp/opencode/ripgrep-offline-ehn6gpm8/config/opencode/config.json\ntimestamp=2026-10-06T09:38:04.058Z level=INFO run=3bc73dc1 message=loading path=/tmp/opencode/ripgrep-offline-ehn6gpm8/config/opencode/opencode.json\ntimestamp=2026-10-06T09:38:04.058Z level=INFO run=3bc73dc1 message=loading path=/tmp/opencode/ripgrep-offline-ehn6gpm8/config/opencode/opencode.jsonc\ntimestamp=2026-10-06T09:38:04.059Z level=INFO run=3bc73dc1 message=loading path=/tmp/opencode/ripgrep-offline-ehn6gpm8/opencode.json\ntimestamp=2026-10-06T09:38:04.406Z level=INFO run=3bc73dc1 message=\"all LSPs are disabled\"\ntimestamp=2026-10-06T09:38:04.408Z level=INFO run=3bc73dc1 message=\"all formatters are disabled\"\ntimestamp=2026-10-06T09:38:04.408Z level=INFO run=3bc73dc1 message=init\ntimestamp=2026-10-06T09:38:04.449Z level=INFO run=3bc73dc1 message=\"disposing instance\" directory=/tmp/opencode/ripgrep-offline-ehn6gpm8/demo\n"
+    },
+    {
+      "backend_method": "grep",
+      "command": [
+        "opencode",
+        "debug",
+        "rg",
+        "search",
+        "subscribers",
+        "--glob",
+        "*.py",
+        "--pure",
+        "--print-logs"
+      ],
+      "exit_code": 0,
+      "stdout": "[\n  {\n    \"entry\": {\n      \"path\": \"service.py\",\n      \"type\": \"file\"\n    },\n    \"line\": 1,\n    \"offset\": 0,\n    \"text\": \"subscribers = set()\\n\",\n    \"submatches\": [\n      {\n        \"text\": \"subscribers\",\n        \"start\": 0,\n        \"end\": 11\n      }\n    ]\n  },\n  {\n    \"entry\": {\n      \"path\": \"service.py\",\n      \"type\": \"file\"\n    },\n    \"line\": 7,\n    \"offset\": 107,\n    \"text\": \"    subscribers.add(name.strip())\\n\",\n    \"submatches\": [\n      {\n        \"text\": \"subscribers\",\n        \"start\": 4,\n        \"end\": 15\n      }\n    ]\n  },\n  {\n    \"entry\": {\n      \"path\": \"test_service.py\",\n      \"type\": \"file\"\n    },\n    \"line\": 2,\n    \"offset\": 16,\n    \"text\": \"from service import subscribe, subscribers\\n\",\n    \"submatches\": [\n      {\n        \"text\": \"subscribers\",\n        \"start\": 31,\n        \"end\": 42\n      }\n    ]\n  },\n  {\n    \"entry\": {\n      \"path\": \"test_service.py\",\n      \"type\": \"file\"\n    },\n    \"line\": 7,\n    \"offset\": 122,\n    \"text\": \"        subscribers.clear()\\n\",\n    \"submatches\": [\n      {\n        \"text\": \"subscribers\",\n        \"start\": 8,\n        \"end\": 19\n      }\n    ]\n  },\n  {\n    \"entry\": {\n      \"path\": \"test_service.py\",\n      \"type\": \"file\"\n    },\n    \"line\": 11,\n    \"offset\": 246,\n    \"text\": \"        self.assertEqual(subscribers, {\\\"Ann\\\"})\\n\",\n    \"submatches\": [\n      {\n        \"text\": \"subscribers\",\n        \"start\": 25,\n        \"end\": 36\n      }\n    ]\n  },\n  {\n    \"entry\": {\n      \"path\": \"test_service.py\",\n      \"type\": \"file\"\n    },\n    \"line\": 20,\n    \"offset\": 472,\n    \"text\": \"        self.assertEqual(len(subscribers), 1)\\n\",\n    \"submatches\": [\n      {\n        \"text\": \"subscribers\",\n        \"start\": 29,\n        \"end\": 40\n      }\n    ]\n  }\n]\n",
+      "stderr": "timestamp=2026-10-06T09:38:05.635Z level=INFO run=d678b917 message=\"creating instance\" directory=/tmp/opencode/ripgrep-offline-ehn6gpm8/demo\ntimestamp=2026-10-06T09:38:05.638Z level=INFO run=d678b917 message=fromDirectory directory=/tmp/opencode/ripgrep-offline-ehn6gpm8/demo\ntimestamp=2026-10-06T09:38:05.663Z level=INFO run=d678b917 message=bootstrapping directory=/tmp/opencode/ripgrep-offline-ehn6gpm8/demo\ntimestamp=2026-10-06T09:38:05.681Z level=INFO run=d678b917 message=loading path=/tmp/opencode/ripgrep-offline-ehn6gpm8/config/opencode/config.json\ntimestamp=2026-10-06T09:38:05.682Z level=INFO run=d678b917 message=loading path=/tmp/opencode/ripgrep-offline-ehn6gpm8/config/opencode/opencode.json\ntimestamp=2026-10-06T09:38:05.683Z level=INFO run=d678b917 message=loading path=/tmp/opencode/ripgrep-offline-ehn6gpm8/config/opencode/opencode.jsonc\ntimestamp=2026-10-06T09:38:05.684Z level=INFO run=d678b917 message=loading path=/tmp/opencode/ripgrep-offline-ehn6gpm8/opencode.json\ntimestamp=2026-10-06T09:38:05.805Z level=INFO run=d678b917 message=\"all LSPs are disabled\"\ntimestamp=2026-10-06T09:38:05.807Z level=INFO run=d678b917 message=\"all formatters are disabled\"\ntimestamp=2026-10-06T09:38:05.807Z level=INFO run=d678b917 message=init\ntimestamp=2026-10-06T09:38:05.842Z level=INFO run=d678b917 message=\"disposing instance\" directory=/tmp/opencode/ripgrep-offline-ehn6gpm8/demo\n"
+    }
+  ],
+  "success": true,
+  "external_downloads_observed": false,
+  "glob_expected_files_found": true,
+  "grep_expected_line_found": true
+}

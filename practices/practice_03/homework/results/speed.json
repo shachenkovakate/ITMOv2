@@ -1,0 +1,43 @@
+{
+  "metric": "wall_seconds: opencode process start to process exit",
+  "unit": "seconds",
+  "warmups_excluded": true,
+  "order": [
+    "A1",
+    "B1",
+    "A2",
+    "B2",
+    "A3",
+    "B3"
+  ],
+  "variants": {
+    "A": {
+      "wall_seconds": [
+        83.478,
+        149.734,
+        160.142
+      ],
+      "successful_repetitions": 3,
+      "median_seconds": 149.734,
+      "runs": [
+        "timing-a-q1-r1",
+        "timing-a-q1-r2",
+        "timing-a-q1-r3"
+      ]
+    },
+    "B": {
+      "wall_seconds": [
+        167.95,
+        172.154,
+        189.168
+      ],
+      "successful_repetitions": 3,
+      "median_seconds": 172.154,
+      "runs": [
+        "timing-b-q1-r1",
+        "timing-b-q1-r2",
+        "timing-b-q1-r3"
+      ]
+    }
+  }
+}

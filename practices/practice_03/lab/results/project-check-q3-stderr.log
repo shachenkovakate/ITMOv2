@@ -1,0 +1,23 @@
+timestamp=2026-10-06T06:52:24.362Z level=INFO run=57b8aa67 message="creating instance" directory=/tmp/opencode/project-check-q3-s9b_vfy7/demo
+timestamp=2026-10-06T06:52:24.363Z level=INFO run=57b8aa67 message=fromDirectory directory=/tmp/opencode/project-check-q3-s9b_vfy7/demo
+timestamp=2026-10-06T06:52:24.374Z level=INFO run=57b8aa67 message=bootstrapping directory=/tmp/opencode/project-check-q3-s9b_vfy7/demo
+timestamp=2026-10-06T06:52:24.378Z level=INFO run=57b8aa67 message=loading path=/tmp/opencode/read-check-2-rohcvf47/config/opencode/config.json
+timestamp=2026-10-06T06:52:24.379Z level=INFO run=57b8aa67 message=loading path=/tmp/opencode/read-check-2-rohcvf47/config/opencode/opencode.json
+timestamp=2026-10-06T06:52:24.379Z level=INFO run=57b8aa67 message=loading path=/tmp/opencode/read-check-2-rohcvf47/config/opencode/opencode.jsonc
+timestamp=2026-10-06T06:52:24.379Z level=INFO run=57b8aa67 message=loading path=/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_03/lab/results/project-check-q3-opencode.json
+timestamp=2026-10-06T06:52:24.443Z level=INFO run=57b8aa67 message="all LSPs are disabled"
+timestamp=2026-10-06T06:52:24.444Z level=INFO run=57b8aa67 message="all formatters are disabled"
+timestamp=2026-10-06T06:52:24.444Z level=INFO run=57b8aa67 message=init
+timestamp=2026-10-06T06:52:24.558Z level=INFO run=57b8aa67 message=created id=ses_ef003dd91ffeM7DDPpPmcSWAQq slug=kind-mountain version=1.18.34 projectID=global directory=/tmp/opencode/project-check-q3-s9b_vfy7/demo path=tmp/opencode/project-check-q3-s9b_vfy7/demo workspaceID=undefined parentID=undefined title=project-check-q3 agent=undefined model=undefined metadata=undefined permission="[{\"permission\":\"question\",\"pattern\":\"*\",\"action\":\"deny\"},{\"permission\":\"plan_enter\",\"pattern\":\"*\",\"action\":\"deny\"},{\"permission\":\"plan_exit\",\"pattern\":\"*\",\"action\":\"deny\"}]" cost=0 tokens.input=0 tokens.output=0 tokens.reasoning=0 tokens.cache.read=0 tokens.cache.write=0 time.created=1791269544558 time.updated=1791269544558
+timestamp=2026-10-06T06:52:24.582Z level=INFO run=57b8aa67 message="event connected"
+timestamp=2026-10-06T06:52:24.973Z level=INFO run=57b8aa67 message=loop session.id=ses_ef003dd91ffeM7DDPpPmcSWAQq step=0
+timestamp=2026-10-06T06:52:24.984Z level=INFO run=57b8aa67 message="shell tool using shell" shell=/usr/bin/bash
+timestamp=2026-10-06T06:52:25.050Z level=INFO run=57b8aa67 message="watcher backend" directory=/tmp/opencode/project-check-q3-s9b_vfy7/demo platform=linux backend=inotify
+timestamp=2026-10-06T06:52:25.058Z level=INFO run=57b8aa67 message="project copy refresh started" projectID=global
+timestamp=2026-10-06T06:52:25.059Z level=INFO run=57b8aa67 message="project copy refresh done" projectID=global updated=[] removed=[]
+timestamp=2026-10-06T06:52:25.086Z level=INFO run=57b8aa67 message="booting location services" directory=/tmp/opencode/project-check-q3-s9b_vfy7/demo workspaceID=undefined
+timestamp=2026-10-06T06:52:25.193Z level=INFO run=57b8aa67 message=process session.id=ses_ef003dd91ffeM7DDPpPmcSWAQq messageID=msg_10ffc2410001xm8dQHSi4m0hMe
+timestamp=2026-10-06T06:52:25.202Z level=INFO run=57b8aa67 message=stream providerID=ollama modelID=itmo-agent session.id=ses_ef003dd91ffeM7DDPpPmcSWAQq small=false agent=local-guide mode=primary
+timestamp=2026-10-06T06:52:25.209Z level=INFO run=57b8aa67 message="llm runtime selected" llm.runtime=ai-sdk llm.provider=ollama llm.model=itmo-agent
+timestamp=2026-10-06T06:53:16.165Z level=INFO run=57b8aa67 message=evaluated permission=glob pattern=**/*{ts,js,py,java,cpp} action.permission=glob action.action=allow action.pattern=*
+timestamp=2026-10-06T06:53:16.173Z level=INFO run=57b8aa67 message="downloading ripgrep" url=https://github.com/BurntSushi/ripgrep/releases/download/15.1.0/ripgrep-15.1.0-x86_64-unknown-linux-musl.tar.gz

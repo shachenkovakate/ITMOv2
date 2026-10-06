@@ -1,0 +1,155 @@
+{
+  "id": "quality-b-q5",
+  "phase": "quality",
+  "variant": "B",
+  "question_index": 5,
+  "question": "В какой функции реализовано удаление секретов из diff перед отправкой в LLM?",
+  "status": "completed",
+  "prompt_sha256": "84f04b1b2a601ca81e13712aeddfd104ada6def67c7addeffe1e6be791253c3c",
+  "input_sha256": {
+    "practices/practice_01/context.md": "63abb7c9e49de4e185f457eb9283c3a942acbb71ea1022ab7d940a3802dddcc6",
+    "practices/practice_01/TRAINING_PR.diff": "a2e7b12c6df3769a548681fe63031a4bcd30e94b787d4ad04d89b87964bf0872",
+    "practices/practice_02/react/experiment.md": "1529692f57fe8ff665cb730bbbfd040ce663cdbe2be6958a8727ce637335dca9"
+  },
+  "cwd": "/tmp/opencode/homework-ab-yph9ajzv/inputs",
+  "environment": {
+    "PATH": "/tmp/opencode/ripgrep-dependency:/home/kate/.dotnet:/home/kate/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin",
+    "LANG": "C.UTF-8",
+    "HOME": "/tmp/opencode/homework-ab-yph9ajzv/sessions/session-ckxwawf8/home",
+    "XDG_CONFIG_HOME": "/tmp/opencode/homework-ab-yph9ajzv/sessions/session-ckxwawf8/config",
+    "XDG_DATA_HOME": "/tmp/opencode/homework-ab-yph9ajzv/sessions/session-ckxwawf8/data",
+    "XDG_CACHE_HOME": "/tmp/opencode/homework-ab-yph9ajzv/sessions/session-ckxwawf8/cache",
+    "XDG_STATE_HOME": "/tmp/opencode/homework-ab-yph9ajzv/sessions/session-ckxwawf8/state",
+    "OPENCODE_CONFIG": "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_03/homework/config-b.json",
+    "OPENCODE_CONFIG_CONTENT": "{\"provider\": {\"ollama\": {\"options\": {\"baseURL\": \"http://127.0.0.1:45303/v1\"}}}}",
+    "OPENCODE_DISABLE_PROJECT_CONFIG": "1",
+    "OPENCODE_PURE": "1",
+    "OPENCODE_DISABLE_DEFAULT_PLUGINS": "1",
+    "OPENCODE_DISABLE_AUTOUPDATE": "1",
+    "OPENCODE_DISABLE_MODELS_FETCH": "1",
+    "OPENCODE_DISABLE_LSP_DOWNLOAD": "1",
+    "OPENCODE_DISABLE_CLAUDE_CODE": "1",
+    "OPENCODE_DISABLE_EXTERNAL_SKILLS": "1",
+    "npm_config_offline": "true",
+    "HTTP_PROXY": "http://127.0.0.1:9",
+    "HTTPS_PROXY": "http://127.0.0.1:9",
+    "ALL_PROXY": "http://127.0.0.1:9",
+    "NO_PROXY": "localhost,127.0.0.1,::1",
+    "http_proxy": "http://127.0.0.1:9",
+    "https_proxy": "http://127.0.0.1:9",
+    "all_proxy": "http://127.0.0.1:9",
+    "no_proxy": "localhost,127.0.0.1,::1"
+  },
+  "requests": [
+    {
+      "type": "request",
+      "path": "/v1/chat/completions",
+      "model": "itmo-agent",
+      "temperature": 0.2,
+      "reasoning_effort": "none",
+      "max_tokens": 4096,
+      "stream": true,
+      "tools": [
+        "glob",
+        "grep",
+        "read"
+      ],
+      "message_roles": [
+        "system",
+        "user"
+      ],
+      "message_characters": 1364,
+      "sessionID": "ses_eef3499abffeyMkC0rYhE8ksLI",
+      "user_agent": "opencode/1.18.34 ai-sdk/provider-utils/4.0.23 runtime/bun/1.3.14",
+      "system_sha256": "1f172a6fea3bec7cfb2ab7f088ea91cbbf33006d4ebe2f3c52e724eb931bf9b6",
+      "configured_prompt_present": true,
+      "source_prompt_sha256": "84f04b1b2a601ca81e13712aeddfd104ada6def67c7addeffe1e6be791253c3c",
+      "initial_question_present": true,
+      "initial_message_roles_expected": true
+    },
+    {
+      "type": "request",
+      "path": "/v1/chat/completions",
+      "model": "itmo-agent",
+      "temperature": 0.2,
+      "reasoning_effort": "none",
+      "max_tokens": 4096,
+      "stream": true,
+      "tools": [
+        "glob",
+        "grep",
+        "read"
+      ],
+      "message_roles": [
+        "system",
+        "user",
+        "assistant",
+        "tool"
+      ],
+      "message_characters": 3793,
+      "sessionID": "ses_eef3499abffeyMkC0rYhE8ksLI",
+      "user_agent": "opencode/1.18.34 ai-sdk/provider-utils/4.0.23 runtime/bun/1.3.14",
+      "system_sha256": "1f172a6fea3bec7cfb2ab7f088ea91cbbf33006d4ebe2f3c52e724eb931bf9b6",
+      "configured_prompt_present": true,
+      "source_prompt_sha256": "84f04b1b2a601ca81e13712aeddfd104ada6def67c7addeffe1e6be791253c3c"
+    }
+  ],
+  "events": 7,
+  "assistant_text": [
+    "Я проверю файл `TRAINING_PR.diff` на наличие кода, связанного с удалением секретов перед отправкой в LLM.",
+    "В файле `TRAINING_PR.diff` требование `SEC-1` (удаление секретов) указано в контексте, но **реализация** этого требования отсутствует.\n\nФайл содержит только:\n1.  Интерфейс `LLM(Protocol)` (строка 9).\n2.  Сервис `ReviewService`, который формирует prompt и вызывает LLM (строки 13–16), но не реализует логику удаления секретов."
+  ],
+  "final_answer": "В файле `TRAINING_PR.diff` требование `SEC-1` (удаление секретов) указано в контексте, но **реализация** этого требования отсутствует.\n\nФайл содержит только:\n1.  Интерфейс `LLM(Protocol)` (строка 9).\n2.  Сервис `ReviewService`, который формирует prompt и вызывает LLM (строки 13–16), но не реализует логику удаления секретов.",
+  "tool_calls": [
+    {
+      "tool": "grep",
+      "state": {
+        "status": "completed",
+        "input": {
+          "pattern": "secret|LLM|remove.*secret|mask.*secret|redact",
+          "path": "/tmp/opencode/homework-ab-yph9ajzv/inputs"
+        },
+        "output": "Found 11 matches\n/tmp/opencode/homework-ab-yph9ajzv/inputs/practices/practice_01/TRAINING_PR.diff:\n  Line 9:  class LLM(Protocol):\n\n  Line 16:      def __init__(self, llm: LLM) -> None:\n\n\n/tmp/opencode/homework-ab-yph9ajzv/inputs/practices/practice_01/context.md:\n  Line 9: | Какой продукт или сервис рассматриваем? | Сервис AI-помощника для ревью pull request: endpoint принимает diff, отправляет его во внешний LLM и возвращает комментарий. | [`README.md`](README.md), [`TRAINING_PR.diff`](TRAINING_PR.diff) |\n\n  Line 11: | Как устроен текущий процесс? | Клиент вызывает `POST /api/reviews` с полем `diff`; API передаёт значение в `ReviewService`, сервис формирует prompt, вызывает LLM и возвращает ответ в поле `comment`. Решение по PR остаётся за человеком. | [`TRAINING_PR.diff`](TRAINING_PR.diff), задача помощника в [`README.md`](README.md) |\n\n  Line 12: | Где возникает задержка или ошибка? | На границе API и внешнего LLM: вход не валидируется, diff целиком попадает во внешний вызов, timeout не показан, результат не имеет проверяемой структуры. | `app/api.py:8–10` и `app/review_service.py:13–16` в [`TRAINING_PR.diff`](TRAINING_PR.diff) |\n\n  Line 13: | Какие системы и команды участвуют? | FastAPI endpoint, `ReviewService`, внешний LLM и человек-ревьюер. Состав команд и владелец сервиса не указаны. | [`TRAINING_PR.diff`](TRAINING_PR.diff); состав команд неизвестен |\n\n  Line 21: - `SEC-1`: до отправки во внешний LLM токены, пароли и приватные ключи заменяются безопасным маркером.\n\n  Line 23: - `REL-1`: вызов LLM ограничен 10 секундами, ошибка преобразуется в контролируемый ответ.\n\n  Line 45: `app/review_service.py:14` — diff добавляется в prompt без удаления секретов, что нарушает `SEC-1`. Проверка: передать diff с тестовым token и убедиться, что в запросе к LLM вместо него находится `[REDACTED]`.\n\n  Line 53: - Конкретный провайдер и модель LLM, их SLA и способ задания timeout.\n\n  Line 54: - Формат контролируемой ошибки LLM и HTTP-статус для неё.\n",
+        "metadata": {
+          "matches": 11,
+          "truncated": false
+        },
+        "title": "secret|LLM|remove.*secret|mask.*secret|redact",
+        "time": {
+          "start": 1791283203580,
+          "end": 1791283203608
+        }
+      },
+      "callID": "call_w59dbch6"
+    }
+  ],
+  "tool_errors": [],
+  "reasoning_events_excluded": 0,
+  "header_timeout_seconds": 295,
+  "run_timeout_seconds": 600,
+  "output_limit_tokens": 4096,
+  "steps": 8,
+  "command": [
+    "opencode",
+    "run",
+    "--dir",
+    "/tmp/opencode/homework-ab-yph9ajzv/inputs",
+    "--agent",
+    "local-guide",
+    "--model",
+    "ollama/itmo-agent",
+    "--format",
+    "json",
+    "--pure",
+    "--print-logs",
+    "--title",
+    "homework-experiment",
+    "В какой функции реализовано удаление секретов из diff перед отправкой в LLM?"
+  ],
+  "pid": 115430,
+  "sessionID": "ses_eef3499abffeyMkC0rYhE8ksLI",
+  "wall_seconds": 131.122,
+  "exit_code": 0,
+  "input_unchanged": true,
+  "ollama_ps": "NAME                 ID              SIZE      PROCESSOR    CONTEXT    UNTIL              \nitmo-agent:latest    197a80d8f1b3    8.7 GB    100% CPU     65536      4 minutes from now    \n"
+}

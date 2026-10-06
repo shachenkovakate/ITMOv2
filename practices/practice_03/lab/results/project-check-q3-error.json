@@ -1,0 +1,27 @@
+{
+  "error": {
+    "type": "tool_use",
+    "timestamp": 1791269596179,
+    "sessionID": "ses_ef003dd91ffeM7DDPpPmcSWAQq",
+    "part": {
+      "type": "tool",
+      "tool": "glob",
+      "callID": "call_6xs93awz",
+      "state": {
+        "status": "error",
+        "input": {
+          "pattern": "**/*{ts,js,py,java,cpp}"
+        },
+        "error": "ripgrep execution failed",
+        "time": {
+          "start": 1791269596168,
+          "end": 1791269596177
+        }
+      },
+      "id": "prt_10ffcebfe001OVCGSQsh3Szn0g",
+      "sessionID": "ses_ef003dd91ffeM7DDPpPmcSWAQq",
+      "messageID": "msg_10ffc2410001xm8dQHSi4m0hMe"
+    }
+  },
+  "wall_seconds": 53.617
+}

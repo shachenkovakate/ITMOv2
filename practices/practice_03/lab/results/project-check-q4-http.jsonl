@@ -1,0 +1,3 @@
+{"type": "request", "path": "/v1/chat/completions", "model": "itmo-agent", "reasoning_effort": "none", "temperature": 0.2, "stream": true, "max_tokens": 4096, "message_roles": ["system", "user"], "message_characters": 805, "tools": ["glob", "grep", "read"], "sessionID": "ses_ef0030af7ffeN7Tb5bcZnPbCoP", "user_agent": "opencode/1.18.34 ai-sdk/provider-utils/4.0.23 runtime/bun/1.3.14", "wall_seconds": 2.803}
+{"type": "response_headers", "status": 200, "header_seconds": 47.71}
+{"type": "response_end", "request_seconds": 54.017}

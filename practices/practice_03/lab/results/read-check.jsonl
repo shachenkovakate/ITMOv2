@@ -1,0 +1,1 @@
+{"type":"error","source":"opencode.log","timestamp":"2026-10-05T19:28:32.789Z","sessionID":"ses_ef27a8fd9ffesoGOhcG0dQlVJr","providerID":"ollama","modelID":"itmo-agent","agent":"local-guide","message":"ProviderHeaderTimeoutError: Provider response headers timed out after 300000ms"}

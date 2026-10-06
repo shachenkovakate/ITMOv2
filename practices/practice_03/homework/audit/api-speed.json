@@ -1,0 +1,14 @@
+{
+  "baseline": {
+    "wall_seconds": 32.8320830800003,
+    "load_seconds": 0.002776279,
+    "total_seconds": 32.821419434,
+    "decode_tokens_per_second": 6.510252753312392
+  },
+  "system": {
+    "wall_seconds": 8.533657479005342,
+    "load_seconds": 0.001880101,
+    "total_seconds": 8.521634144,
+    "decode_tokens_per_second": 6.527752802622925
+  }
+}

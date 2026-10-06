@@ -1,0 +1,32 @@
+timestamp=2026-10-06T06:42:04.361Z level=INFO run=ee38f3d7 message="creating instance" directory=/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_03/lab/demo
+timestamp=2026-10-06T06:42:04.364Z level=INFO run=ee38f3d7 message=fromDirectory directory=/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_03/lab/demo
+timestamp=2026-10-06T06:42:04.431Z level=INFO run=ee38f3d7 message=bootstrapping directory=/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_03/lab/demo
+timestamp=2026-10-06T06:42:04.445Z level=INFO run=ee38f3d7 message=loading path=/tmp/opencode/read-check-2-m69bdp14/config/opencode/config.json
+timestamp=2026-10-06T06:42:04.447Z level=INFO run=ee38f3d7 message=loading path=/tmp/opencode/read-check-2-m69bdp14/config/opencode/opencode.json
+timestamp=2026-10-06T06:42:04.448Z level=INFO run=ee38f3d7 message=loading path=/tmp/opencode/read-check-2-m69bdp14/config/opencode/opencode.jsonc
+timestamp=2026-10-06T06:42:04.449Z level=INFO run=ee38f3d7 message=loading path=/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_03/lab/results/read-check-2-opencode.json
+timestamp=2026-10-06T06:42:04.623Z level=INFO run=ee38f3d7 message="all LSPs are disabled"
+timestamp=2026-10-06T06:42:04.628Z level=INFO run=ee38f3d7 message="all formatters are disabled"
+timestamp=2026-10-06T06:42:04.628Z level=INFO run=ee38f3d7 message=init
+timestamp=2026-10-06T06:42:04.850Z level=INFO run=ee38f3d7 message=created id=ses_ef00d524effealYQHATnK9VETq slug=quiet-moon version=1.18.34 projectID=e1c6cda356c17b9c9de23c55759c54a1e75d6557 directory=/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_03/lab/demo path=practices/practice_03/lab/demo workspaceID=undefined parentID=undefined title=read-check-2 agent=undefined model=undefined metadata=undefined permission="[{\"permission\":\"question\",\"pattern\":\"*\",\"action\":\"deny\"},{\"permission\":\"plan_enter\",\"pattern\":\"*\",\"action\":\"deny\"},{\"permission\":\"plan_exit\",\"pattern\":\"*\",\"action\":\"deny\"}]" cost=0 tokens.input=0 tokens.output=0 tokens.reasoning=0 tokens.cache.read=0 tokens.cache.write=0 time.created=1791268924850 time.updated=1791268924850
+timestamp=2026-10-06T06:42:04.899Z level=INFO run=ee38f3d7 message="event connected"
+timestamp=2026-10-06T06:42:05.624Z level=INFO run=ee38f3d7 message=loop session.id=ses_ef00d524effealYQHATnK9VETq step=0
+timestamp=2026-10-06T06:42:05.642Z level=INFO run=ee38f3d7 message="shell tool using shell" shell=/usr/bin/bash
+timestamp=2026-10-06T06:42:05.842Z level=INFO run=ee38f3d7 message="watcher backend" directory=/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_03/lab/demo platform=linux backend=inotify
+timestamp=2026-10-06T06:42:05.856Z level=INFO run=ee38f3d7 message="project copy refresh started" projectID=e1c6cda356c17b9c9de23c55759c54a1e75d6557
+timestamp=2026-10-06T06:42:06.375Z level=INFO run=ee38f3d7 message="project copy refresh done" projectID=e1c6cda356c17b9c9de23c55759c54a1e75d6557 updated=[] removed=[]
+timestamp=2026-10-06T06:42:06.411Z level=INFO run=ee38f3d7 message="booting location services" directory=/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_03/lab/demo workspaceID=undefined
+timestamp=2026-10-06T06:42:06.429Z level=INFO run=ee38f3d7 message=process session.id=ses_ef00d524effealYQHATnK9VETq messageID=msg_10ff2b0bd001M01725j8xiIKVt
+timestamp=2026-10-06T06:42:06.434Z level=INFO run=ee38f3d7 message=stream providerID=ollama modelID=itmo-agent session.id=ses_ef00d524effealYQHATnK9VETq small=false agent=local-guide mode=primary
+timestamp=2026-10-06T06:42:06.448Z level=INFO run=ee38f3d7 message="llm runtime selected" llm.runtime=ai-sdk llm.provider=ollama llm.model=itmo-agent
+timestamp=2026-10-06T06:43:04.340Z level=WARN run=ee38f3d7 message="background dependency install failed" dir=/tmp/opencode/read-check-2-m69bdp14/config/opencode error="Cause([Fail(NpmInstallFailedError (cause: Error: request to https://registry.npmjs.org/@opencode-ai%2fplugin failed: cache mode is 'only-if-cached' but no cached response is available.))])"
+timestamp=2026-10-06T06:43:11.894Z level=INFO run=ee38f3d7 message=evaluated permission=read pattern=practices/practice_03/lab/demo/README.md action.permission=read action.action=allow action.pattern=*
+timestamp=2026-10-06T06:43:11.917Z level=INFO run=ee38f3d7 message="touching file" file=/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_03/lab/demo/README.md
+timestamp=2026-10-06T06:43:12.019Z level=INFO run=ee38f3d7 message=loop session.id=ses_ef00d524effealYQHATnK9VETq step=1
+timestamp=2026-10-06T06:43:12.041Z level=INFO run=ee38f3d7 message=process session.id=ses_ef00d524effealYQHATnK9VETq messageID=msg_10ff3b416001KsgqaIzPEDHh6E
+timestamp=2026-10-06T06:43:12.042Z level=INFO run=ee38f3d7 message=stream providerID=ollama modelID=itmo-agent session.id=ses_ef00d524effealYQHATnK9VETq small=false agent=local-guide mode=primary
+timestamp=2026-10-06T06:43:12.045Z level=INFO run=ee38f3d7 message="llm runtime selected" llm.runtime=ai-sdk llm.provider=ollama llm.model=itmo-agent
+timestamp=2026-10-06T06:43:25.139Z level=INFO run=ee38f3d7 message=loop session.id=ses_ef00d524effealYQHATnK9VETq step=2
+timestamp=2026-10-06T06:43:25.142Z level=INFO run=ee38f3d7 message="exiting loop" session.id=ses_ef00d524effealYQHATnK9VETq
+timestamp=2026-10-06T06:43:25.157Z level=INFO run=ee38f3d7 message="disposing instance" directory=/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_03/lab/demo
+timestamp=2026-10-06T06:43:25.224Z level=INFO run=ee38f3d7 message=loading path=/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_03/lab/results/read-check-2-opencode.json

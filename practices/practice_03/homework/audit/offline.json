@@ -1,0 +1,97 @@
+{
+  "method": "unshare -Urn: separate network namespace, loopback only",
+  "interfaces": "[{\"ifindex\":1,\"ifname\":\"lo\",\"flags\":[\"LOOPBACK\",\"UP\",\"LOWER_UP\"],\"mtu\":65536,\"qdisc\":\"noqueue\",\"operstate\":\"UNKNOWN\",\"group\":\"default\",\"txqlen\":1000,\"link_type\":\"loopback\",\"address\":\"00:00:00:00:00:00\",\"broadcast\":\"00:00:00:00:00:00\",\"addr_info\":[{\"family\":\"inet\",\"local\":\"127.0.0.1\",\"prefixlen\":8,\"scope\":\"host\",\"label\":\"lo\",\"valid_life_time\":4294967295,\"preferred_life_time\":4294967295},{\"family\":\"inet6\",\"local\":\"::1\",\"prefixlen\":128,\"scope\":\"host\",\"protocol\":\"kernel_lo\",\"valid_life_time\":4294967295,\"preferred_life_time\":4294967295}]}]\n",
+  "OLLAMA_NO_CLOUD": "1",
+  "weights": "/usr/share/ollama/.ollama/models",
+  "tags": {
+    "models": [
+      {
+        "name": "itmo-agent:latest",
+        "model": "itmo-agent:latest",
+        "modified_at": "2026-10-05T22:22:12.830761249+03:00",
+        "size": 6594474431,
+        "digest": "197a80d8f1b3f255a8de1ef6e902dc3215182636ab51dacab7e207674298bf25",
+        "details": {
+          "parent_model": "qwen3.5:9b",
+          "format": "gguf",
+          "family": "qwen35",
+          "families": [
+            "qwen35"
+          ],
+          "parameter_size": "9.7B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 262144,
+          "embedding_length": 4096
+        },
+        "capabilities": [
+          "completion",
+          "vision",
+          "tools",
+          "thinking"
+        ]
+      },
+      {
+        "name": "qwen3.5:9b",
+        "model": "qwen3.5:9b",
+        "modified_at": "2026-09-25T10:29:54.753821416+03:00",
+        "size": 6594474711,
+        "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen35",
+          "families": [
+            "qwen35"
+          ],
+          "parameter_size": "9.7B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 262144,
+          "embedding_length": 4096
+        },
+        "capabilities": [
+          "completion",
+          "vision",
+          "tools",
+          "thinking"
+        ]
+      }
+    ]
+  },
+  "request": {
+    "model": "qwen3.5:9b",
+    "stream": false,
+    "think": false,
+    "messages": [
+      {
+        "role": "user",
+        "content": "Объясни разницу между моделью и сервером двумя предложениями"
+      }
+    ],
+    "options": {
+      "num_ctx": 4096,
+      "num_predict": 256,
+      "temperature": 0.2,
+      "seed": 42
+    }
+  },
+  "http_status": 200,
+  "response": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-10-06T11:21:35.609433946Z",
+    "message": {
+      "role": "assistant",
+      "content": "Модель — это набор данных, алгоритмов и весов, который выполняет вычисления для генерации текста или выполнения задач. Сервер же представляет собой физическую инфраструктуру (компьютеры с процессорами и видеокартами), которая предоставляет ресурсы для запуска этих моделей."
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 22456423609,
+    "load_duration": 11983680878,
+    "prompt_eval_count": 27,
+    "prompt_eval_cached_count": 0,
+    "prompt_eval_duration": 1401882000,
+    "eval_count": 59,
+    "eval_duration": 9065125000
+  },
+  "wall_seconds": 22.457892737998918,
+  "success": true
+}

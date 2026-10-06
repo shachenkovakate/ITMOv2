@@ -1,0 +1,21 @@
+{
+  "source": "working-agent comparison with PROJECT_REFERENCES.md; no student assessment",
+  "errors": [
+    {
+      "question": 1,
+      "result": "project-check-q1.jsonl",
+      "answer": "В доступных файлах нет информации о том, как запустить тесты.",
+      "classification": "model_error",
+      "reason": "Команда make test явно указана в README.md:6; Makefile:2–3 определяет её выполнение. Модель не вызвала инструменты и не указала источник.",
+      "tool_calls": 0
+    },
+    {
+      "question": 5,
+      "result": "project-check-q5.jsonl",
+      "answer": "В доступных файлах нет информации о сохранении подписок после перезапуска.",
+      "classification": "model_error",
+      "reason": "README.md:2 указывает хранение в памяти; service.py:1 создаёт пустое множество, service.py:7 добавляет имя только в него. После перезапуска подписки не сохраняются. Модель не вызвала инструменты и не подтвердила ответ кодом.",
+      "tool_calls": 0
+    }
+  ]
+}

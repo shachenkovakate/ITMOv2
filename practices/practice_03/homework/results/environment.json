@@ -1,0 +1,38 @@
+{
+  "versions": {
+    "opencode": "1.18.34",
+    "ollama": "ollama version is 0.34.4",
+    "ripgrep": "ripgrep 15.1.0 (rev af60c2de9d)\n\nfeatures:+pcre2\nsimd(compile):+SSE2,-SSSE3,-AVX2\nsimd(runtime):+SSE2,+SSSE3,+AVX2\n\nPCRE2 10.45 is available (JIT is available)"
+  },
+  "model": {
+    "name": "itmo-agent:latest",
+    "model": "itmo-agent:latest",
+    "modified_at": "2026-10-05T22:22:12.830761249+03:00",
+    "size": 6594474431,
+    "digest": "197a80d8f1b3f255a8de1ef6e902dc3215182636ab51dacab7e207674298bf25",
+    "details": {
+      "parent_model": "qwen3.5:9b",
+      "format": "gguf",
+      "family": "qwen35",
+      "families": [
+        "qwen35"
+      ],
+      "parameter_size": "9.7B",
+      "quantization_level": "Q4_K_M",
+      "context_length": 262144,
+      "embedding_length": 4096
+    },
+    "capabilities": [
+      "completion",
+      "vision",
+      "tools",
+      "thinking"
+    ]
+  },
+  "ollama_show": "  Model\n    architecture        qwen35    \n    parameters          9.7B      \n    context length      262144    \n    embedding length    4096      \n    quantization        Q4_K_M    \n    requires            0.17.1    \n\n  Capabilities\n    completion     \n    vision         \n    tools          \n    thinking       \n        levels     false, true    \n        default    true           \n\n  Parameters\n    num_ctx             65536    \n    presence_penalty    1.5      \n    temperature         0.2      \n    top_k               20       \n    top_p               0.95     \n\n  License\n    Apache License               \n    Version 2.0, January 2004    \n    ...                          \n\n",
+  "hardware_source": "../../REPORT.md#окружение",
+  "runtime_placement": "100% CPU",
+  "runtime_context": 65536,
+  "runtime_size": "8.7 GB",
+  "ripgrep_sha256": "ebeaf56f8a25e102e9419933423738b3a2a613a444fd749d695e15eba53f71f2"
+}

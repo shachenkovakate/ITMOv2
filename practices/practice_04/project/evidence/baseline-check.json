@@ -1,0 +1,6 @@
+{
+  "command": "sh scripts/check.sh",
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "test_duplicate (test_service.SubscribeTest.test_duplicate) ... ok\ntest_empty (test_service.SubscribeTest.test_empty) ... ok\ntest_subscribe (test_service.SubscribeTest.test_subscribe) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nOK\n"
+}

@@ -1,0 +1,795 @@
+test_browser_headers_and_case_insensitive_token (test_security.SecurityHTTPTest.test_browser_headers_and_case_insensitive_token) ... FAIL
+test_cross_origin_and_rebinding_denied (test_security.SecurityHTTPTest.test_cross_origin_and_rebinding_denied) ... FAIL
+test_malformed_json_is_400_not_trace (test_security.SecurityHTTPTest.test_malformed_json_is_400_not_trace) ... 
+  test_malformed_json_is_400_not_trace (test_security.SecurityHTTPTest.test_malformed_json_is_400_not_trace) (payload=b'{') ... FAIL
+  test_malformed_json_is_400_not_trace (test_security.SecurityHTTPTest.test_malformed_json_is_400_not_trace) (payload=b'[]') ... FAIL
+  test_malformed_json_is_400_not_trace (test_security.SecurityHTTPTest.test_malformed_json_is_400_not_trace) (payload=b'null') ... FAIL
+  test_malformed_json_is_400_not_trace (test_security.SecurityHTTPTest.test_malformed_json_is_400_not_trace) (payload=b'{"a":NaN}') ... FAIL
+  test_malformed_json_is_400_not_trace (test_security.SecurityHTTPTest.test_malformed_json_is_400_not_trace) (payload=b'{"a":1,"a":2}') ... FAIL
+test_oversized_body_rejected (test_security.SecurityHTTPTest.test_oversized_body_rejected) ... ok
+test_wrong_content_type (test_security.SecurityHTTPTest.test_wrong_content_type) ... FAIL
+test_authentication_on_private_routes (test_security.SecurityTest.test_authentication_on_private_routes) ... 
+  test_authentication_on_private_routes (test_security.SecurityTest.test_authentication_on_private_routes) (path='/profile?id=1') ... FAIL
+  test_authentication_on_private_routes (test_security.SecurityTest.test_authentication_on_private_routes) (path='/search?q=TEST') ... FAIL
+  test_authentication_on_private_routes (test_security.SecurityTest.test_authentication_on_private_routes) (path='/orders') ... FAIL
+  test_authentication_on_private_routes (test_security.SecurityTest.test_authentication_on_private_routes) (path='/admin/export') ... FAIL
+  test_authentication_on_private_routes (test_security.SecurityTest.test_authentication_on_private_routes) (path='/files?user=alice') ... FAIL
+  test_authentication_on_private_routes (test_security.SecurityTest.test_authentication_on_private_routes) (path='/debug/logs') ... FAIL
+  test_authentication_on_private_routes (test_security.SecurityTest.test_authentication_on_private_routes) (path='/assistant/context?order_id=1') ... FAIL
+  test_authentication_on_private_routes (test_security.SecurityTest.test_authentication_on_private_routes) (path='/reviews') ... FAIL
+  test_authentication_on_private_routes (test_security.SecurityTest.test_authentication_on_private_routes) (path='/assistant/execute') ... FAIL
+test_context_labels_untrusted_reviews_and_reduces_tools (test_security.SecurityTest.test_context_labels_untrusted_reviews_and_reduces_tools) ... ERROR
+test_context_ownership_and_sql (test_security.SecurityTest.test_context_ownership_and_sql) ... FAIL
+test_decision_schema_is_strict (test_security.SecurityTest.test_decision_schema_is_strict) ... 
+  test_decision_schema_is_strict (test_security.SecurityTest.test_decision_schema_is_strict) (decision=None) ... ERROR
+  test_decision_schema_is_strict (test_security.SecurityTest.test_decision_schema_is_strict) (decision=[]) ... ERROR
+  test_decision_schema_is_strict (test_security.SecurityTest.test_decision_schema_is_strict) (decision={}) ... ERROR
+  test_decision_schema_is_strict (test_security.SecurityTest.test_decision_schema_is_strict) (decision={'tool': 'read_file', 'arguments': []}) ... ERROR
+  test_decision_schema_is_strict (test_security.SecurityTest.test_decision_schema_is_strict) (decision={'tool': 'read_file', 'arguments': {'path': 'files/alice/receipt.txt', 'role': 'staff'}}) ... FAIL
+test_executor_denies_destructive_and_export_tools (test_security.SecurityTest.test_executor_denies_destructive_and_export_tools) ... 
+  test_executor_denies_destructive_and_export_tools (test_security.SecurityTest.test_executor_denies_destructive_and_export_tools) (tool='export_profiles', auth=False) ... FAIL
+  test_executor_denies_destructive_and_export_tools (test_security.SecurityTest.test_executor_denies_destructive_and_export_tools) (tool='delete_tree', auth=False) ... FAIL
+  test_executor_denies_destructive_and_export_tools (test_security.SecurityTest.test_executor_denies_destructive_and_export_tools) (tool='export_profiles', auth=True) ... FAIL
+  test_executor_denies_destructive_and_export_tools (test_security.SecurityTest.test_executor_denies_destructive_and_export_tools) (tool='delete_tree', auth=True) ... ERROR
+test_executor_denies_destructive_and_export_tools (test_security.SecurityTest.test_executor_denies_destructive_and_export_tools) ... FAIL
+test_executor_denies_foreign_and_private_reads (test_security.SecurityTest.test_executor_denies_foreign_and_private_reads) ... 
+  test_executor_denies_foreign_and_private_reads (test_security.SecurityTest.test_executor_denies_foreign_and_private_reads) (path='files/bob/receipt.txt') ... FAIL
+  test_executor_denies_foreign_and_private_reads (test_security.SecurityTest.test_executor_denies_foreign_and_private_reads) (path='private/operator-note.txt') ... FAIL
+  test_executor_denies_foreign_and_private_reads (test_security.SecurityTest.test_executor_denies_foreign_and_private_reads) (path='files/alice/../../private/operator-note.txt') ... FAIL
+test_invalid_body_shapes_are_safe (test_security.SecurityTest.test_invalid_body_shapes_are_safe) ... 
+  test_invalid_body_shapes_are_safe (test_security.SecurityTest.test_invalid_body_shapes_are_safe) (body=[]) ... ERROR
+  test_invalid_body_shapes_are_safe (test_security.SecurityTest.test_invalid_body_shapes_are_safe) (body=None) ... ERROR
+  test_invalid_body_shapes_are_safe (test_security.SecurityTest.test_invalid_body_shapes_are_safe) (body='text') ... ERROR
+  test_invalid_body_shapes_are_safe (test_security.SecurityTest.test_invalid_body_shapes_are_safe) (body=3) ... ERROR
+  test_invalid_body_shapes_are_safe (test_security.SecurityTest.test_invalid_body_shapes_are_safe) (body={'product': []}) ... ERROR
+  test_invalid_body_shapes_are_safe (test_security.SecurityTest.test_invalid_body_shapes_are_safe) (body={}) ... ERROR
+test_log_and_review_storage_bounded (test_security.SecurityTest.test_log_and_review_storage_bounded) ... FAIL
+test_log_auth_and_minimization (test_security.SecurityTest.test_log_auth_and_minimization) ... FAIL
+test_login_throttles_failures (test_security.SecurityTest.test_login_throttles_failures) ... FAIL
+test_missing_file_no_internal_path (test_security.SecurityTest.test_missing_file_no_internal_path) ... ERROR
+test_orders_are_scoped (test_security.SecurityTest.test_orders_are_scoped) ... FAIL
+test_price_is_server_owned (test_security.SecurityTest.test_price_is_server_owned) ... 
+  test_price_is_server_owned (test_security.SecurityTest.test_price_is_server_owned) (price=-1) ... FAIL
+  test_price_is_server_owned (test_security.SecurityTest.test_price_is_server_owned) (price=0) ... FAIL
+  test_price_is_server_owned (test_security.SecurityTest.test_price_is_server_owned) (price=0.01) ... FAIL
+  test_price_is_server_owned (test_security.SecurityTest.test_price_is_server_owned) (price='free') ... FAIL
+  test_price_is_server_owned (test_security.SecurityTest.test_price_is_server_owned) (price=inf) ... FAIL
+test_profile_ownership (test_security.SecurityTest.test_profile_ownership) ... FAIL
+test_profile_sql_injection (test_security.SecurityTest.test_profile_sql_injection) ... 
+  test_profile_sql_injection (test_security.SecurityTest.test_profile_sql_injection) (value='1 OR 1=1') ... FAIL
+  test_profile_sql_injection (test_security.SecurityTest.test_profile_sql_injection) (value='1 UNION SELECT 1,2,3,4') ... FAIL
+  test_profile_sql_injection (test_security.SecurityTest.test_profile_sql_injection) (value='-1') ... FAIL
+  test_profile_sql_injection (test_security.SecurityTest.test_profile_sql_injection) (value='1.0') ... FAIL
+test_receipt_owner_and_traversal (test_security.SecurityTest.test_receipt_owner_and_traversal) ... 
+  test_receipt_owner_and_traversal (test_security.SecurityTest.test_receipt_owner_and_traversal) (query={'user': 'bob', 'path': 'receipt.txt'}) ... FAIL
+  test_receipt_owner_and_traversal (test_security.SecurityTest.test_receipt_owner_and_traversal) (query={'user': 'alice', 'path': '../../private/operator-note.txt'}) ... FAIL
+  test_receipt_owner_and_traversal (test_security.SecurityTest.test_receipt_owner_and_traversal) (query={'user': '../private', 'path': 'operator-note.txt'}) ... FAIL
+  test_receipt_owner_and_traversal (test_security.SecurityTest.test_receipt_owner_and_traversal) (query={'user': 'alice', 'path': '../bob/receipt.txt'}) ... FAIL
+  test_receipt_owner_and_traversal (test_security.SecurityTest.test_receipt_owner_and_traversal) (query={'user': 'alice', 'path': '/etc/passwd'}) ... ERROR
+test_receipt_owner_and_traversal (test_security.SecurityTest.test_receipt_owner_and_traversal) ... FAIL
+test_refusal_is_safe_and_unknown_tools_rejected (test_security.SecurityTest.test_refusal_is_safe_and_unknown_tools_rejected) ... FAIL
+test_review_and_question_limits (test_security.SecurityTest.test_review_and_question_limits) ... FAIL
+test_role_header_cannot_escalate (test_security.SecurityTest.test_role_header_cannot_escalate) ... FAIL
+test_search_staff_only_and_parameterized (test_security.SecurityTest.test_search_staff_only_and_parameterized) ... FAIL
+test_session_expiry_and_capacity (test_security.SecurityTest.test_session_expiry_and_capacity) ... FAIL
+test_stored_html_is_escaped (test_security.SecurityTest.test_stored_html_is_escaped) ... FAIL
+test_symlink_cannot_cross_owner_inside_sandbox (test_security.SecurityTest.test_symlink_cannot_cross_owner_inside_sandbox) ... FAIL
+
+======================================================================
+ERROR: test_context_labels_untrusted_reviews_and_reduces_tools (test_security.SecurityTest.test_context_labels_untrusted_reviews_and_reduces_tools)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 127, in test_context_labels_untrusted_reviews_and_reduces_tools
+    prompt=json.loads(result['prompt'])
+  File "/usr/lib/python3.13/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/json/decoder.py", line 363, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+======================================================================
+ERROR: test_decision_schema_is_strict (test_security.SecurityTest.test_decision_schema_is_strict) (decision=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 154, in test_decision_schema_is_strict
+    self.assertEqual(self.call('POST','/assistant/execute',{'decision':decision},self.alice)[0],400)
+                     ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 24, in call
+    return self.shop.dispatch(method, path, {} if body is None else body, auth or {})
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/service.py", line 101, in dispatch
+    tool, arguments = decision["tool"], decision.get("arguments", {})
+                      ~~~~~~~~^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+
+======================================================================
+ERROR: test_decision_schema_is_strict (test_security.SecurityTest.test_decision_schema_is_strict) (decision=[])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 154, in test_decision_schema_is_strict
+    self.assertEqual(self.call('POST','/assistant/execute',{'decision':decision},self.alice)[0],400)
+                     ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 24, in call
+    return self.shop.dispatch(method, path, {} if body is None else body, auth or {})
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/service.py", line 101, in dispatch
+    tool, arguments = decision["tool"], decision.get("arguments", {})
+                      ~~~~~~~~^^^^^^^^
+TypeError: list indices must be integers or slices, not str
+
+======================================================================
+ERROR: test_decision_schema_is_strict (test_security.SecurityTest.test_decision_schema_is_strict) (decision={})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 154, in test_decision_schema_is_strict
+    self.assertEqual(self.call('POST','/assistant/execute',{'decision':decision},self.alice)[0],400)
+                     ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 24, in call
+    return self.shop.dispatch(method, path, {} if body is None else body, auth or {})
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/service.py", line 101, in dispatch
+    tool, arguments = decision["tool"], decision.get("arguments", {})
+                      ~~~~~~~~^^^^^^^^
+KeyError: 'tool'
+
+======================================================================
+ERROR: test_decision_schema_is_strict (test_security.SecurityTest.test_decision_schema_is_strict) (decision={'tool': 'read_file', 'arguments': []})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 154, in test_decision_schema_is_strict
+    self.assertEqual(self.call('POST','/assistant/execute',{'decision':decision},self.alice)[0],400)
+                     ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 24, in call
+    return self.shop.dispatch(method, path, {} if body is None else body, auth or {})
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/service.py", line 103, in dispatch
+    return 200, {"content": self.sandbox.read(arguments["path"])}
+                                              ~~~~~~~~~^^^^^^^^
+TypeError: list indices must be integers or slices, not str
+
+======================================================================
+ERROR: test_executor_denies_destructive_and_export_tools (test_security.SecurityTest.test_executor_denies_destructive_and_export_tools) (tool='delete_tree', auth=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 136, in test_executor_denies_destructive_and_export_tools
+    self.assertEqual(self.execute(tool,args,auth)[0],403)
+                     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 32, in execute
+    return self.call('POST','/assistant/execute',{'decision':{'tool':tool,'arguments':arguments}},
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                     self.alice if auth is None else auth)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 24, in call
+    return self.shop.dispatch(method, path, {} if body is None else body, auth or {})
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/service.py", line 107, in dispatch
+    self.sandbox.delete_tree(arguments["path"])
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/sandbox.py", line 35, in delete_tree
+    path.unlink()
+    ~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/pathlib/_local.py", line 748, in unlink
+    os.unlink(self)
+    ~~~~~~~~~^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/itmo-practice-06-n3x_kvyb'
+
+======================================================================
+ERROR: test_invalid_body_shapes_are_safe (test_security.SecurityTest.test_invalid_body_shapes_are_safe) (body=[])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 159, in test_invalid_body_shapes_are_safe
+    self.assertEqual(self.call('POST','/orders',body,self.alice)[0],400)
+                     ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 24, in call
+    return self.shop.dispatch(method, path, {} if body is None else body, auth or {})
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/service.py", line 66, in dispatch
+    product = body["product"]
+              ~~~~^^^^^^^^^^^
+TypeError: list indices must be integers or slices, not str
+
+======================================================================
+ERROR: test_invalid_body_shapes_are_safe (test_security.SecurityTest.test_invalid_body_shapes_are_safe) (body=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 159, in test_invalid_body_shapes_are_safe
+    self.assertEqual(self.call('POST','/orders',body,self.alice)[0],400)
+                     ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 24, in call
+    return self.shop.dispatch(method, path, {} if body is None else body, auth or {})
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/service.py", line 66, in dispatch
+    product = body["product"]
+              ~~~~^^^^^^^^^^^
+KeyError: 'product'
+
+======================================================================
+ERROR: test_invalid_body_shapes_are_safe (test_security.SecurityTest.test_invalid_body_shapes_are_safe) (body='text')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 159, in test_invalid_body_shapes_are_safe
+    self.assertEqual(self.call('POST','/orders',body,self.alice)[0],400)
+                     ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 24, in call
+    return self.shop.dispatch(method, path, {} if body is None else body, auth or {})
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/service.py", line 66, in dispatch
+    product = body["product"]
+              ~~~~^^^^^^^^^^^
+TypeError: string indices must be integers, not 'str'
+
+======================================================================
+ERROR: test_invalid_body_shapes_are_safe (test_security.SecurityTest.test_invalid_body_shapes_are_safe) (body=3)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 159, in test_invalid_body_shapes_are_safe
+    self.assertEqual(self.call('POST','/orders',body,self.alice)[0],400)
+                     ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 24, in call
+    return self.shop.dispatch(method, path, {} if body is None else body, auth or {})
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/service.py", line 66, in dispatch
+    product = body["product"]
+              ~~~~^^^^^^^^^^^
+TypeError: 'int' object is not subscriptable
+
+======================================================================
+ERROR: test_invalid_body_shapes_are_safe (test_security.SecurityTest.test_invalid_body_shapes_are_safe) (body={'product': []})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 159, in test_invalid_body_shapes_are_safe
+    self.assertEqual(self.call('POST','/orders',body,self.alice)[0],400)
+                     ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 24, in call
+    return self.shop.dispatch(method, path, {} if body is None else body, auth or {})
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/service.py", line 67, in dispatch
+    if product not in self.products:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: unhashable type: 'list'
+
+======================================================================
+ERROR: test_invalid_body_shapes_are_safe (test_security.SecurityTest.test_invalid_body_shapes_are_safe) (body={})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 159, in test_invalid_body_shapes_are_safe
+    self.assertEqual(self.call('POST','/orders',body,self.alice)[0],400)
+                     ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 24, in call
+    return self.shop.dispatch(method, path, {} if body is None else body, auth or {})
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/service.py", line 66, in dispatch
+    product = body["product"]
+              ~~~~^^^^^^^^^^^
+KeyError: 'product'
+
+======================================================================
+ERROR: test_missing_file_no_internal_path (test_security.SecurityTest.test_missing_file_no_internal_path)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 162, in test_missing_file_no_internal_path
+    status,result=self.call('GET','/files?user=alice&path=missing.txt',auth=self.alice)
+                  ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 24, in call
+    return self.shop.dispatch(method, path, {} if body is None else body, auth or {})
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/service.py", line 80, in dispatch
+    return 200, {"content": self.sandbox.read(name)}
+                            ~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/sandbox.py", line 28, in read
+    return self.path(name).read_text(encoding="utf-8")
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/pathlib/_local.py", line 548, in read_text
+    return PathBase.read_text(self, encoding, errors, newline)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/pathlib/_abc.py", line 632, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors, newline=newline) as f:
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/pathlib/_local.py", line 539, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/itmo-practice-06-sr_q0vuw/files/alice/missing.txt'
+
+======================================================================
+ERROR: test_receipt_owner_and_traversal (test_security.SecurityTest.test_receipt_owner_and_traversal) (query={'user': 'alice', 'path': '/etc/passwd'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 86, in test_receipt_owner_and_traversal
+    self.assertIn(self.call('GET','/files?'+urlencode(query),auth=self.alice)[0],[400,403,404])
+                  ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 24, in call
+    return self.shop.dispatch(method, path, {} if body is None else body, auth or {})
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/service.py", line 80, in dispatch
+    return 200, {"content": self.sandbox.read(name)}
+                            ~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/sandbox.py", line 28, in read
+    return self.path(name).read_text(encoding="utf-8")
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/pathlib/_local.py", line 548, in read_text
+    return PathBase.read_text(self, encoding, errors, newline)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/pathlib/_abc.py", line 632, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors, newline=newline) as f:
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/pathlib/_local.py", line 539, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/itmo-practice-06-z11k04wd/files/alice/etc/passwd'
+
+======================================================================
+FAIL: test_browser_headers_and_case_insensitive_token (test_security.SecurityHTTPTest.test_browser_headers_and_case_insensitive_token)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 235, in test_browser_headers_and_case_insensitive_token
+    self.assertEqual(headers.get('X-Content-Type-Options'),'nosniff')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: None != 'nosniff'
+
+======================================================================
+FAIL: test_cross_origin_and_rebinding_denied (test_security.SecurityHTTPTest.test_cross_origin_and_rebinding_denied)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 226, in test_cross_origin_and_rebinding_denied
+    self.assertEqual(self.call('/products',headers={'Origin':'https://attacker.invalid'})[0],403)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 403
+
+======================================================================
+FAIL: test_malformed_json_is_400_not_trace (test_security.SecurityHTTPTest.test_malformed_json_is_400_not_trace) (payload=b'{')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 219, in test_malformed_json_is_400_not_trace
+    self.assertEqual(status,400)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: 500 != 400
+
+======================================================================
+FAIL: test_malformed_json_is_400_not_trace (test_security.SecurityHTTPTest.test_malformed_json_is_400_not_trace) (payload=b'[]')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 219, in test_malformed_json_is_400_not_trace
+    self.assertEqual(status,400)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: 500 != 400
+
+======================================================================
+FAIL: test_malformed_json_is_400_not_trace (test_security.SecurityHTTPTest.test_malformed_json_is_400_not_trace) (payload=b'null')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 219, in test_malformed_json_is_400_not_trace
+    self.assertEqual(status,400)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: 500 != 400
+
+======================================================================
+FAIL: test_malformed_json_is_400_not_trace (test_security.SecurityHTTPTest.test_malformed_json_is_400_not_trace) (payload=b'{"a":NaN}')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 219, in test_malformed_json_is_400_not_trace
+    self.assertEqual(status,400)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: 401 != 400
+
+======================================================================
+FAIL: test_malformed_json_is_400_not_trace (test_security.SecurityHTTPTest.test_malformed_json_is_400_not_trace) (payload=b'{"a":1,"a":2}')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 219, in test_malformed_json_is_400_not_trace
+    self.assertEqual(status,400)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: 401 != 400
+
+======================================================================
+FAIL: test_wrong_content_type (test_security.SecurityHTTPTest.test_wrong_content_type)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 223, in test_wrong_content_type
+    self.assertEqual(self.call('/login',b'{}',{'Content-Type':'text/plain'})[0],415)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 401 != 415
+
+======================================================================
+FAIL: test_authentication_on_private_routes (test_security.SecurityTest.test_authentication_on_private_routes) (path='/profile?id=1')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 39, in test_authentication_on_private_routes
+    self.assertEqual(self.call('GET',path)[0],401)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 401
+
+======================================================================
+FAIL: test_authentication_on_private_routes (test_security.SecurityTest.test_authentication_on_private_routes) (path='/search?q=TEST')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 39, in test_authentication_on_private_routes
+    self.assertEqual(self.call('GET',path)[0],401)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 401
+
+======================================================================
+FAIL: test_authentication_on_private_routes (test_security.SecurityTest.test_authentication_on_private_routes) (path='/orders')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 39, in test_authentication_on_private_routes
+    self.assertEqual(self.call('GET',path)[0],401)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 401
+
+======================================================================
+FAIL: test_authentication_on_private_routes (test_security.SecurityTest.test_authentication_on_private_routes) (path='/admin/export')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 39, in test_authentication_on_private_routes
+    self.assertEqual(self.call('GET',path)[0],401)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 403 != 401
+
+======================================================================
+FAIL: test_authentication_on_private_routes (test_security.SecurityTest.test_authentication_on_private_routes) (path='/files?user=alice')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 39, in test_authentication_on_private_routes
+    self.assertEqual(self.call('GET',path)[0],401)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 401
+
+======================================================================
+FAIL: test_authentication_on_private_routes (test_security.SecurityTest.test_authentication_on_private_routes) (path='/debug/logs')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 39, in test_authentication_on_private_routes
+    self.assertEqual(self.call('GET',path)[0],401)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 401
+
+======================================================================
+FAIL: test_authentication_on_private_routes (test_security.SecurityTest.test_authentication_on_private_routes) (path='/assistant/context?order_id=1')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 39, in test_authentication_on_private_routes
+    self.assertEqual(self.call('GET',path)[0],401)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 401
+
+======================================================================
+FAIL: test_authentication_on_private_routes (test_security.SecurityTest.test_authentication_on_private_routes) (path='/reviews')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 43, in test_authentication_on_private_routes
+    self.assertEqual(self.call('POST',path,body)[0],401)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 201 != 401
+
+======================================================================
+FAIL: test_authentication_on_private_routes (test_security.SecurityTest.test_authentication_on_private_routes) (path='/assistant/execute')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 43, in test_authentication_on_private_routes
+    self.assertEqual(self.call('POST',path,body)[0],401)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 401
+
+======================================================================
+FAIL: test_context_ownership_and_sql (test_security.SecurityTest.test_context_ownership_and_sql)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 119, in test_context_ownership_and_sql
+    self.assertEqual(self.call('GET','/assistant/context?order_id=2',auth=self.alice)[0],403)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 403
+
+======================================================================
+FAIL: test_decision_schema_is_strict (test_security.SecurityTest.test_decision_schema_is_strict) (decision={'tool': 'read_file', 'arguments': {'path': 'files/alice/receipt.txt', 'role': 'staff'}})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 154, in test_decision_schema_is_strict
+    self.assertEqual(self.call('POST','/assistant/execute',{'decision':decision},self.alice)[0],400)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 400
+
+======================================================================
+FAIL: test_executor_denies_destructive_and_export_tools (test_security.SecurityTest.test_executor_denies_destructive_and_export_tools) (tool='export_profiles', auth=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 136, in test_executor_denies_destructive_and_export_tools
+    self.assertEqual(self.execute(tool,args,auth)[0],403)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 403
+
+======================================================================
+FAIL: test_executor_denies_destructive_and_export_tools (test_security.SecurityTest.test_executor_denies_destructive_and_export_tools) (tool='delete_tree', auth=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 136, in test_executor_denies_destructive_and_export_tools
+    self.assertEqual(self.execute(tool,args,auth)[0],403)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 403
+
+======================================================================
+FAIL: test_executor_denies_destructive_and_export_tools (test_security.SecurityTest.test_executor_denies_destructive_and_export_tools) (tool='export_profiles', auth=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 136, in test_executor_denies_destructive_and_export_tools
+    self.assertEqual(self.execute(tool,args,auth)[0],403)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 403
+
+======================================================================
+FAIL: test_executor_denies_destructive_and_export_tools (test_security.SecurityTest.test_executor_denies_destructive_and_export_tools)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 137, in test_executor_denies_destructive_and_export_tools
+    self.assertTrue((self.shop.sandbox.root/'files/alice/receipt.txt').exists())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_executor_denies_foreign_and_private_reads (test_security.SecurityTest.test_executor_denies_foreign_and_private_reads) (path='files/bob/receipt.txt')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 142, in test_executor_denies_foreign_and_private_reads
+    self.assertEqual(self.execute('read_file',{'path':path})[0],403)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 403
+
+======================================================================
+FAIL: test_executor_denies_foreign_and_private_reads (test_security.SecurityTest.test_executor_denies_foreign_and_private_reads) (path='private/operator-note.txt')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 142, in test_executor_denies_foreign_and_private_reads
+    self.assertEqual(self.execute('read_file',{'path':path})[0],403)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 403
+
+======================================================================
+FAIL: test_executor_denies_foreign_and_private_reads (test_security.SecurityTest.test_executor_denies_foreign_and_private_reads) (path='files/alice/../../private/operator-note.txt')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 142, in test_executor_denies_foreign_and_private_reads
+    self.assertEqual(self.execute('read_file',{'path':path})[0],403)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 403
+
+======================================================================
+FAIL: test_log_and_review_storage_bounded (test_security.SecurityTest.test_log_and_review_storage_bounded)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 174, in test_log_and_review_storage_bounded
+    self.assertLessEqual(len(self.shop.logs),200)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 223 not less than or equal to 200
+
+======================================================================
+FAIL: test_log_auth_and_minimization (test_security.SecurityTest.test_log_auth_and_minimization)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 106, in test_log_auth_and_minimization
+    self.assertEqual(self.call('GET','/debug/logs',auth=self.alice)[0],403)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 403
+
+======================================================================
+FAIL: test_login_throttles_failures (test_security.SecurityTest.test_login_throttles_failures)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 181, in test_login_throttles_failures
+    self.assertEqual(statuses[-1],429)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+AssertionError: 401 != 429
+
+======================================================================
+FAIL: test_orders_are_scoped (test_security.SecurityTest.test_orders_are_scoped)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 63, in test_orders_are_scoped
+    self.assertTrue(all(row['owner']==1 for row in rows))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_price_is_server_owned (test_security.SecurityTest.test_price_is_server_owned) (price=-1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 76, in test_price_is_server_owned
+    self.assertEqual(result['price'],5000)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: -1 != 5000
+
+======================================================================
+FAIL: test_price_is_server_owned (test_security.SecurityTest.test_price_is_server_owned) (price=0)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 76, in test_price_is_server_owned
+    self.assertEqual(result['price'],5000)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 5000
+
+======================================================================
+FAIL: test_price_is_server_owned (test_security.SecurityTest.test_price_is_server_owned) (price=0.01)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 76, in test_price_is_server_owned
+    self.assertEqual(result['price'],5000)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0.01 != 5000
+
+======================================================================
+FAIL: test_price_is_server_owned (test_security.SecurityTest.test_price_is_server_owned) (price='free')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 76, in test_price_is_server_owned
+    self.assertEqual(result['price'],5000)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'free' != 5000
+
+======================================================================
+FAIL: test_price_is_server_owned (test_security.SecurityTest.test_price_is_server_owned) (price=inf)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 76, in test_price_is_server_owned
+    self.assertEqual(result['price'],5000)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: inf != 5000
+
+======================================================================
+FAIL: test_profile_ownership (test_security.SecurityTest.test_profile_ownership)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 46, in test_profile_ownership
+    self.assertEqual(self.call('GET','/profile?id=2',auth=self.alice)[0],403)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 403
+
+======================================================================
+FAIL: test_profile_sql_injection (test_security.SecurityTest.test_profile_sql_injection) (value='1 OR 1=1')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 53, in test_profile_sql_injection
+    self.assertEqual(self.call('GET','/profile?'+urlencode({'id':value}),auth=self.alice)[0],400)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 400
+
+======================================================================
+FAIL: test_profile_sql_injection (test_security.SecurityTest.test_profile_sql_injection) (value='1 UNION SELECT 1,2,3,4')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 53, in test_profile_sql_injection
+    self.assertEqual(self.call('GET','/profile?'+urlencode({'id':value}),auth=self.alice)[0],400)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 400
+
+======================================================================
+FAIL: test_profile_sql_injection (test_security.SecurityTest.test_profile_sql_injection) (value='-1')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 53, in test_profile_sql_injection
+    self.assertEqual(self.call('GET','/profile?'+urlencode({'id':value}),auth=self.alice)[0],400)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 400
+
+======================================================================
+FAIL: test_profile_sql_injection (test_security.SecurityTest.test_profile_sql_injection) (value='1.0')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 53, in test_profile_sql_injection
+    self.assertEqual(self.call('GET','/profile?'+urlencode({'id':value}),auth=self.alice)[0],400)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 400
+
+======================================================================
+FAIL: test_receipt_owner_and_traversal (test_security.SecurityTest.test_receipt_owner_and_traversal) (query={'user': 'bob', 'path': 'receipt.txt'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 86, in test_receipt_owner_and_traversal
+    self.assertIn(self.call('GET','/files?'+urlencode(query),auth=self.alice)[0],[400,403,404])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 not found in [400, 403, 404]
+
+======================================================================
+FAIL: test_receipt_owner_and_traversal (test_security.SecurityTest.test_receipt_owner_and_traversal) (query={'user': 'alice', 'path': '../../private/operator-note.txt'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 86, in test_receipt_owner_and_traversal
+    self.assertIn(self.call('GET','/files?'+urlencode(query),auth=self.alice)[0],[400,403,404])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 not found in [400, 403, 404]
+
+======================================================================
+FAIL: test_receipt_owner_and_traversal (test_security.SecurityTest.test_receipt_owner_and_traversal) (query={'user': '../private', 'path': 'operator-note.txt'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 86, in test_receipt_owner_and_traversal
+    self.assertIn(self.call('GET','/files?'+urlencode(query),auth=self.alice)[0],[400,403,404])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 not found in [400, 403, 404]
+
+======================================================================
+FAIL: test_receipt_owner_and_traversal (test_security.SecurityTest.test_receipt_owner_and_traversal) (query={'user': 'alice', 'path': '../bob/receipt.txt'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 86, in test_receipt_owner_and_traversal
+    self.assertIn(self.call('GET','/files?'+urlencode(query),auth=self.alice)[0],[400,403,404])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 not found in [400, 403, 404]
+
+======================================================================
+FAIL: test_receipt_owner_and_traversal (test_security.SecurityTest.test_receipt_owner_and_traversal)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 88, in test_receipt_owner_and_traversal
+    self.assertIn('TEST_BOB',self.call('GET','/files',auth=self.bob)[1]['content'])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'TEST_BOB' not found in 'TEST_ALICE receipt: chair, 5000 RUB'
+
+======================================================================
+FAIL: test_refusal_is_safe_and_unknown_tools_rejected (test_security.SecurityTest.test_refusal_is_safe_and_unknown_tools_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 146, in test_refusal_is_safe_and_unknown_tools_rejected
+    self.assertEqual(self.execute('refuse',{'reason':'No permission'})[0],200)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 400 != 200
+
+======================================================================
+FAIL: test_review_and_question_limits (test_security.SecurityTest.test_review_and_question_limits)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 167, in test_review_and_question_limits
+    self.assertEqual(self.call('POST','/reviews',{'product':'chair','text':'x'*5001},self.alice)[0],400)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 201 != 400
+
+======================================================================
+FAIL: test_role_header_cannot_escalate (test_security.SecurityTest.test_role_header_cannot_escalate)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 67, in test_role_header_cannot_escalate
+    self.assertEqual(self.call('GET','/admin/export',auth={**self.alice,'X-Role':'staff'})[0],403)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 403
+
+======================================================================
+FAIL: test_search_staff_only_and_parameterized (test_security.SecurityTest.test_search_staff_only_and_parameterized)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 56, in test_search_staff_only_and_parameterized
+    self.assertEqual(self.call('GET','/search?q=TEST',auth=self.alice)[0],403)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 403
+
+======================================================================
+FAIL: test_session_expiry_and_capacity (test_security.SecurityTest.test_session_expiry_and_capacity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 186, in test_session_expiry_and_capacity
+    self.assertEqual(self.call('GET','/profile?id=1',auth=self.alice)[0],401)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 401
+
+======================================================================
+FAIL: test_stored_html_is_escaped (test_security.SecurityTest.test_stored_html_is_escaped)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 101, in test_stored_html_is_escaped
+    self.assertNotIn('<script>',result)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: '<script>' unexpectedly found in '<html><body><p><script>window.TEST_XSS=1</script><img src=x onerror=alert(1)></p></body></html>'
+
+======================================================================
+FAIL: test_symlink_cannot_cross_owner_inside_sandbox (test_security.SecurityTest.test_symlink_cannot_cross_owner_inside_sandbox)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 94, in test_symlink_cannot_cross_owner_inside_sandbox
+    self.assertEqual(self.call('GET','/files',auth=self.alice)[0],403)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 403
+
+----------------------------------------------------------------------
+Ran 28 tests in 0.570s
+
+FAILED (failures=52, errors=14)

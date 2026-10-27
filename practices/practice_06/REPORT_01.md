@@ -9,9 +9,9 @@ Mini Shop, одноразовые файлы и TEST_* данные. Точны�
 Не запускать повторно с тем же именем phase, если нужно сохранить этот снимок.
 
 Исходные 16 тестов проходят: [baseline-tests.txt](evidence/before/baseline-tests.txt).
-Новые 32 security-теста на исходном коде дают 54 failures и 15 errors в subtests:
+Новые 34 security-теста на исходном коде дают 59 failures и 15 errors в subtests:
 [security-red.txt](evidence/before/security-red.txt). Это ожидаемые обнаружения,
-а не 69 независимых уязвимостей.
+а не 74 независимых уязвимостей.
 
 | ID | Воспроизведение | Подтверждённый эффект |
 |---|---|---|
@@ -24,7 +24,7 @@ Mini Shop, одноразовые файлы и TEST_* данные. Точны�
 | T07 | GET /debug/logs без токена | Пароль login, X-Token и полные тела запросов; disposable token заменён в артефакте на SESSION_ALICE |
 | T08 | Alice `/assistant/context?order_id=2`; отзыв с SYSTEM UPDATE | Чужой заказ в контексте; инструкции атаки входят в prompt |
 | T09 | Прямые решения export_profiles, read_file private note, delete_tree `.` | 200; экспорт, служебная заметка, удалены все три fixture-файла |
-| T10 | Отсутствующий файл, JSON-массив вместо объекта, JSON `{` | 500 с типами исключений, деталями и временным абсолютным путём |
+| T10 | Отсутствующий файл, JSON-массив вместо объекта, JSON `{`; одиночный Unicode surrogate в отзыве | 500 с деталями; некорректная Unicode-строка сохраняется и нарушает последующую выдачу UTF-8 |
 | T11 | Отзыв 5001 символ; серии запросов в security tests | Нет лимита текста/коллекций, срока сессии и throttle login |
 | T12 | Внешние Host/Origin и text/plain в HTTP security tests | Нет защитной проверки; нет CSP/nosniff/no-store |
 

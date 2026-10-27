@@ -1,0 +1,55 @@
+test_invalid_unicode_cannot_poison_saved_reviews (test_security.SecurityTest.test_invalid_unicode_cannot_poison_saved_reviews) ...
+  test_invalid_unicode_cannot_poison_saved_reviews (test_security.SecurityTest.test_invalid_unicode_cannot_poison_saved_reviews) (value="'\\ud800'") ... FAIL
+  test_invalid_unicode_cannot_poison_saved_reviews (test_security.SecurityTest.test_invalid_unicode_cannot_poison_saved_reviews) (value="'text\\udfff'") ... FAIL
+  test_invalid_unicode_cannot_poison_saved_reviews (test_security.SecurityTest.test_invalid_unicode_cannot_poison_saved_reviews) (value="'\\ud800\\ud800'") ... FAIL
+test_invalid_unicode_cannot_poison_saved_reviews (test_security.SecurityTest.test_invalid_unicode_cannot_poison_saved_reviews) ... FAIL
+
+======================================================================
+FAIL: test_invalid_unicode_cannot_poison_saved_reviews (test_security.SecurityTest.test_invalid_unicode_cannot_poison_saved_reviews) (value="'\\ud800'")
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 108, in test_invalid_unicode_cannot_poison_saved_reviews
+    self.assertEqual(self.call('POST','/reviews',{'product':'chair','text':value},self.alice)[0],400)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 201 != 400
+
+======================================================================
+FAIL: test_invalid_unicode_cannot_poison_saved_reviews (test_security.SecurityTest.test_invalid_unicode_cannot_poison_saved_reviews) (value="'text\\udfff'")
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 108, in test_invalid_unicode_cannot_poison_saved_reviews
+    self.assertEqual(self.call('POST','/reviews',{'product':'chair','text':value},self.alice)[0],400)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 201 != 400
+
+======================================================================
+FAIL: test_invalid_unicode_cannot_poison_saved_reviews (test_security.SecurityTest.test_invalid_unicode_cannot_poison_saved_reviews) (value="'\\ud800\\ud800'")
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 108, in test_invalid_unicode_cannot_poison_saved_reviews
+    self.assertEqual(self.call('POST','/reviews',{'product':'chair','text':value},self.alice)[0],400)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 201 != 400
+
+======================================================================
+FAIL: test_invalid_unicode_cannot_poison_saved_reviews (test_security.SecurityTest.test_invalid_unicode_cannot_poison_saved_reviews)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py", line 109, in test_invalid_unicode_cannot_poison_saved_reviews
+    self.assertEqual(self.shop.reviews,[])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [{'product': 'chair', 'text': '\ud800'}, {[83 chars]00'}] != []
+
+First list contains 3 additional elements.
+First extra element 0:
+{'product': 'chair', 'text': '\ud800'}
+
++ []
+- [{'product': 'chair', 'text': '\ud800'},
+-  {'product': 'chair', 'text': 'text\udfff'},
+-  {'product': 'chair', 'text': '\ud800\ud800'}]
+
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+FAILED (failures=4)

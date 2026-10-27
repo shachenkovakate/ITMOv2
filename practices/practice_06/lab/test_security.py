@@ -102,6 +102,15 @@ class SecurityTest(unittest.TestCase):
         self.assertNotIn('<img',result)
         self.assertIn('&lt;script&gt;',result)
 
+    def test_invalid_unicode_cannot_poison_saved_reviews(self):
+        for value in ['\ud800', 'text\udfff', '\ud800\ud800']:
+            with self.subTest(value=repr(value)):
+                self.assertEqual(self.call('POST','/reviews',{'product':'chair','text':value},self.alice)[0],400)
+        self.assertEqual(self.shop.reviews,[])
+        status,body=self.call('GET','/reviews/view')
+        self.assertEqual(status,200)
+        body.encode('utf-8')
+
     def test_log_auth_and_minimization(self):
         self.assertEqual(self.call('GET','/debug/logs',auth=self.alice)[0],403)
         self.assertEqual(self.call('GET','/debug/logs')[0],401)
@@ -264,6 +273,18 @@ class SecurityHTTPTest(unittest.TestCase):
 
     def test_oversized_body_rejected(self):
         self.assertEqual(self.call('/login',b'x'*65537)[0],413)
+
+    def test_invalid_unicode_review_rejected_over_http(self):
+        status,_,raw=self.call('/login',json.dumps({'username':'alice','password':'learn-alice'}).encode())
+        self.assertEqual(status,200)
+        auth={'X-Token':json.loads(raw)['token']}
+        status,_,_=self.call('/reviews',json.dumps({'product':'chair','text':'\ud800'}).encode(),auth)
+        self.assertEqual(status,400)
+        self.assertEqual(self.call('/reviews/view')[0],200)
+        # A normal Unicode character encoded as a JSON surrogate pair remains valid.
+        status,_,_=self.call('/reviews',json.dumps({'product':'chair','text':'Хороший стул 😀'}).encode(),auth)
+        self.assertEqual(status,201)
+        self.assertIn('Хороший стул 😀',self.call('/reviews/view')[2])
 
 
 if __name__=='__main__':

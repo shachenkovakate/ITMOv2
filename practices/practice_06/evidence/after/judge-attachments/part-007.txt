@@ -1,0 +1,66 @@
+FILE: lab/service.py (part 2/2)
+                if len(self.headers.get_all('Host', [])) != 1 or not re.fullmatch(r'(127\.0\.0\.1|localhost)(:[0-9]{1,5})?', host):
+                    self.respond(403, {'error': 'host not permitted'})
+                    return
+                origin = self.headers.get('Origin')
+                if origin is not None and (len(self.headers.get_all('Origin', [])) != 1 or origin != 'http://' + host):
+                    self.respond(403, {'error': 'origin not permitted'})
+                    return
+                if self.headers.get('Transfer-Encoding') or len(self.headers.get_all('Content-Length', [])) > 1 or len(self.headers.get_all('X-Token', [])) > 1:
+                    raise BadInput()
+                size_text = self.headers.get('Content-Length', '0')
+                if not re.fullmatch(r'[0-9]{1,10}', size_text):
+                    raise BadInput()
+                size = int(size_text)
+                if size > 65536:
+                    self.respond(413, {'error': 'request too large'})
+                    return
+                if self.command == 'GET' and size:
+                    raise BadInput()
+                if self.command == 'POST' and self.headers.get('Content-Type', '').split(';')[0].strip().lower() != 'application/json':
+                    self.respond(415, {'error': 'application/json required'})
+                    return
+                raw = self.rfile.read(size) if size else b''
+                if len(raw) != size:
+                    raise BadInput()
+                body = json.loads(raw, object_pairs_hook=strict_object, parse_constant=reject_constant) if raw else {}
+                if not isinstance(body, dict):
+                    raise BadInput()
+                with shop.lock:
+                    status, result = shop.dispatch(self.command, self.path, body, self.headers)
+            except (ValueError, UnicodeError, RecursionError):
+                status, result = 400, {'error': 'invalid request'}
+            except TimeoutError:
+                status, result = 408, {'error': 'request timeout'}
+            except Exception:
+                status, result = 500, {'error': 'internal error'}
+            self.respond(status, result)
+
+        do_GET = do_POST = handle_request
+
+        def log_message(self, format, *args):
+            pass
+
+    return Handler
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--port', type=int, default=8066)
+    args = parser.parse_args()
+    shop = Shop()
+    server = ThreadingHTTPServer(('127.0.0.1', args.port), make_handler(shop))
+    server.daemon_threads = True
+    print(f'Local exercise: http://127.0.0.1:{server.server_port}', flush=True)
+    print(f'Disposable fixture files: {shop.sandbox.root}', flush=True)
+    try:
+        server.serve_forever()
+    except KeyboardInterrupt:
+        pass
+    finally:
+        server.server_close()
+        shop.close()
+
+
+if __name__ == '__main__':
+    main()

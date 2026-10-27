@@ -1,0 +1,222 @@
+FILE: evidence/before/security-red.txt (part 3/5)
+    status,result=self.call('GET','/files?user=staff&path=operator-note.txt',auth=self.staff)
+                  ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/hw6-original-service/test_security.py", line 24, in call
+    return self.shop.dispatch(method, path, {} if body is None else body, auth or {})
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/hw6-original-service/service.py", line 80, in dispatch
+    return 200, {"content": self.sandbox.read(name)}
+                            ~~~~~~~~~~~~~~~~~^^^^^^
+  File "/tmp/hw6-original-service/sandbox.py", line 28, in read
+    return self.path(name).read_text(encoding="utf-8")
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/pathlib/_local.py", line 548, in read_text
+    return PathBase.read_text(self, encoding, errors, newline)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/pathlib/_abc.py", line 632, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors, newline=newline) as f:
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/pathlib/_local.py", line 539, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/itmo-practice-06-8j3mcbl_/files/staff/operator-note.txt'
+
+======================================================================
+FAIL: test_browser_headers_and_case_insensitive_token (test_security.SecurityHTTPTest.test_browser_headers_and_case_insensitive_token)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 269, in test_browser_headers_and_case_insensitive_token
+    self.assertEqual(headers.get('X-Content-Type-Options'),'nosniff')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: None != 'nosniff'
+
+======================================================================
+FAIL: test_cross_origin_and_rebinding_denied (test_security.SecurityHTTPTest.test_cross_origin_and_rebinding_denied)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 260, in test_cross_origin_and_rebinding_denied
+    self.assertEqual(self.call('/products',headers={'Origin':'https://attacker.invalid'})[0],403)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 403
+
+======================================================================
+FAIL: test_invalid_unicode_review_rejected_over_http (test_security.SecurityHTTPTest.test_invalid_unicode_review_rejected_over_http)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 282, in test_invalid_unicode_review_rejected_over_http
+    self.assertEqual(status,400)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: 201 != 400
+
+======================================================================
+FAIL: test_malformed_json_is_400_not_trace (test_security.SecurityHTTPTest.test_malformed_json_is_400_not_trace) (payload=b'{')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 253, in test_malformed_json_is_400_not_trace
+    self.assertEqual(status,400)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: 500 != 400
+
+======================================================================
+FAIL: test_malformed_json_is_400_not_trace (test_security.SecurityHTTPTest.test_malformed_json_is_400_not_trace) (payload=b'[]')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 253, in test_malformed_json_is_400_not_trace
+    self.assertEqual(status,400)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: 500 != 400
+
+======================================================================
+FAIL: test_malformed_json_is_400_not_trace (test_security.SecurityHTTPTest.test_malformed_json_is_400_not_trace) (payload=b'null')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 253, in test_malformed_json_is_400_not_trace
+    self.assertEqual(status,400)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: 500 != 400
+
+======================================================================
+FAIL: test_malformed_json_is_400_not_trace (test_security.SecurityHTTPTest.test_malformed_json_is_400_not_trace) (payload=b'{"a":NaN}')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 253, in test_malformed_json_is_400_not_trace
+    self.assertEqual(status,400)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: 401 != 400
+
+======================================================================
+FAIL: test_malformed_json_is_400_not_trace (test_security.SecurityHTTPTest.test_malformed_json_is_400_not_trace) (payload=b'{"a":1,"a":2}')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 253, in test_malformed_json_is_400_not_trace
+    self.assertEqual(status,400)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: 401 != 400
+
+======================================================================
+FAIL: test_wrong_content_type (test_security.SecurityHTTPTest.test_wrong_content_type)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 257, in test_wrong_content_type
+    self.assertEqual(self.call('/login',b'{}',{'Content-Type':'text/plain'})[0],415)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 401 != 415
+
+======================================================================
+FAIL: test_authentication_on_private_routes (test_security.SecurityTest.test_authentication_on_private_routes) (path='/profile?id=1')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 39, in test_authentication_on_private_routes
+    self.assertEqual(self.call('GET',path)[0],401)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 401
+
+======================================================================
+FAIL: test_authentication_on_private_routes (test_security.SecurityTest.test_authentication_on_private_routes) (path='/search?q=TEST')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 39, in test_authentication_on_private_routes
+    self.assertEqual(self.call('GET',path)[0],401)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 401
+
+======================================================================
+FAIL: test_authentication_on_private_routes (test_security.SecurityTest.test_authentication_on_private_routes) (path='/orders')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 39, in test_authentication_on_private_routes
+    self.assertEqual(self.call('GET',path)[0],401)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 401
+
+======================================================================
+FAIL: test_authentication_on_private_routes (test_security.SecurityTest.test_authentication_on_private_routes) (path='/admin/export')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 39, in test_authentication_on_private_routes
+    self.assertEqual(self.call('GET',path)[0],401)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 403 != 401
+
+======================================================================
+FAIL: test_authentication_on_private_routes (test_security.SecurityTest.test_authentication_on_private_routes) (path='/files?user=alice')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 39, in test_authentication_on_private_routes
+    self.assertEqual(self.call('GET',path)[0],401)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 401
+
+======================================================================
+FAIL: test_authentication_on_private_routes (test_security.SecurityTest.test_authentication_on_private_routes) (path='/debug/logs')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 39, in test_authentication_on_private_routes
+    self.assertEqual(self.call('GET',path)[0],401)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 401
+
+======================================================================
+FAIL: test_authentication_on_private_routes (test_security.SecurityTest.test_authentication_on_private_routes) (path='/assistant/context?order_id=1')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 39, in test_authentication_on_private_routes
+    self.assertEqual(self.call('GET',path)[0],401)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 401
+
+======================================================================
+FAIL: test_authentication_on_private_routes (test_security.SecurityTest.test_authentication_on_private_routes) (path='/reviews')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 43, in test_authentication_on_private_routes
+    self.assertEqual(self.call('POST',path,body)[0],401)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 201 != 401
+
+======================================================================
+FAIL: test_authentication_on_private_routes (test_security.SecurityTest.test_authentication_on_private_routes) (path='/assistant/execute')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 43, in test_authentication_on_private_routes
+    self.assertEqual(self.call('POST',path,body)[0],401)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 401
+
+======================================================================
+FAIL: test_context_ownership_and_sql (test_security.SecurityTest.test_context_ownership_and_sql)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 128, in test_context_ownership_and_sql
+    self.assertEqual(self.call('GET','/assistant/context?order_id=2',auth=self.alice)[0],403)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 403
+
+======================================================================
+FAIL: test_decision_schema_is_strict (test_security.SecurityTest.test_decision_schema_is_strict) (decision={'tool': 'read_file', 'arguments': {'path': 'files/alice/receipt.txt', 'role': 'staff'}})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 163, in test_decision_schema_is_strict
+    self.assertEqual(self.call('POST','/assistant/execute',{'decision':decision},self.alice)[0],400)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 400
+
+======================================================================
+FAIL: test_duplicate_query_and_owner_override_rejected (test_security.SecurityTest.test_duplicate_query_and_owner_override_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 216, in test_duplicate_query_and_owner_override_rejected
+    self.assertEqual(self.call('GET','/profile?id=1&id=2',auth=self.alice)[0],400)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 400
+
+======================================================================
+FAIL: test_executor_denies_destructive_and_export_tools (test_security.SecurityTest.test_executor_denies_destructive_and_export_tools) (tool='export_profiles', auth=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 145, in test_executor_denies_destructive_and_export_tools
+    self.assertEqual(self.execute(tool,args,auth)[0],403)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 403
+
+======================================================================

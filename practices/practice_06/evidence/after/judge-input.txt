@@ -1,13 +1,17 @@
 Материалы приложены отдельными файлами. Проверяй фактически видимое содержание.
 THREAT_MODEL.md: 8882 bytes
-REPORT_01.md: 6286 bytes
-REPORT_02.md: 9158 bytes
-lab/service.py: 16698 bytes
+REPORT_01.md: 6383 bytes
+REPORT_02.md: 10758 bytes
+judge-system-prompt.md: 3600 bytes
+planner-system.txt: 651 bytes
+lab/service.py: 16919 bytes
 lab/sandbox.py: 1272 bytes
-lab/test_security.py: 14214 bytes
+lab/test_security.py: 15461 bytes
 evidence/before/source-hashes.json: 528 bytes
+evidence/before/http-attacks.json: 23644 bytes
+evidence/before/security-red.txt: 63977 bytes
 evidence/after/http-attacks.json: 14491 bytes
-evidence/after/final-tests.txt: 5648 bytes
+evidence/after/final-tests.txt: 5916 bytes
 evidence/before/clean-model.json: 1134 bytes
 evidence/before/clean-execution.json: 925 bytes
 evidence/before/injected-model.json: 1138 bytes

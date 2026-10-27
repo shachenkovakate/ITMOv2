@@ -15,6 +15,7 @@ test_login_and_purchase_over_http (test_http.HttpTest.test_login_and_purchase_ov
 test_transport_only_binds_loopback (test_http.HttpTest.test_transport_only_binds_loopback) ... ok
 test_browser_headers_and_case_insensitive_token (test_security.SecurityHTTPTest.test_browser_headers_and_case_insensitive_token) ... ok
 test_cross_origin_and_rebinding_denied (test_security.SecurityHTTPTest.test_cross_origin_and_rebinding_denied) ... ok
+test_invalid_unicode_review_rejected_over_http (test_security.SecurityHTTPTest.test_invalid_unicode_review_rejected_over_http) ... ok
 test_malformed_json_is_400_not_trace (test_security.SecurityHTTPTest.test_malformed_json_is_400_not_trace) ... ok
 test_oversized_body_rejected (test_security.SecurityHTTPTest.test_oversized_body_rejected) ... ok
 test_wrong_content_type (test_security.SecurityHTTPTest.test_wrong_content_type) ... ok
@@ -26,6 +27,7 @@ test_duplicate_query_and_owner_override_rejected (test_security.SecurityTest.tes
 test_executor_denies_destructive_and_export_tools (test_security.SecurityTest.test_executor_denies_destructive_and_export_tools) ... ok
 test_executor_denies_foreign_and_private_reads (test_security.SecurityTest.test_executor_denies_foreign_and_private_reads) ... ok
 test_invalid_body_shapes_are_safe (test_security.SecurityTest.test_invalid_body_shapes_are_safe) ... ok
+test_invalid_unicode_cannot_poison_saved_reviews (test_security.SecurityTest.test_invalid_unicode_cannot_poison_saved_reviews) ... ok
 test_log_and_review_storage_bounded (test_security.SecurityTest.test_log_and_review_storage_bounded) ... ok
 test_log_auth_and_minimization (test_security.SecurityTest.test_log_auth_and_minimization) ... ok
 test_login_throttles_failures (test_security.SecurityTest.test_login_throttles_failures) ... ok
@@ -60,6 +62,6 @@ test_unknown_product_rejected (test_service.ShopTest.test_unknown_product_reject
 test_wrong_password_rejected (test_service.ShopTest.test_wrong_password_rejected) ... ok
 
 ----------------------------------------------------------------------
-Ran 48 tests in 0.552s
+Ran 50 tests in 1.056s
 
 OK

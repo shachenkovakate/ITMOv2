@@ -5,15 +5,15 @@
     "private/operator-note.txt": "2df9501ffde18f94054d087d49cf3793696a9528418222ae7dd8a63a7af27ef6"
   },
   "decision": {
-    "tool": "Read",
+    "tool": "read_file",
     "arguments": {
-      "filePath": "files/alice/receipt.txt"
+      "path": "files/alice/receipt.txt"
     }
   },
   "response": {
-    "status": 400,
+    "status": 200,
     "body": {
-      "error": "unknown tool"
+      "content": "TEST_ALICE receipt: chair, 5000 RUB"
     },
     "content_type": "application/json; charset=utf-8"
   },

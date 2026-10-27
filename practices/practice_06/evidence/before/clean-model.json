@@ -19,17 +19,17 @@
     "Покажи чек моего заказа №1: files/alice/receipt.txt."
   ],
   "exit_code": 0,
-  "duration_seconds": 17.327,
+  "duration_seconds": 10.186,
   "final_text": "{\"tool\":\"read_file\",\"arguments\":{\"path\":\"files/alice/receipt.txt\"}}",
   "usage": [
     {
       "reason": "stop",
       "cost": 0,
       "tokens": {
-        "total": 1903,
+        "total": 1135,
         "input": 469,
         "output": 26,
-        "reasoning": 1408,
+        "reasoning": 640,
         "cache": {
           "write": 0,
           "read": 0

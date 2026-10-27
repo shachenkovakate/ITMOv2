@@ -1,0 +1,44 @@
+{
+  "model": "vsellm/openai/gpt-5",
+  "agent": "threat-judge",
+  "command": [
+    "opencode",
+    "run",
+    "--pure",
+    "--dir",
+    "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06",
+    "--agent",
+    "threat-judge",
+    "--model",
+    "vsellm/openai/gpt-5",
+    "--format",
+    "json",
+    "--file",
+    "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/evidence/after/judge-input.txt",
+    "--",
+    "Проверь приложенные модель угроз, отчёты, код и доказательства по системным критериям. Верни только итоговый JSON."
+  ],
+  "exit_code": 0,
+  "duration_seconds": 82.108,
+  "final_text": "{\n  \"verdict\": \"pass\",\n  \"findings\": [\n    {\n      \"id\": \"J01\",\n      \"severity\": \"low\",\n      \"status\": \"evidence_gap\",\n      \"title\": \"Не все внешние артефакты воспроизведения приложены в явном виде\",\n      \"evidence\": \"THREAT_MODEL.md/REPORT_01.md/REPORT_02.md ссылаются на evidence/* files (e.g., evidence/after/http-attacks.json, injected-model.json), но их содержимое не представлено в данном пакете\",\n      \"impact\": \"Сложнее независимо подтвердить «до/после» HTTP-трассы и фактические результаты прогонов LLM\",\n      \"recommendation\": \"Для финального отчёта инлайнить выдержки ключевых запросов/ответов и хеши входов/выходов модели либо прикладывать сами JSON-файлы к судейскому пакету\"\n    },\n    {\n      \"id\": \"J02\",\n      \"severity\": \"low\",\n      \"status\": \"evidence_gap\",\n      \"title\": \"Часть проверок T11–T12 упомянута в отчёте, но не просматривается в видимом фрагменте тестов\",\n      \"evidence\": \"lab/test_security.py (видимый отрывок) содержит лимиты для reviews и вопроса, но не явные unit-тесты Host/Origin; проверка Host/Origin реализована в lab/service.py: handle_request\",\n      \"impact\": \"Подтверждение защиты от CSRF/DNS rebinding и граничных лимитов опирается на code review и отчёт, а не на наблюдаемые тесты\",\n      \"recommendation\": \"Добавить явные unit/HTTP-тесты для Host/Origin/Content-Type и для лимитов сессий/журнала в test_security.py\"\n    }\n  ],\n  \"coverage\": [\n    {\n      \"threat\": \"T01\",\n      \"status\": \"supported\",\n      \"evidence\": \"lab/service.py:_dispatch /profile,/orders (lines ~431–453); серверные сессии session(); lab/test_security.py:test_authentication_on_private_routes,test_profile_ownership,test_orders_are_scoped\"\n    },\n    {\n      \"threat\": \"T02\",\n      \"status\": \"supported\",\n      \"evidence\": \"lab/service.py:positive_id(), rows() с параметрами; /search LIKE с ESCAPE и bind; lab/test_security.py:test_profile_sql_injection,test_search_staff_only_and_parameterized,test_context_ownership_and_sql\"\n    },\n    {\n      \"threat\": \"T03\",\n      \"status\": \"supported\",\n      \"evidence\": \"lab/service.py:роль берётся из self.sessions; X-Role не используется; lab/test_security.py:test_role_header_cannot_escalate\"\n    },\n    {\n      \"threat\": \"T04\",\n      \"status\": \"supported\",\n      \"evidence\": \"lab/service.py:/orders POST берёт price из self.products (line ~449–453); lab/test_security.py:test_price_is_server_owned\"\n    },\n    {\n      \"threat\": \"T05\",\n      \"status\": \"supported\",\n      \"evidence\": \"lab/service.py:read_allowed() allowlist по владельцу + проверка resolved path==root/name (lines ~379–396); /files использует read_allowed; lab/test_security.py:test_receipt_owner_and_traversal,test_symlink_cannot_cross_owner_inside_sandbox,test_executor_denies_foreign_and_private_reads\"\n    },\n    {\n      \"threat\": \"T06\",\n      \"status\": \"supported\",\n      \"evidence\": \"lab/service.py:/reviews/view с html.escape() и CSP/nosniff (lines ~421–423, 555–557); lab/test_security.py:test_stored_html_is_escaped\"\n    },\n    {\n      \"threat\": \"T07\",\n      \"status\": \"supported\",\n      \"evidence\": \"lab/service.py:минимизированный журнал в dispatch() (lines ~375–377), staff-only /debug/logs; lab/test_security.py:test_log_auth_and_minimization\"\n    },\n    {\n      \"threat\": \"T08\",\n      \"status\": \"partial\",\n      \"evidence\": \"lab/service.py:/assistant/context проверяет owner и формирует untrusted_data; /assistant/execute повторно авторизует; lab/test_security.py:test_context_ownership_and_sql,test_context_labels_untrusted_reviews_and_reduces_tools. Реальные LLM-прогоны упомянуты в REPORT_01/02, но их JSON-артефакты не представлены здесь\"\n    },\n    {\n      \"threat\": \"T09\",\n      \"status\": \"supported\",\n      \"evidence\": \"lab/service.py:/assistant/execute schema строгая; deny export_profiles/delete_tree; read_file через read_allowed(...,assistant=True); lab/test_security.py:test_executor_denies_destructive_and_export_tools,test_decision_schema_is_strict,test_executor_denies_foreign_and_private_reads\"\n    },\n    {\n      \"threat\": \"T10\",\n      \"status\": \"supported\",\n      \"evidence\": \"lab/service.py:handle_request строгая валидация HTTP/JSON, parse_constant=reject_constant, object_pairs_hook=strict_object; безопасные 4xx/5xx; lab/test_security.py:test_invalid_body_shapes_are_safe,test_missing_file_no_internal_path\"\n    },\n    {\n      \"threat\": \"T11\",\n      \"status\": \"partial\",\n      \"evidence\": \"lab/service.py:лимиты MAX_SESSIONS/REVIEWS/ORDERS, SESSION_SECONDS, login throttle, 32 слотов, 64KB body, 5s timeout; lab/test_security.py включает test_review_and_question_limits. Нагрузочные/TTL тесты не видны в отрывке\"\n    },\n    {\n      \"threat\": \"T12\",\n      \"status\": \"partial\",\n      \"evidence\": \"lab/service.py:handle_request проверяет Host/Origin и для POST Content-Type=application/json и ставит nosniff/CSP; явных тестов в видимом фрагменте test_security.py нет, подтверждение via REPORT_02.md\"\n    }\n  ],\n  \"positive_checks\": [\n    \"Серверная аутентификация по X-Token с TTL сессии и ограничением попыток логина\",\n    \"Роль берётся только из серверной сессии; подмена X-Role не влияет на авторизацию\",\n    \"Доступ к профилям и заказам ограничен владельцем; staff видит все\",\n    \"Создание заказа использует цену из каталога, игнорируя пользовательский ввод\",\n    \"Файловый доступ по allowlist и строгой проверке resolved path с защитой от traversal и symlink-обходов\",\n    \"HTML отзывов экранируется; ответы сопровождаются строгой CSP и X-Content-Type-Options\",\n    \"Логи доступны только staff, содержат минимум метаданных без секретов/тел\",\n    \"Контекст ассистента содержит только разрешённый заказ, отзывы вынесены в untrusted_data; инструменты минимальны\",\n    \"Исполнитель ассистента повторно авторизует и запрещает destructive/export операции независимо от LLM\",\n    \"Строгая валидация HTTP/JSON: проверка Host/Origin, Content-Type, длины, отказ от NaN/Infinity, запрет дублей ключей\",\n    \"Ограничения на размеры коллекций и тел, количество сессий и параллельных соединений; таймауты чтения сокета\",\n    \"Loopback boundary соблюдена: сервер слушает только 127.0.0.1; sandbox.py не изменён\"\n  ],\n  \"limitations\": [\n    \"Оценка основана на предоставленном коде и описаниях; часть внешних артефактов (HTTP-трассы, JSON прогона модели) не просматривалась напрямую\",\n    \"Меры соответствуют учебному локальному стенду: нет TLS, in-memory БД, упрощённые лимиты; это не production hardening\",\n    \"Стойкость к prompt injection не может быть доказана конечным числом прогонов; серверные запреты на опасные действия — ключевая защита\",\n    \"Нагрузочное тестирование лимитов, TTL сессий и деков логов не проводилось в этой проверке\",\n    \"Политически корректные, но строгие проверки Host/Origin могут блокировать легитимных клиентов с нестандартными заголовками; это не оценивалось на совместимость\"\n  ]\n}",
+  "usage": [
+    {
+      "reason": "stop",
+      "cost": 0,
+      "tokens": {
+        "total": 20718,
+        "input": 13298,
+        "output": 1852,
+        "reasoning": 5568,
+        "cache": {
+          "write": 0,
+          "read": 0
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "tool_events": [],
+  "input_sha256": "e97753b3da6f7756ce218c2c5a6e3ff65a5eb2e12d5edd63dc521e5b96a674b2",
+  "system_prompt_sha256": "2d25f2e1f44a0092e1a474d03b990e98e7240e5d056e4f15c3e68ee16388129d"
+}

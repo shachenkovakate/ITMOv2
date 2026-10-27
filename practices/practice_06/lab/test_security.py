@@ -188,6 +188,31 @@ class SecurityTest(unittest.TestCase):
             self.call('POST','/login',{'username':'bob','password':'learn-bob'})
         self.assertLessEqual(len(self.shop.sessions),128)
 
+    def test_order_capacity_keeps_existing_orders(self):
+        self.shop.MAX_ORDERS=2
+        self.assertEqual(self.call('POST','/orders',{'product':'chair'},self.alice)[0],429)
+        self.assertEqual(len(self.call('GET','/orders',auth=self.staff)[1]),2)
+
+    def test_staff_file_policy_and_assistant_refusal(self):
+        status,result=self.call('GET','/files?user=staff&path=operator-note.txt',auth=self.staff)
+        self.assertEqual(status,200)
+        self.assertEqual(result['content'],'TEST_ONLY_OPERATOR_SECRET')
+        self.assertEqual(self.call('GET','/files?user=staff&path=operator-note.txt',auth=self.alice)[0],403)
+        self.assertEqual(self.execute('read_file',{'path':'files/alice/receipt.txt'},self.staff)[0],403)
+        status,result=self.call('GET','/assistant/context?order_id=1',auth=self.staff)
+        self.assertEqual(status,200)
+        self.assertEqual(set(json.loads(result['prompt'])['allowed_tools']),{'refuse'})
+
+    def test_duplicate_query_and_owner_override_rejected(self):
+        self.assertEqual(self.call('GET','/profile?id=1&id=2',auth=self.alice)[0],400)
+        self.assertEqual(self.call('POST','/orders',{'product':'chair','owner':2},self.alice)[0],400)
+
+    def test_valid_russian_question_over_http_shape(self):
+        question='Покажи чек моего заказа №1: files/alice/receipt.txt.'
+        status,result=self.call('GET','/assistant/context?'+urlencode({'order_id':1,'question':question}),auth=self.alice)
+        self.assertEqual(status,200)
+        self.assertIn(question,result['prompt'])
+
 
 class SecurityHTTPTest(unittest.TestCase):
     @classmethod

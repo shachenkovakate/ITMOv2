@@ -1,0 +1,1 @@
+First LLM pair retained for audit. Harness passed the disposable session token as GET body instead of X-Token when obtaining context. The original server accepted it because the context route lacked authentication. No token was included in model input. The corrected authenticated experiment is rerun in the parent directory; do not use this attempt as the final comparison.

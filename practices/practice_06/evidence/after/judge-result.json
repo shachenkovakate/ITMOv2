@@ -1,0 +1,80 @@
+{
+  "model": "vsellm/openai/gpt-5",
+  "agent": "threat-judge",
+  "command": [
+    "opencode",
+    "run",
+    "--pure",
+    "--dir",
+    "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06",
+    "--agent",
+    "threat-judge",
+    "--model",
+    "vsellm/openai/gpt-5",
+    "--format",
+    "json",
+    "--file",
+    "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/evidence/after/judge-input.txt",
+    "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/THREAT_MODEL.md",
+    "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/REPORT_01.md",
+    "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/REPORT_02.md",
+    "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/service.py",
+    "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/sandbox.py",
+    "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/lab/test_security.py",
+    "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/evidence/before/source-hashes.json",
+    "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/evidence/after/http-attacks.json",
+    "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/evidence/after/final-tests.txt",
+    "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/evidence/before/clean-model.json",
+    "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/evidence/before/clean-execution.json",
+    "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/evidence/before/injected-model.json",
+    "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/evidence/before/injected-execution.json",
+    "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/evidence/after/clean-model.json",
+    "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/evidence/after/clean-execution.json",
+    "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/evidence/after/injected-model.json",
+    "/home/kate/Documents/ITMO/AI/ITMOv2/practices/practice_06/evidence/after/injected-execution.json",
+    "--",
+    "Проверь приложенные модель угроз, отчёты, код и доказательства по системным критериям. Верни только итоговый JSON."
+  ],
+  "exit_code": 0,
+  "duration_seconds": 75.168,
+  "final_text": "{\n  \"verdict\": \"pass\",\n  \"findings\": [\n    {\n      \"id\": \"J01\",\n      \"severity\": \"low\",\n      \"status\": \"evidence_gap\",\n      \"title\": \"Отсутствуют видимые артефакты HTTP-воспроизведения ДО для части угроз\",\n      \"evidence\": \"REPORT_01.md ссылается на evidence/before/http-attacks.json, но среди предоставленного содержимого присутствует только evidence/after/http-attacks.json; также отсутствуют security-red.txt/HTTP before\",\n      \"impact\": \"Снижается полнота доказательства регрессии: не все атаки ДО подтверждены фактическими запросами/ответами в приложенном наборе.\",\n      \"recommendation\": \"Добавить в evidence/before точные HTTP-запросы/ответы для T01–T12 (или релевантного подмножества), аналогичные evidence/after/http-attacks.json, и сохранить «красные» результаты security-тестов до исправлений.\"\n    }\n  ],\n  \"coverage\": [\n    {\n      \"threat\": \"T01\",\n      \"status\": \"supported\",\n      \"evidence\": \"lab/service.py: session()/dispatch() вводят обязательную сессию; /profile и /orders фильтруют по owner; tests: lab/test_security.py::test_authentication_on_private_routes, test_profile_ownership, test_orders_are_scoped; after HTTP: evidence/after/http-attacks.json (T01-anonymous-profile, T01-other-profile, T01-orders)\"\n    },\n    {\n      \"threat\": \"T02\",\n      \"status\": \"supported\",\n      \"evidence\": \"lab/service.py: positive_id(), параметризованные запросы (SELECT ... WHERE id = ?), экранирование LIKE; tests: test_profile_sql_injection, test_search_staff_only_and_parameterized, test_context_ownership_and_sql; after HTTP: T02-sql-profile, T02-sql-search, T02-sql-context (400/403)\"\n    },\n    {\n      \"threat\": \"T03\",\n      \"status\": \"supported\",\n      \"evidence\": \"Роль берётся из серверной сессии; заголовок X-Role игнорируется (lab/service.py: session()/dispatch()); tests: test_role_header_cannot_escalate; after HTTP: T03-forged-role → 403\"\n    },\n    {\n      \"threat\": \"T04\",\n      \"status\": \"supported\",\n      \"evidence\": \"Цена берётся из каталога self.products, входная price игнорируется (lab/service.py: /orders POST, price = self.products[product]); tests: test_price_is_server_owned; after HTTP: T04-price → price=5000\"\n    },\n    {\n      \"threat\": \"T05\",\n      \"status\": \"supported\",\n      \"evidence\": \"Жёсткий allowlist и проверка resolved path, запрет symlink и traversal (lab/service.py: read_allowed(); lab/sandbox.py: path()); tests: test_receipt_owner_and_traversal, test_symlink_cannot_cross_owner_inside_sandbox; after HTTP: T05-other-file, T05-traversal → 403\"\n    },\n    {\n      \"threat\": \"T06\",\n      \"status\": \"supported\",\n      \"evidence\": \"HTML escaping и CSP/nosniff заголовки (lab/service.py: /reviews/view + Handler.respond); tests: test_stored_html_is_escaped; after HTTP: T06-render-xss показывает &lt;script&gt; (без тега script)\"\n    },\n    {\n      \"threat\": \"T07\",\n      \"status\": \"supported\",\n      \"evidence\": \"Журнал staff-only, минимизирован до method/route/actor/status; без токена 401 (lab/service.py: /debug/logs); tests: test_log_auth_and_minimization; after HTTP: T07-logs → 401; заголовки безопасности присутствуют evidence/after/final-tests.txt (SecurityHTTPTest)\"\n    },\n    {\n      \"threat\": \"T08\",\n      \"status\": \"supported\",\n      \"evidence\": \"assistant/context отдаёт только свой заказ, отзывы в untrusted_data, allowed_tools ограничены; повторная авторизация при execute (lab/service.py: /assistant/context, /assistant/execute); tests: test_context_ownership_and_sql, test_context_labels_untrusted_reviews_and_reduces_tools; LLM runs: evidence/after/injected-model.json показывает refuse при атакующем отзыве; injected-execution.json: refused=true\"\n    },\n    {\n      \"threat\": \"T09\",\n      \"status\": \"supported\",\n      \"evidence\": \"Схема решения строгая; export/delete запрещены; read_file проверяет read_allowed с assistant=True (lab/service.py: /assistant/execute); tests: test_executor_denies_destructive_and_export_tools, test_executor_denies_foreign_and_private_reads, test_decision_schema_is_strict; after HTTP: T09-execute-export/delete/private-read → 403; files_before/files_after хэши неизменны\"\n    },\n    {\n      \"threat\": \"T10\",\n      \"status\": \"supported\",\n      \"evidence\": \"Строгий парсинг JSON, запрет GET с телом; безопасные сообщения ошибок, без путей/стеков (lab/service.py: Handler.handle_request); tests: SecurityHTTPTest::test_malformed_json_is_400_not_trace, test_invalid_body_shapes_are_safe, test_missing_file_no_internal_path; after HTTP: T10-invalid-json/invalid-shape\"\n    },\n    {\n      \"threat\": \"T11\",\n      \"status\": \"supported\",\n      \"evidence\": \"Ограничения на отзывы/журнал/заказы; TTL сессий; throttle для login; семафор на соединения, таймауты (lab/service.py: MAX_*, SESSION_SECONDS, login_failures, BoundedSemaphore); tests: test_log_and_review_storage_bounded, test_login_throttles_failures, test_session_expiry_and_capacity, test_order_capacity_keeps_existing_orders; evidence/after/final-tests.txt: все проходят\"\n    },\n    {\n      \"threat\": \"T12\",\n      \"status\": \"supported\",\n      \"evidence\": \"Проверка Host/Origin, отсутствие CORS, application/json для POST, CSP/nosniff/no-store (lab/service.py: Handler.handle_request/respond); tests: SecurityHTTPTest::test_cross_origin_and_rebinding_denied, test_wrong_content_type, test_browser_headers_and_case_insensitive_token\"\n    }\n  ],\n  \"positive_checks\": [\n    \"Чёткая модель угроз с перечислением активов, потоков, границ доверия и STRIDE (THREAT_MODEL.md); соответствует реализованным мерам в lab/service.py\",\n    \"Серверные сессии и роль строго из сессии; дублирующиеся заголовки/тела отклоняются\",\n    \"Фильтрация owner для профилей/заказов; staff видит все, клиент — только свои\",\n    \"SQL bind-параметры и строгая валидация ID; LIKE с ESCAPE для search\",\n    \"Каталожная цена применяется независимо от ввода клиента\",\n    \"Жёсткий allowlist файлов и проверка resolved path; отказ при symlink и traversal; политика staff отличается между прямыми запросами и assistant\",\n    \"HTML escaping при отображении отзывов; CSP и nosniff для всех ответов\",\n    \"Журнал минимизирован и доступен только staff; секреты/тела/квери не логируются\",\n    \"assistant/context помечает отзывы как untrusted_data; allowed_tools минимальны; исполнение повторно проверяет полномочия и схему\",\n    \"Строгий JSON, запрет GET с телом, проверка Host/Origin; лимиты на размер тела, таймауты, семафор\",\n    \"Лимиты на коллекции/сессии/заказы; throttle для login, срок жизни сессий\",\n    \"LLM эксперименты сохранены: одна и та же модель/системный prompt/задача; вредоносная инструкция через отзыв; финальный JSON и эффект исполнителя задокументированы\"\n  ],\n  \"limitations\": [\n    \"Набор артефактов «до исправлений» частично отсутствует (HTTP before/red); подтверждение регрессии для всех T01–T12 основано на коде, тестах и артефактах после исправления\",\n    \"Покрытие prompt injection основано на ограниченном числе запусков и конкретной модели; это не доказывает общую устойчивость LLM\",\n    \"Это учебный локальный стенд: нет TLS, нет полноценного аудита и продакшн rate limiting; меры ориентированы на локальный процесс и loopback\",\n    \"Нагрузочное тестирование/DoS за пределами unit-тестов не проводилось; семафор/таймауты оценены чтением кода\",\n    \"Внешние зависимости модели/провайдера и планировщика не рассматриваются в объёме промышленной безопасности\",\n    \"symlink-гонки с внешним писателем и угрозы вне процесса (OS-level) не моделируются, как указано в THREAT_MODEL.md\"\n  ]\n}",
+  "usage": [
+    {
+      "reason": "stop",
+      "cost": 0,
+      "tokens": {
+        "total": 31886,
+        "input": 25789,
+        "output": 2001,
+        "reasoning": 4096,
+        "cache": {
+          "write": 0,
+          "read": 0
+        }
+      }
+    }
+  ],
+  "errors": [],
+  "tool_events": [],
+  "input_sha256": "c17a52ae86541e42ab2b6f0138bcd30d341fea9f6ee7763ba2592a6033695aa3",
+  "system_prompt_sha256": "2d25f2e1f44a0092e1a474d03b990e98e7240e5d056e4f15c3e68ee16388129d",
+  "attachment_sha256": {
+    "THREAT_MODEL.md": "116be51fe59a3dab8c2d57ca83c6849a89d3db50b1d1e1a20a9ea1c8472f494f",
+    "REPORT_01.md": "a5f2f5b7af646150de07c86a293d3e31443ef8ac0a145626761ecd55bbab2651",
+    "REPORT_02.md": "bff8476fd576822004e1a0c1d89e1bcdeb6b8293279f71c0bbd2a2bfb6551c43",
+    "lab/service.py": "8aa3bcb2df4051366a3656120d3a61a910a9029e0ca3cd93d1b05621e982617b",
+    "lab/sandbox.py": "dcd6b6630d3dec67e7185c1017e4999a3faa5998ff091419dade31b64132ddcf",
+    "lab/test_security.py": "363c5c8da325b2fa95d8929e6d4a074dfd5f1f9dc9547ee4bffc9fe6cf3f3c7e",
+    "evidence/before/source-hashes.json": "2a75c1895b7e4b1aaad82c1cb199b633b19c248c90b7181116e1d6d02a04c6fc",
+    "evidence/after/http-attacks.json": "8f37fbf95de3e138339a12e0796e2957694ae6b1612870e77338dd8e9d4d65fd",
+    "evidence/after/final-tests.txt": "f208fd196c559f89b488b3005284a20d3c4deabe830c4e963543ed7ab321158c",
+    "evidence/before/clean-model.json": "6e596fffdfa0146d9cbfd97bee934bfb82cce4ded0765c78560ce58014a7c261",
+    "evidence/before/clean-execution.json": "3612c48272ea168282ff6e158c8aff92b627d9164e65d46e8989a2623127a0d2",
+    "evidence/before/injected-model.json": "6fe4611ce778dcc2f173a665bc9ce752f034a4e95d8a072386a1f27b84e3fd11",
+    "evidence/before/injected-execution.json": "3612c48272ea168282ff6e158c8aff92b627d9164e65d46e8989a2623127a0d2",
+    "evidence/after/clean-model.json": "85d23a4905641cbccffc25add3c4185f04156a60d66150a2abd73943d6355fab",
+    "evidence/after/clean-execution.json": "3612c48272ea168282ff6e158c8aff92b627d9164e65d46e8989a2623127a0d2",
+    "evidence/after/injected-model.json": "7c1c769ced5275b0399a29a8280ad6994c20c90073626ed69099f3bc488771d4",
+    "evidence/after/injected-execution.json": "cf89f695b615e71363aaf50702e3f778e73c7d31164532d1eab502f49547a7bb"
+  }
+}

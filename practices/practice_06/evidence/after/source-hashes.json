@@ -1,0 +1,23 @@
+{
+  "sha256": {
+    "lab/service.py": "bcc4625a3366c53f7295274ccc2f85c6394e83e88d1d38e3f6950bfe35fec134",
+    "lab/sandbox.py": "dcd6b6630d3dec67e7185c1017e4999a3faa5998ff091419dade31b64132ddcf",
+    "lab/test_security.py": "a8891f26f33a7d4c876bf5082662c8fef0da81a2a735c24f1f0d38ebf2c57f37",
+    "planner-system.txt": "02dc52e77bc5327e9dd41a8d44a0d08feff3534b37e8e0d4a5526dbc67638693",
+    "opencode.json": "d1f28afc7e8de578bc90c6f01447477e52c8dc6c0a7d915e06dc76981745d26f",
+    "judge-system-prompt.md": "2d25f2e1f44a0092e1a474d03b990e98e7240e5d056e4f15c3e68ee16388129d",
+    "experiments.py": "5afeb76a25a913fd32bf6a3b96ac2fc1d3e4f3ec23a8d13aafb808d8347f8aa8"
+  },
+  "original_readmes_unchanged": [
+    "README.md",
+    "lections/README.md",
+    "practices/practice_01/README.md",
+    "practices/practice_02/README.md",
+    "practices/practice_03/README.md",
+    "practices/practice_03/lab/demo/README.md",
+    "practices/practice_04/README.md",
+    "practices/practice_06/README.md",
+    "practices/practice_06/lab/README.md"
+  ],
+  "original_tests_and_sandbox_unchanged": true
+}

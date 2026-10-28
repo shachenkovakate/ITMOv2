@@ -1,0 +1,225 @@
+FILE: evidence/before/security-red.txt (part 4/5)
+FAIL: test_executor_denies_destructive_and_export_tools (test_security.SecurityTest.test_executor_denies_destructive_and_export_tools) (tool='delete_tree', auth=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 145, in test_executor_denies_destructive_and_export_tools
+    self.assertEqual(self.execute(tool,args,auth)[0],403)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 403
+
+======================================================================
+FAIL: test_executor_denies_destructive_and_export_tools (test_security.SecurityTest.test_executor_denies_destructive_and_export_tools) (tool='export_profiles', auth=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 145, in test_executor_denies_destructive_and_export_tools
+    self.assertEqual(self.execute(tool,args,auth)[0],403)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 403
+
+======================================================================
+FAIL: test_executor_denies_destructive_and_export_tools (test_security.SecurityTest.test_executor_denies_destructive_and_export_tools)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 146, in test_executor_denies_destructive_and_export_tools
+    self.assertTrue((self.shop.sandbox.root/'files/alice/receipt.txt').exists())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_executor_denies_foreign_and_private_reads (test_security.SecurityTest.test_executor_denies_foreign_and_private_reads) (path='files/bob/receipt.txt')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 151, in test_executor_denies_foreign_and_private_reads
+    self.assertEqual(self.execute('read_file',{'path':path})[0],403)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 403
+
+======================================================================
+FAIL: test_executor_denies_foreign_and_private_reads (test_security.SecurityTest.test_executor_denies_foreign_and_private_reads) (path='private/operator-note.txt')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 151, in test_executor_denies_foreign_and_private_reads
+    self.assertEqual(self.execute('read_file',{'path':path})[0],403)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 403
+
+======================================================================
+FAIL: test_executor_denies_foreign_and_private_reads (test_security.SecurityTest.test_executor_denies_foreign_and_private_reads) (path='files/alice/../../private/operator-note.txt')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 151, in test_executor_denies_foreign_and_private_reads
+    self.assertEqual(self.execute('read_file',{'path':path})[0],403)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 403
+
+======================================================================
+FAIL: test_invalid_unicode_cannot_poison_saved_reviews (test_security.SecurityTest.test_invalid_unicode_cannot_poison_saved_reviews) (value="'\\ud800'")
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 108, in test_invalid_unicode_cannot_poison_saved_reviews
+    self.assertEqual(self.call('POST','/reviews',{'product':'chair','text':value},self.alice)[0],400)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 201 != 400
+
+======================================================================
+FAIL: test_invalid_unicode_cannot_poison_saved_reviews (test_security.SecurityTest.test_invalid_unicode_cannot_poison_saved_reviews) (value="'text\\udfff'")
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 108, in test_invalid_unicode_cannot_poison_saved_reviews
+    self.assertEqual(self.call('POST','/reviews',{'product':'chair','text':value},self.alice)[0],400)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 201 != 400
+
+======================================================================
+FAIL: test_invalid_unicode_cannot_poison_saved_reviews (test_security.SecurityTest.test_invalid_unicode_cannot_poison_saved_reviews) (value="'\\ud800\\ud800'")
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 108, in test_invalid_unicode_cannot_poison_saved_reviews
+    self.assertEqual(self.call('POST','/reviews',{'product':'chair','text':value},self.alice)[0],400)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 201 != 400
+
+======================================================================
+FAIL: test_invalid_unicode_cannot_poison_saved_reviews (test_security.SecurityTest.test_invalid_unicode_cannot_poison_saved_reviews)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 109, in test_invalid_unicode_cannot_poison_saved_reviews
+    self.assertEqual(self.shop.reviews,[])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [{'product': 'chair', 'text': '\ud800'}, {[83 chars]00'}] != []
+
+First list contains 3 additional elements.
+First extra element 0:
+{'product': 'chair', 'text': '\ud800'}
+
++ []
+- [{'product': 'chair', 'text': '\ud800'},
+-  {'product': 'chair', 'text': 'text\udfff'},
+-  {'product': 'chair', 'text': '\ud800\ud800'}]
+
+======================================================================
+FAIL: test_log_and_review_storage_bounded (test_security.SecurityTest.test_log_and_review_storage_bounded)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 183, in test_log_and_review_storage_bounded
+    self.assertLessEqual(len(self.shop.logs),200)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 223 not less than or equal to 200
+
+======================================================================
+FAIL: test_log_auth_and_minimization (test_security.SecurityTest.test_log_auth_and_minimization)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 115, in test_log_auth_and_minimization
+    self.assertEqual(self.call('GET','/debug/logs',auth=self.alice)[0],403)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 403
+
+======================================================================
+FAIL: test_login_throttles_failures (test_security.SecurityTest.test_login_throttles_failures)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 190, in test_login_throttles_failures
+    self.assertEqual(statuses[-1],429)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+AssertionError: 401 != 429
+
+======================================================================
+FAIL: test_order_capacity_keeps_existing_orders (test_security.SecurityTest.test_order_capacity_keeps_existing_orders)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 202, in test_order_capacity_keeps_existing_orders
+    self.assertEqual(self.call('POST','/orders',{'product':'chair'},self.alice)[0],429)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 201 != 429
+
+======================================================================
+FAIL: test_orders_are_scoped (test_security.SecurityTest.test_orders_are_scoped)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 63, in test_orders_are_scoped
+    self.assertTrue(all(row['owner']==1 for row in rows))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_price_is_server_owned (test_security.SecurityTest.test_price_is_server_owned) (price=-1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 76, in test_price_is_server_owned
+    self.assertEqual(result['price'],5000)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: -1 != 5000
+
+======================================================================
+FAIL: test_price_is_server_owned (test_security.SecurityTest.test_price_is_server_owned) (price=0)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 76, in test_price_is_server_owned
+    self.assertEqual(result['price'],5000)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 5000
+
+======================================================================
+FAIL: test_price_is_server_owned (test_security.SecurityTest.test_price_is_server_owned) (price=0.01)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 76, in test_price_is_server_owned
+    self.assertEqual(result['price'],5000)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0.01 != 5000
+
+======================================================================
+FAIL: test_price_is_server_owned (test_security.SecurityTest.test_price_is_server_owned) (price='free')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 76, in test_price_is_server_owned
+    self.assertEqual(result['price'],5000)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'free' != 5000
+
+======================================================================
+FAIL: test_price_is_server_owned (test_security.SecurityTest.test_price_is_server_owned) (price=inf)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 76, in test_price_is_server_owned
+    self.assertEqual(result['price'],5000)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: inf != 5000
+
+======================================================================
+FAIL: test_profile_ownership (test_security.SecurityTest.test_profile_ownership)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 46, in test_profile_ownership
+    self.assertEqual(self.call('GET','/profile?id=2',auth=self.alice)[0],403)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 403
+
+======================================================================
+FAIL: test_profile_sql_injection (test_security.SecurityTest.test_profile_sql_injection) (value='1 OR 1=1')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 53, in test_profile_sql_injection
+    self.assertEqual(self.call('GET','/profile?'+urlencode({'id':value}),auth=self.alice)[0],400)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 400
+
+======================================================================
+FAIL: test_profile_sql_injection (test_security.SecurityTest.test_profile_sql_injection) (value='1 UNION SELECT 1,2,3,4')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 53, in test_profile_sql_injection
+    self.assertEqual(self.call('GET','/profile?'+urlencode({'id':value}),auth=self.alice)[0],400)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 400
+
+======================================================================
+FAIL: test_profile_sql_injection (test_security.SecurityTest.test_profile_sql_injection) (value='-1')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 53, in test_profile_sql_injection
+    self.assertEqual(self.call('GET','/profile?'+urlencode({'id':value}),auth=self.alice)[0],400)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 400
+

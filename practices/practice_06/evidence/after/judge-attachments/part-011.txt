@@ -1,0 +1,9 @@
+FILE: evidence/before/source-hashes.json (part 1/1)
+{
+  "lab/service.py": "8cb3abeaaf7bb647cbbd9d1c9a0ea50375c70c30110313f5015468ded24b7569",
+  "lab/sandbox.py": "dcd6b6630d3dec67e7185c1017e4999a3faa5998ff091419dade31b64132ddcf",
+  "planner-system.txt": "02dc52e77bc5327e9dd41a8d44a0d08feff3534b37e8e0d4a5526dbc67638693",
+  "opencode.json": "d1f28afc7e8de578bc90c6f01447477e52c8dc6c0a7d915e06dc76981745d26f",
+  "README.md": "ae9714bd5bb8d5c7162cd63b60673092302af17a03b3cb08ea798a6e80170991",
+  "lab/README.md": "e29d3c1c37bd1c80108cb9135105cb6812e9fcd9150046305e15130ae53e52a8"
+}

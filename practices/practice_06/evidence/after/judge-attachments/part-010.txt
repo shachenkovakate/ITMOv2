@@ -1,0 +1,29 @@
+FILE: lab/test_security.py (part 2/2)
+        status,_,raw=self.call('/login',json.dumps({'username':'alice','password':'learn-alice'}).encode())
+        self.assertEqual(status,200)
+        status,headers,body=self.call('/profile?id=1',headers={'x-token':json.loads(raw)['token']})
+        self.assertEqual(status,200)
+        self.assertIn('TEST_ALICE',body)
+        self.assertEqual(headers.get('X-Content-Type-Options'),'nosniff')
+        self.assertEqual(headers.get('Cache-Control'),'no-store')
+        _,headers,_=self.call('/reviews/view')
+        self.assertIn("default-src 'none'",headers.get('Content-Security-Policy',''))
+
+    def test_oversized_body_rejected(self):
+        self.assertEqual(self.call('/login',b'x'*65537)[0],413)
+
+    def test_invalid_unicode_review_rejected_over_http(self):
+        status,_,raw=self.call('/login',json.dumps({'username':'alice','password':'learn-alice'}).encode())
+        self.assertEqual(status,200)
+        auth={'X-Token':json.loads(raw)['token']}
+        status,_,_=self.call('/reviews',json.dumps({'product':'chair','text':'\ud800'}).encode(),auth)
+        self.assertEqual(status,400)
+        self.assertEqual(self.call('/reviews/view')[0],200)
+        # A normal Unicode character encoded as a JSON surrogate pair remains valid.
+        status,_,_=self.call('/reviews',json.dumps({'product':'chair','text':'Хороший стул 😀'}).encode(),auth)
+        self.assertEqual(status,201)
+        self.assertIn('Хороший стул 😀',self.call('/reviews/view')[2])
+
+
+if __name__=='__main__':
+    unittest.main()

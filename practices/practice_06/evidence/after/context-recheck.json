@@ -1,0 +1,11 @@
+{
+  "clean": {
+    "unchanged": true,
+    "sha256": "5cc35d45ad3596a55c58536f6209c5da39074f868ff6ad5902a3511081059af8"
+  },
+  "injected": {
+    "unchanged": true,
+    "sha256": "b9908788162e190c3b19e652ffd3bd2e5734f7b96c41b15c472c466e50d1a13a"
+  },
+  "all_four_saved_model_input_hashes": "match"
+}

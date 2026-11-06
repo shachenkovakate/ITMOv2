@@ -1,0 +1,211 @@
+FILE: evidence/before/security-red.txt (part 2/5)
+  File "/tmp/hw6-original-service/service.py", line 101, in dispatch
+    tool, arguments = decision["tool"], decision.get("arguments", {})
+                      ~~~~~~~~^^^^^^^^
+TypeError: list indices must be integers or slices, not str
+
+======================================================================
+ERROR: test_decision_schema_is_strict (test_security.SecurityTest.test_decision_schema_is_strict) (decision={})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 163, in test_decision_schema_is_strict
+    self.assertEqual(self.call('POST','/assistant/execute',{'decision':decision},self.alice)[0],400)
+                     ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/hw6-original-service/test_security.py", line 24, in call
+    return self.shop.dispatch(method, path, {} if body is None else body, auth or {})
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/hw6-original-service/service.py", line 101, in dispatch
+    tool, arguments = decision["tool"], decision.get("arguments", {})
+                      ~~~~~~~~^^^^^^^^
+KeyError: 'tool'
+
+======================================================================
+ERROR: test_decision_schema_is_strict (test_security.SecurityTest.test_decision_schema_is_strict) (decision={'tool': 'read_file', 'arguments': []})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 163, in test_decision_schema_is_strict
+    self.assertEqual(self.call('POST','/assistant/execute',{'decision':decision},self.alice)[0],400)
+                     ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/hw6-original-service/test_security.py", line 24, in call
+    return self.shop.dispatch(method, path, {} if body is None else body, auth or {})
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/hw6-original-service/service.py", line 103, in dispatch
+    return 200, {"content": self.sandbox.read(arguments["path"])}
+                                              ~~~~~~~~~^^^^^^^^
+TypeError: list indices must be integers or slices, not str
+
+======================================================================
+ERROR: test_executor_denies_destructive_and_export_tools (test_security.SecurityTest.test_executor_denies_destructive_and_export_tools) (tool='delete_tree', auth=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 145, in test_executor_denies_destructive_and_export_tools
+    self.assertEqual(self.execute(tool,args,auth)[0],403)
+                     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/tmp/hw6-original-service/test_security.py", line 32, in execute
+    return self.call('POST','/assistant/execute',{'decision':{'tool':tool,'arguments':arguments}},
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                     self.alice if auth is None else auth)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/hw6-original-service/test_security.py", line 24, in call
+    return self.shop.dispatch(method, path, {} if body is None else body, auth or {})
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/hw6-original-service/service.py", line 107, in dispatch
+    self.sandbox.delete_tree(arguments["path"])
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/tmp/hw6-original-service/sandbox.py", line 35, in delete_tree
+    path.unlink()
+    ~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/pathlib/_local.py", line 748, in unlink
+    os.unlink(self)
+    ~~~~~~~~~^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/itmo-practice-06-98eewa9y'
+
+======================================================================
+ERROR: test_invalid_body_shapes_are_safe (test_security.SecurityTest.test_invalid_body_shapes_are_safe) (body=[])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 168, in test_invalid_body_shapes_are_safe
+    self.assertEqual(self.call('POST','/orders',body,self.alice)[0],400)
+                     ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/hw6-original-service/test_security.py", line 24, in call
+    return self.shop.dispatch(method, path, {} if body is None else body, auth or {})
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/hw6-original-service/service.py", line 66, in dispatch
+    product = body["product"]
+              ~~~~^^^^^^^^^^^
+TypeError: list indices must be integers or slices, not str
+
+======================================================================
+ERROR: test_invalid_body_shapes_are_safe (test_security.SecurityTest.test_invalid_body_shapes_are_safe) (body=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 168, in test_invalid_body_shapes_are_safe
+    self.assertEqual(self.call('POST','/orders',body,self.alice)[0],400)
+                     ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/hw6-original-service/test_security.py", line 24, in call
+    return self.shop.dispatch(method, path, {} if body is None else body, auth or {})
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/hw6-original-service/service.py", line 66, in dispatch
+    product = body["product"]
+              ~~~~^^^^^^^^^^^
+KeyError: 'product'
+
+======================================================================
+ERROR: test_invalid_body_shapes_are_safe (test_security.SecurityTest.test_invalid_body_shapes_are_safe) (body='text')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 168, in test_invalid_body_shapes_are_safe
+    self.assertEqual(self.call('POST','/orders',body,self.alice)[0],400)
+                     ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/hw6-original-service/test_security.py", line 24, in call
+    return self.shop.dispatch(method, path, {} if body is None else body, auth or {})
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/hw6-original-service/service.py", line 66, in dispatch
+    product = body["product"]
+              ~~~~^^^^^^^^^^^
+TypeError: string indices must be integers, not 'str'
+
+======================================================================
+ERROR: test_invalid_body_shapes_are_safe (test_security.SecurityTest.test_invalid_body_shapes_are_safe) (body=3)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 168, in test_invalid_body_shapes_are_safe
+    self.assertEqual(self.call('POST','/orders',body,self.alice)[0],400)
+                     ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/hw6-original-service/test_security.py", line 24, in call
+    return self.shop.dispatch(method, path, {} if body is None else body, auth or {})
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/hw6-original-service/service.py", line 66, in dispatch
+    product = body["product"]
+              ~~~~^^^^^^^^^^^
+TypeError: 'int' object is not subscriptable
+
+======================================================================
+ERROR: test_invalid_body_shapes_are_safe (test_security.SecurityTest.test_invalid_body_shapes_are_safe) (body={'product': []})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 168, in test_invalid_body_shapes_are_safe
+    self.assertEqual(self.call('POST','/orders',body,self.alice)[0],400)
+                     ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/hw6-original-service/test_security.py", line 24, in call
+    return self.shop.dispatch(method, path, {} if body is None else body, auth or {})
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/hw6-original-service/service.py", line 67, in dispatch
+    if product not in self.products:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: unhashable type: 'list'
+
+======================================================================
+ERROR: test_invalid_body_shapes_are_safe (test_security.SecurityTest.test_invalid_body_shapes_are_safe) (body={})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 168, in test_invalid_body_shapes_are_safe
+    self.assertEqual(self.call('POST','/orders',body,self.alice)[0],400)
+                     ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/hw6-original-service/test_security.py", line 24, in call
+    return self.shop.dispatch(method, path, {} if body is None else body, auth or {})
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/hw6-original-service/service.py", line 66, in dispatch
+    product = body["product"]
+              ~~~~^^^^^^^^^^^
+KeyError: 'product'
+
+======================================================================
+ERROR: test_missing_file_no_internal_path (test_security.SecurityTest.test_missing_file_no_internal_path)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 171, in test_missing_file_no_internal_path
+    status,result=self.call('GET','/files?user=alice&path=missing.txt',auth=self.alice)
+                  ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/hw6-original-service/test_security.py", line 24, in call
+    return self.shop.dispatch(method, path, {} if body is None else body, auth or {})
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/hw6-original-service/service.py", line 80, in dispatch
+    return 200, {"content": self.sandbox.read(name)}
+                            ~~~~~~~~~~~~~~~~~^^^^^^
+  File "/tmp/hw6-original-service/sandbox.py", line 28, in read
+    return self.path(name).read_text(encoding="utf-8")
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/pathlib/_local.py", line 548, in read_text
+    return PathBase.read_text(self, encoding, errors, newline)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/pathlib/_abc.py", line 632, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors, newline=newline) as f:
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/pathlib/_local.py", line 539, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/itmo-practice-06-ngf87__e/files/alice/missing.txt'
+
+======================================================================
+ERROR: test_receipt_owner_and_traversal (test_security.SecurityTest.test_receipt_owner_and_traversal) (query={'user': 'alice', 'path': '/etc/passwd'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 86, in test_receipt_owner_and_traversal
+    self.assertIn(self.call('GET','/files?'+urlencode(query),auth=self.alice)[0],[400,403,404])
+                  ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/hw6-original-service/test_security.py", line 24, in call
+    return self.shop.dispatch(method, path, {} if body is None else body, auth or {})
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/hw6-original-service/service.py", line 80, in dispatch
+    return 200, {"content": self.sandbox.read(name)}
+                            ~~~~~~~~~~~~~~~~~^^^^^^
+  File "/tmp/hw6-original-service/sandbox.py", line 28, in read
+    return self.path(name).read_text(encoding="utf-8")
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/pathlib/_local.py", line 548, in read_text
+    return PathBase.read_text(self, encoding, errors, newline)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/pathlib/_abc.py", line 632, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors, newline=newline) as f:
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/pathlib/_local.py", line 539, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/itmo-practice-06-rouitilg/files/alice/etc/passwd'
+
+======================================================================
+ERROR: test_staff_file_policy_and_assistant_refusal (test_security.SecurityTest.test_staff_file_policy_and_assistant_refusal)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 206, in test_staff_file_policy_and_assistant_refusal

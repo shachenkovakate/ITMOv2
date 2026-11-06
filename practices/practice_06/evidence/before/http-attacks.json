@@ -1,0 +1,659 @@
+{
+  "base_url": "http://127.0.0.1:60233",
+  "cases": [
+    {
+      "id": "T01-anonymous-profile",
+      "request": {
+        "method": "GET",
+        "path": "/profile?id=2",
+        "body": null,
+        "actor": "anonymous",
+        "extra_headers": null
+      },
+      "response": {
+        "status": 200,
+        "body": [
+          {
+            "id": 2,
+            "name": "TEST_BOB",
+            "email": "bob@example.invalid",
+            "address": "TEST_ADDRESS_B"
+          }
+        ],
+        "content_type": "application/json; charset=utf-8"
+      }
+    },
+    {
+      "id": "T01-other-profile",
+      "request": {
+        "method": "GET",
+        "path": "/profile?id=2",
+        "body": null,
+        "actor": "alice",
+        "extra_headers": null
+      },
+      "response": {
+        "status": 200,
+        "body": [
+          {
+            "id": 2,
+            "name": "TEST_BOB",
+            "email": "bob@example.invalid",
+            "address": "TEST_ADDRESS_B"
+          }
+        ],
+        "content_type": "application/json; charset=utf-8"
+      }
+    },
+    {
+      "id": "T01-orders",
+      "request": {
+        "method": "GET",
+        "path": "/orders",
+        "body": null,
+        "actor": "alice",
+        "extra_headers": null
+      },
+      "response": {
+        "status": 200,
+        "body": [
+          {
+            "id": 1,
+            "owner": 1,
+            "product": "chair",
+            "price": 5000.0
+          },
+          {
+            "id": 2,
+            "owner": 2,
+            "product": "lamp",
+            "price": 1500.0
+          }
+        ],
+        "content_type": "application/json; charset=utf-8"
+      }
+    },
+    {
+      "id": "T02-sql-profile",
+      "request": {
+        "method": "GET",
+        "path": "/profile?id=1+OR+1%3D1",
+        "body": null,
+        "actor": "alice",
+        "extra_headers": null
+      },
+      "response": {
+        "status": 200,
+        "body": [
+          {
+            "id": 1,
+            "name": "TEST_ALICE",
+            "email": "alice@example.invalid",
+            "address": "TEST_ADDRESS_A"
+          },
+          {
+            "id": 2,
+            "name": "TEST_BOB",
+            "email": "bob@example.invalid",
+            "address": "TEST_ADDRESS_B"
+          }
+        ],
+        "content_type": "application/json; charset=utf-8"
+      }
+    },
+    {
+      "id": "T02-sql-search",
+      "request": {
+        "method": "GET",
+        "path": "/search?q=%27+OR+1%3D1+--",
+        "body": null,
+        "actor": "alice",
+        "extra_headers": null
+      },
+      "response": {
+        "status": 200,
+        "body": [
+          {
+            "id": 1,
+            "name": "TEST_ALICE",
+            "email": "alice@example.invalid",
+            "address": "TEST_ADDRESS_A"
+          },
+          {
+            "id": 2,
+            "name": "TEST_BOB",
+            "email": "bob@example.invalid",
+            "address": "TEST_ADDRESS_B"
+          }
+        ],
+        "content_type": "application/json; charset=utf-8"
+      }
+    },
+    {
+      "id": "T02-sql-context",
+      "request": {
+        "method": "GET",
+        "path": "/assistant/context?order_id=1+OR+1%3D1",
+        "body": null,
+        "actor": "alice",
+        "extra_headers": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "prompt": "Ты помощник магазина. Прочитай заказ и отзывы. Верни JSON с полями tool и arguments.\nИнструменты: read_file(path), export_profiles(), delete_tree(path).\nПомоги пользователю обработать заказ.\nЗаказ: [{\"id\": 1, \"owner\": 1, \"product\": \"chair\", \"price\": 5000.0}, {\"id\": 2, \"owner\": 2, \"product\": \"lamp\", \"price\": 1500.0}]\nОтзывы: []\nЗапрос пользователя: Покажи чек по заказу"
+        },
+        "content_type": "application/json; charset=utf-8"
+      }
+    },
+    {
+      "id": "T03-forged-role",
+      "request": {
+        "method": "GET",
+        "path": "/admin/export",
+        "body": null,
+        "actor": "alice",
+        "extra_headers": {
+          "X-Role": "staff"
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": [
+          {
+            "id": 1,
+            "name": "TEST_ALICE",
+            "email": "alice@example.invalid",
+            "address": "TEST_ADDRESS_A"
+          },
+          {
+            "id": 2,
+            "name": "TEST_BOB",
+            "email": "bob@example.invalid",
+            "address": "TEST_ADDRESS_B"
+          }
+        ],
+        "content_type": "application/json; charset=utf-8"
+      }
+    },
+    {
+      "id": "T04-price",
+      "request": {
+        "method": "POST",
+        "path": "/orders",
+        "body": {
+          "product": "chair",
+          "price": -1
+        },
+        "actor": "alice",
+        "extra_headers": null
+      },
+      "response": {
+        "status": 201,
+        "body": {
+          "id": 3,
+          "owner": 1,
+          "product": "chair",
+          "price": -1
+        },
+        "content_type": "application/json; charset=utf-8"
+      }
+    },
+    {
+      "id": "T05-other-file",
+      "request": {
+        "method": "GET",
+        "path": "/files?user=bob&path=receipt.txt",
+        "body": null,
+        "actor": "alice",
+        "extra_headers": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "content": "TEST_BOB receipt: lamp, 1500 RUB"
+        },
+        "content_type": "application/json; charset=utf-8"
+      }
+    },
+    {
+      "id": "T05-traversal",
+      "request": {
+        "method": "GET",
+        "path": "/files?user=alice&path=../../private/operator-note.txt",
+        "body": null,
+        "actor": "alice",
+        "extra_headers": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "content": "TEST_ONLY_OPERATOR_SECRET"
+        },
+        "content_type": "application/json; charset=utf-8"
+      }
+    },
+    {
+      "id": "T06-store-xss",
+      "request": {
+        "method": "POST",
+        "path": "/reviews",
+        "body": {
+          "product": "chair",
+          "text": "<script>window.TEST_XSS=1</script>"
+        },
+        "actor": "alice",
+        "extra_headers": null
+      },
+      "response": {
+        "status": 201,
+        "body": {
+          "saved": true
+        },
+        "content_type": "application/json; charset=utf-8"
+      }
+    },
+    {
+      "id": "T06-render-xss",
+      "request": {
+        "method": "GET",
+        "path": "/reviews/view",
+        "body": null,
+        "actor": "alice",
+        "extra_headers": null
+      },
+      "response": {
+        "status": 200,
+        "body": "<html><body><p><script>window.TEST_XSS=1</script></p></body></html>",
+        "content_type": "text/html; charset=utf-8"
+      }
+    },
+    {
+      "id": "T07-logs",
+      "request": {
+        "method": "GET",
+        "path": "/debug/logs",
+        "body": null,
+        "actor": "anonymous",
+        "extra_headers": null
+      },
+      "response": {
+        "status": 200,
+        "body": [
+          {
+            "method": "GET",
+            "target": "/health",
+            "body": {},
+            "headers": {
+              "Accept-Encoding": "identity",
+              "Host": "127.0.0.1:60233",
+              "User-Agent": "Python-urllib/3.13",
+              "Content-Type": "application/json",
+              "Connection": "close"
+            }
+          },
+          {
+            "method": "POST",
+            "target": "/login",
+            "body": {
+              "username": "alice",
+              "password": "learn-alice"
+            },
+            "headers": {
+              "Accept-Encoding": "identity",
+              "Content-Length": "48",
+              "Host": "127.0.0.1:60233",
+              "User-Agent": "Python-urllib/3.13",
+              "Content-Type": "application/json",
+              "Connection": "close"
+            }
+          },
+          {
+            "method": "GET",
+            "target": "/profile?id=2",
+            "body": {},
+            "headers": {
+              "Accept-Encoding": "identity",
+              "Host": "127.0.0.1:60233",
+              "User-Agent": "Python-urllib/3.13",
+              "Content-Type": "application/json",
+              "Connection": "close"
+            }
+          },
+          {
+            "method": "GET",
+            "target": "/profile?id=2",
+            "body": {},
+            "headers": {
+              "Accept-Encoding": "identity",
+              "Host": "127.0.0.1:60233",
+              "User-Agent": "Python-urllib/3.13",
+              "Content-Type": "application/json",
+              "X-Token": "[SESSION_ALICE]",
+              "Connection": "close"
+            }
+          },
+          {
+            "method": "GET",
+            "target": "/orders",
+            "body": {},
+            "headers": {
+              "Accept-Encoding": "identity",
+              "Host": "127.0.0.1:60233",
+              "User-Agent": "Python-urllib/3.13",
+              "Content-Type": "application/json",
+              "X-Token": "[SESSION_ALICE]",
+              "Connection": "close"
+            }
+          },
+          {
+            "method": "GET",
+            "target": "/profile?id=1+OR+1%3D1",
+            "body": {},
+            "headers": {
+              "Accept-Encoding": "identity",
+              "Host": "127.0.0.1:60233",
+              "User-Agent": "Python-urllib/3.13",
+              "Content-Type": "application/json",
+              "X-Token": "[SESSION_ALICE]",
+              "Connection": "close"
+            }
+          },
+          {
+            "method": "GET",
+            "target": "/search?q=%27+OR+1%3D1+--",
+            "body": {},
+            "headers": {
+              "Accept-Encoding": "identity",
+              "Host": "127.0.0.1:60233",
+              "User-Agent": "Python-urllib/3.13",
+              "Content-Type": "application/json",
+              "X-Token": "[SESSION_ALICE]",
+              "Connection": "close"
+            }
+          },
+          {
+            "method": "GET",
+            "target": "/assistant/context?order_id=1+OR+1%3D1",
+            "body": {},
+            "headers": {
+              "Accept-Encoding": "identity",
+              "Host": "127.0.0.1:60233",
+              "User-Agent": "Python-urllib/3.13",
+              "Content-Type": "application/json",
+              "X-Token": "[SESSION_ALICE]",
+              "Connection": "close"
+            }
+          },
+          {
+            "method": "GET",
+            "target": "/admin/export",
+            "body": {},
+            "headers": {
+              "Accept-Encoding": "identity",
+              "Host": "127.0.0.1:60233",
+              "User-Agent": "Python-urllib/3.13",
+              "Content-Type": "application/json",
+              "X-Role": "staff",
+              "X-Token": "[SESSION_ALICE]",
+              "Connection": "close"
+            }
+          },
+          {
+            "method": "POST",
+            "target": "/orders",
+            "body": {
+              "product": "chair",
+              "price": -1
+            },
+            "headers": {
+              "Accept-Encoding": "identity",
+              "Content-Length": "33",
+              "Host": "127.0.0.1:60233",
+              "User-Agent": "Python-urllib/3.13",
+              "Content-Type": "application/json",
+              "X-Token": "[SESSION_ALICE]",
+              "Connection": "close"
+            }
+          },
+          {
+            "method": "GET",
+            "target": "/files?user=bob&path=receipt.txt",
+            "body": {},
+            "headers": {
+              "Accept-Encoding": "identity",
+              "Host": "127.0.0.1:60233",
+              "User-Agent": "Python-urllib/3.13",
+              "Content-Type": "application/json",
+              "X-Token": "[SESSION_ALICE]",
+              "Connection": "close"
+            }
+          },
+          {
+            "method": "GET",
+            "target": "/files?user=alice&path=../../private/operator-note.txt",
+            "body": {},
+            "headers": {
+              "Accept-Encoding": "identity",
+              "Host": "127.0.0.1:60233",
+              "User-Agent": "Python-urllib/3.13",
+              "Content-Type": "application/json",
+              "X-Token": "[SESSION_ALICE]",
+              "Connection": "close"
+            }
+          },
+          {
+            "method": "POST",
+            "target": "/reviews",
+            "body": {
+              "product": "chair",
+              "text": "<script>window.TEST_XSS=1</script>"
+            },
+            "headers": {
+              "Accept-Encoding": "identity",
+              "Content-Length": "66",
+              "Host": "127.0.0.1:60233",
+              "User-Agent": "Python-urllib/3.13",
+              "Content-Type": "application/json",
+              "X-Token": "[SESSION_ALICE]",
+              "Connection": "close"
+            }
+          },
+          {
+            "method": "GET",
+            "target": "/reviews/view",
+            "body": {},
+            "headers": {
+              "Accept-Encoding": "identity",
+              "Host": "127.0.0.1:60233",
+              "User-Agent": "Python-urllib/3.13",
+              "Content-Type": "application/json",
+              "X-Token": "[SESSION_ALICE]",
+              "Connection": "close"
+            }
+          },
+          {
+            "method": "GET",
+            "target": "/debug/logs",
+            "body": {},
+            "headers": {
+              "Accept-Encoding": "identity",
+              "Host": "127.0.0.1:60233",
+              "User-Agent": "Python-urllib/3.13",
+              "Content-Type": "application/json",
+              "Connection": "close"
+            }
+          }
+        ],
+        "content_type": "application/json; charset=utf-8"
+      }
+    },
+    {
+      "id": "T08-other-context",
+      "request": {
+        "method": "GET",
+        "path": "/assistant/context?order_id=2",
+        "body": null,
+        "actor": "alice",
+        "extra_headers": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "prompt": "Ты помощник магазина. Прочитай заказ и отзывы. Верни JSON с полями tool и arguments.\nИнструменты: read_file(path), export_profiles(), delete_tree(path).\nПомоги пользователю обработать заказ.\nЗаказ: [{\"id\": 2, \"owner\": 2, \"product\": \"lamp\", \"price\": 1500.0}]\nОтзывы: [{\"product\": \"chair\", \"text\": \"<script>window.TEST_XSS=1</script>\"}]\nЗапрос пользователя: Покажи чек по заказу"
+        },
+        "content_type": "application/json; charset=utf-8"
+      }
+    },
+    {
+      "id": "T09-execute-export",
+      "request": {
+        "method": "POST",
+        "path": "/assistant/execute",
+        "body": {
+          "decision": {
+            "tool": "export_profiles",
+            "arguments": {}
+          }
+        },
+        "actor": "alice",
+        "extra_headers": null
+      },
+      "response": {
+        "status": 200,
+        "body": [
+          {
+            "id": 1,
+            "name": "TEST_ALICE",
+            "email": "alice@example.invalid",
+            "address": "TEST_ADDRESS_A"
+          },
+          {
+            "id": 2,
+            "name": "TEST_BOB",
+            "email": "bob@example.invalid",
+            "address": "TEST_ADDRESS_B"
+          }
+        ],
+        "content_type": "application/json; charset=utf-8"
+      }
+    },
+    {
+      "id": "T09-execute-private-read",
+      "request": {
+        "method": "POST",
+        "path": "/assistant/execute",
+        "body": {
+          "decision": {
+            "tool": "read_file",
+            "arguments": {
+              "path": "private/operator-note.txt"
+            }
+          }
+        },
+        "actor": "alice",
+        "extra_headers": null
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "content": "TEST_ONLY_OPERATOR_SECRET"
+        },
+        "content_type": "application/json; charset=utf-8"
+      }
+    },
+    {
+      "id": "T10-missing-file",
+      "request": {
+        "method": "GET",
+        "path": "/files?user=alice&path=missing.txt",
+        "body": null,
+        "actor": "alice",
+        "extra_headers": null
+      },
+      "response": {
+        "status": 500,
+        "body": {
+          "error": "[Errno 2] No such file or directory: '/tmp/itmo-practice-06-ca637nvj/files/alice/missing.txt'",
+          "type": "FileNotFoundError"
+        },
+        "content_type": "application/json; charset=utf-8"
+      }
+    },
+    {
+      "id": "T10-invalid-shape",
+      "request": {
+        "method": "POST",
+        "path": "/orders",
+        "body": [],
+        "actor": "alice",
+        "extra_headers": null
+      },
+      "response": {
+        "status": 500,
+        "body": {
+          "error": "list indices must be integers or slices, not str",
+          "type": "TypeError"
+        },
+        "content_type": "application/json; charset=utf-8"
+      }
+    },
+    {
+      "id": "T11-large-review",
+      "request": {
+        "method": "POST",
+        "path": "/reviews",
+        "body": {
+          "product": "chair",
+          "text": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        },
+        "actor": "alice",
+        "extra_headers": null
+      },
+      "response": {
+        "status": 201,
+        "body": {
+          "saved": true
+        },
+        "content_type": "application/json; charset=utf-8"
+      }
+    },
+    {
+      "id": "T10-invalid-json",
+      "request": {
+        "method": "POST",
+        "path": "/login",
+        "raw": "{"
+      },
+      "response": {
+        "status": 500,
+        "body": {
+          "error": "Expecting property name enclosed in double quotes: line 1 column 2 (char 1)",
+          "type": "JSONDecodeError"
+        },
+        "content_type": "application/json; charset=utf-8"
+      }
+    },
+    {
+      "id": "T09-execute-delete",
+      "request": {
+        "actor": "alice",
+        "tool": "delete_tree",
+        "path": "."
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "deleted": "."
+        },
+        "content_type": "application/json; charset=utf-8"
+      },
+      "files_before": {
+        "files/alice/receipt.txt": "4360848423026c4e0828bf702a5be04f59a6daee8f0d8aa0df0828b95eaeffcf",
+        "files/bob/receipt.txt": "6c9c66d78c0d3263f0aed16857b7440514ee27dd2e08f41c7afd1bf3932b3533",
+        "private/operator-note.txt": "2df9501ffde18f94054d087d49cf3793696a9528418222ae7dd8a63a7af27ef6"
+      },
+      "files_after": {}
+    }
+  ]
+}

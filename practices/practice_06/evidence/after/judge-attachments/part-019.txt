@@ -1,0 +1,122 @@
+FILE: evidence/before/security-red.txt (part 5/5)
+======================================================================
+FAIL: test_profile_sql_injection (test_security.SecurityTest.test_profile_sql_injection) (value='1.0')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 53, in test_profile_sql_injection
+    self.assertEqual(self.call('GET','/profile?'+urlencode({'id':value}),auth=self.alice)[0],400)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 400
+
+======================================================================
+FAIL: test_receipt_owner_and_traversal (test_security.SecurityTest.test_receipt_owner_and_traversal) (query={'user': 'bob', 'path': 'receipt.txt'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 86, in test_receipt_owner_and_traversal
+    self.assertIn(self.call('GET','/files?'+urlencode(query),auth=self.alice)[0],[400,403,404])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 not found in [400, 403, 404]
+
+======================================================================
+FAIL: test_receipt_owner_and_traversal (test_security.SecurityTest.test_receipt_owner_and_traversal) (query={'user': 'alice', 'path': '../../private/operator-note.txt'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 86, in test_receipt_owner_and_traversal
+    self.assertIn(self.call('GET','/files?'+urlencode(query),auth=self.alice)[0],[400,403,404])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 not found in [400, 403, 404]
+
+======================================================================
+FAIL: test_receipt_owner_and_traversal (test_security.SecurityTest.test_receipt_owner_and_traversal) (query={'user': '../private', 'path': 'operator-note.txt'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 86, in test_receipt_owner_and_traversal
+    self.assertIn(self.call('GET','/files?'+urlencode(query),auth=self.alice)[0],[400,403,404])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 not found in [400, 403, 404]
+
+======================================================================
+FAIL: test_receipt_owner_and_traversal (test_security.SecurityTest.test_receipt_owner_and_traversal) (query={'user': 'alice', 'path': '../bob/receipt.txt'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 86, in test_receipt_owner_and_traversal
+    self.assertIn(self.call('GET','/files?'+urlencode(query),auth=self.alice)[0],[400,403,404])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 not found in [400, 403, 404]
+
+======================================================================
+FAIL: test_receipt_owner_and_traversal (test_security.SecurityTest.test_receipt_owner_and_traversal)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 88, in test_receipt_owner_and_traversal
+    self.assertIn('TEST_BOB',self.call('GET','/files',auth=self.bob)[1]['content'])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'TEST_BOB' not found in 'TEST_ALICE receipt: chair, 5000 RUB'
+
+======================================================================
+FAIL: test_refusal_is_safe_and_unknown_tools_rejected (test_security.SecurityTest.test_refusal_is_safe_and_unknown_tools_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 155, in test_refusal_is_safe_and_unknown_tools_rejected
+    self.assertEqual(self.execute('refuse',{'reason':'No permission'})[0],200)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 400 != 200
+
+======================================================================
+FAIL: test_review_and_question_limits (test_security.SecurityTest.test_review_and_question_limits)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 176, in test_review_and_question_limits
+    self.assertEqual(self.call('POST','/reviews',{'product':'chair','text':'x'*5001},self.alice)[0],400)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 201 != 400
+
+======================================================================
+FAIL: test_role_header_cannot_escalate (test_security.SecurityTest.test_role_header_cannot_escalate)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 67, in test_role_header_cannot_escalate
+    self.assertEqual(self.call('GET','/admin/export',auth={**self.alice,'X-Role':'staff'})[0],403)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 403
+
+======================================================================
+FAIL: test_search_staff_only_and_parameterized (test_security.SecurityTest.test_search_staff_only_and_parameterized)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 56, in test_search_staff_only_and_parameterized
+    self.assertEqual(self.call('GET','/search?q=TEST',auth=self.alice)[0],403)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 403
+
+======================================================================
+FAIL: test_session_expiry_and_capacity (test_security.SecurityTest.test_session_expiry_and_capacity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 195, in test_session_expiry_and_capacity
+    self.assertEqual(self.call('GET','/profile?id=1',auth=self.alice)[0],401)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 401
+
+======================================================================
+FAIL: test_stored_html_is_escaped (test_security.SecurityTest.test_stored_html_is_escaped)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 101, in test_stored_html_is_escaped
+    self.assertNotIn('<script>',result)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+AssertionError: '<script>' unexpectedly found in '<html><body><p><script>window.TEST_XSS=1</script><img src=x onerror=alert(1)></p></body></html>'
+
+======================================================================
+FAIL: test_symlink_cannot_cross_owner_inside_sandbox (test_security.SecurityTest.test_symlink_cannot_cross_owner_inside_sandbox)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/hw6-original-service/test_security.py", line 94, in test_symlink_cannot_cross_owner_inside_sandbox
+    self.assertEqual(self.call('GET','/files',auth=self.alice)[0],403)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 200 != 403
+
+----------------------------------------------------------------------
+Ran 34 tests in 0.556s
+
+FAILED (failures=59, errors=15)
